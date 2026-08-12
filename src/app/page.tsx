@@ -148,6 +148,14 @@ interface AnalysisResult {
     roadmap: string | null;
     billingNote: string;
   } | null;
+  blogArticles: {
+    title: string;
+    url: string;
+    author: string;
+    date: string;
+    summary: string;
+    tags: string[];
+  }[];
   emea_faq: {
     id: string;
     title: string;
@@ -176,6 +184,7 @@ interface AnalysisResult {
       url: string;
       summary: string;
       products_used: string[];
+      publishDate: string;
     }[];
     kpiDirections: Record<string, string>;
     northStars: Record<string, { metric: string; dir: string }>;
@@ -699,6 +708,35 @@ export default function Home() {
               </div>
             )}
 
+            {/* Blog Articles */}
+            {result.blogArticles && result.blogArticles.length > 0 && (
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+                <h3 className="font-semibold text-[#121c2d] mb-4 flex items-center gap-2">
+                  <ExternalLink className="w-5 h-5 text-[#F22F46]" />
+                  Related security and compliance articles
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {result.blogArticles.map((article, i) => (
+                    <a key={i} href={article.url} target="_blank" rel="noopener noreferrer" className="block p-4 border border-gray-100 rounded-xl hover:border-[#F22F46]/30 hover:shadow-sm transition-all group">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs text-gray-400">{new Date(article.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                      </div>
+                      <h4 className="text-sm font-medium text-[#121c2d] group-hover:text-[#F22F46] transition-colors mb-1 line-clamp-2">{article.title}</h4>
+                      <p className="text-xs text-gray-500 mb-2 line-clamp-2">{article.summary}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-gray-400">{article.author}</span>
+                        <div className="flex gap-1">
+                          {article.tags.slice(0, 2).map((tag, j) => (
+                            <span key={j} className="px-1.5 py-0.5 rounded text-[10px] bg-[#121c2d]/5 text-[#121c2d]/60">{tag}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Localized Content */}
             {result.localization && (
               <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
@@ -775,6 +813,7 @@ export default function Home() {
                           <div className="flex items-center justify-between mb-1">
                             <span className="text-sm font-medium text-gray-900">{story.company}</span>
                             <div className="flex items-center gap-2">
+                              <span className="text-[10px] text-gray-400">{new Date(story.publishDate).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
                               <span className="px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-700">{story.vertical}</span>
                               <span className="px-2 py-0.5 rounded text-xs bg-emerald-50 text-emerald-700">{story.country}</span>
                             </div>

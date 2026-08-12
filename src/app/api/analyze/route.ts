@@ -7,6 +7,7 @@ import { getPersonaById, getUseCasesForProduct, GTM_KPI_METRICS, GTM_NORTH_STARS
 import { getStoriesForContext } from "@/lib/emea-customer-stories";
 import { getResidencyForProduct, BILLING_DATA_NOTE } from "@/lib/data-residency-nuances";
 import { getFAQForProduct } from "@/lib/emea-faq";
+import { getRelevantArticles } from "@/lib/blog-articles";
 
 export async function POST(request: NextRequest) {
   try {
@@ -64,6 +65,7 @@ export async function POST(request: NextRequest) {
     const customerStories = getStoriesForContext(country, product.name, vertical || industry || "");
     const residencyNuances = getResidencyForProduct(productId);
     const relevantFAQ = getFAQForProduct(productId);
+    const blogArticles = getRelevantArticles(productId);
 
     return NextResponse.json({
       product: {
@@ -98,6 +100,14 @@ export async function POST(request: NextRequest) {
         roadmap: residencyNuances.roadmap || null,
         billingNote: BILLING_DATA_NOTE,
       } : null,
+      blogArticles: blogArticles.slice(0, 6).map(a => ({
+        title: a.title,
+        url: a.url,
+        author: a.author,
+        date: a.date,
+        summary: a.summary,
+        tags: a.tags,
+      })),
       emea_faq: relevantFAQ.map(cat => ({
         id: cat.id,
         title: cat.title,
@@ -128,6 +138,7 @@ export async function POST(request: NextRequest) {
           url: s.url,
           summary: s.summary,
           products_used: s.products_used,
+          publishDate: s.publishDate,
         })),
         kpiDirections: GTM_KPI_METRICS,
         northStars: GTM_NORTH_STARS,
