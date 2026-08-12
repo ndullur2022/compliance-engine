@@ -1,0 +1,852 @@
+[
+  {
+    "valuePool": "Efficiency & Productivity",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity"
+    ],
+    "name": "AI-Powered Agent Assist",
+    "originalName": "Agent Assistant Tools",
+    "description": "Tools that support live agents during calls, including transcription, sentiment analysis, and knowledge base suggestions.",
+    "rationale": "Shifted from generic 'tools' to emphasize 'AI', reflecting current market demand and Twilio's Voice Intelligence capabilities.",
+    "products": [
+      "Twilio Flex",
+      "Voice Intelligence"
+    ],
+    "kpis": [
+      "Average handle time (AHT)",
+      "First Call Resolution (FCR)"
+    ]
+  },
+  {
+    "valuePool": "Efficiency & Productivity",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity"
+    ],
+    "name": "Intelligent IVR",
+    "originalName": "Intelligent IVR",
+    "description": "Automated phone menus that let callers self-route or solve routine tasks.",
+    "rationale": "Retained original name; highly recognized industry standard.",
+    "products": [
+      "Twilio Voice",
+      "Studio"
+    ],
+    "kpis": [
+      "Call deflection rate",
+      "Wait time"
+    ]
+  },
+  {
+    "valuePool": "Efficiency & Productivity",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity"
+    ],
+    "name": "Intelligent Routing",
+    "originalName": "Intelligent Routing",
+    "description": "Tools that dynamically route inbound call requests to the most qualified agent.",
+    "rationale": "Retained original name; core capability of TaskRouter.",
+    "products": [
+      "Twilio TaskRouter"
+    ],
+    "kpis": [
+      "Wait time",
+      "Issue resolution time"
+    ]
+  },
+  {
+    "valuePool": "Efficiency & Productivity",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity"
+    ],
+    "name": "Self-Service Automation",
+    "originalName": "Self-Service Automation",
+    "description": "Allow users to handle simple actions via automated channels without agent help.",
+    "rationale": "Retained original name; effectively captures the deflection value prop.",
+    "products": [
+      "Twilio Studio",
+      "Autopilot"
+    ],
+    "kpis": [
+      "Call deflection rate",
+      "First Call Resolution (FCR)"
+    ]
+  },
+  {
+    "valuePool": "Efficiency & Productivity",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity",
+      "Intelligent Marketing"
+    ],
+    "name": "Chatbots & Virtual Assistants",
+    "originalName": "Chatbots & Virtual Assistants",
+    "description": "Automated conversational tools answering questions or guiding users without human agents.",
+    "rationale": "Added dual-category tag as this bridges support deflection and marketing engagement.",
+    "products": [
+      "Twilio Studio",
+      "Flex"
+    ],
+    "kpis": [
+      "First Call Resolution (FCR)",
+      "Deflection rate"
+    ]
+  },
+  {
+    "valuePool": "Efficiency & Productivity",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity"
+    ],
+    "name": "Call Tracking & Analytics",
+    "originalName": "Call tracking",
+    "description": "Track inbound calls dynamically to attribute them to specific campaigns or analyze call quality.",
+    "rationale": "Expanded to include 'Analytics' to highlight the data value beyond just number provisioning.",
+    "products": [
+      "Twilio Voice",
+      "Event Streams"
+    ],
+    "kpis": [
+      "Issue resolution time",
+      "Average handle time (AHT)"
+    ]
+  },
+  {
+    "valuePool": "Customer Experience",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity"
+    ],
+    "name": "Omnichannel 2-Way Communication",
+    "originalName": "Real time & Two way Communication",
+    "description": "Enable bidirectional conversational messaging between customers and agents via SMS, WhatsApp, or Chat.",
+    "rationale": "Standardized terminology to 'Omnichannel' which resonates better with enterprise buyers.",
+    "products": [
+      "Twilio Conversations"
+    ],
+    "kpis": [
+      "CSAT / NPS",
+      "Issue resolution time"
+    ]
+  },
+  {
+    "valuePool": "Customer Experience",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity"
+    ],
+    "name": "Omnichannel Support Chat",
+    "originalName": "Support Chat",
+    "description": "Provide real-time, text-based support across web chat, SMS, and messaging apps.",
+    "rationale": "Added 'Omnichannel' to specify multi-platform capability.",
+    "products": [
+      "Twilio Conversations",
+      "Flex"
+    ],
+    "kpis": [
+      "CSAT / NPS",
+      "Ticket backlog"
+    ]
+  },
+  {
+    "valuePool": "Customer Experience",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Reminders & Alerts"
+    ],
+    "name": "Appointment Scheduling & Reminders",
+    "originalName": "Appointment Scheduling",
+    "description": "Automated confirmations and reminders for upcoming appointments or reservations.",
+    "rationale": "Added 'Reminders' to fully capture the lifecycle of the appointment.",
+    "products": [
+      "Twilio SMS",
+      "Studio"
+    ],
+    "kpis": [
+      "No-show rate",
+      "Wait time"
+    ]
+  },
+  {
+    "valuePool": "Customer Experience",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Reminders & Alerts"
+    ],
+    "name": "Service Updates & Outage Alerts",
+    "originalName": "Service Updates & Alerts",
+    "description": "Informing customers proactively of service maintenance, system outages, or schedule changes.",
+    "rationale": "Added 'Outage' to highlight a high-value, critical use case for deflection.",
+    "products": [
+      "Twilio SMS",
+      "Voice"
+    ],
+    "kpis": [
+      "Call deflection rate",
+      "Ticket backlog"
+    ]
+  },
+  {
+    "valuePool": "Customer Experience",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Loyalty & Trust"
+    ],
+    "name": "Omnichannel Preference Management",
+    "originalName": "Communications Preference Management",
+    "description": "Allow customers to easily manage which channels and topics they wish to be contacted about.",
+    "rationale": "Aligned with Segment and cross-channel privacy architectures.",
+    "products": [
+      "Segment",
+      "Preference Center"
+    ],
+    "kpis": [
+      "Renewal rate",
+      "Opt-out rate"
+    ]
+  },
+  {
+    "valuePool": "Customer Experience",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Loyalty & Trust"
+    ],
+    "name": "Automated Surveys & NPS",
+    "originalName": "Surveys",
+    "description": "Automatically trigger customer satisfaction or NPS surveys immediately following an interaction.",
+    "rationale": "Added 'Automated' to emphasize the programmatic nature of Twilio.",
+    "products": [
+      "Twilio Studio",
+      "SMS"
+    ],
+    "kpis": [
+      "CSAT / NPS",
+      "Renewal rate"
+    ]
+  },
+  {
+    "valuePool": "Customer Experience",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Reminders & Alerts"
+    ],
+    "name": "Transaction & Order Notifications",
+    "originalName": "Transaction & Order Notifs",
+    "description": "Real-time updates on order confirmations, shipping statuses, and delivery tracking.",
+    "rationale": "Spelled out acronyms for clarity.",
+    "products": [
+      "Twilio SMS",
+      "SendGrid"
+    ],
+    "kpis": [
+      "Repeat purchase rate",
+      "Call deflection rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Personalized Discounts & Offers",
+    "originalName": "Personalized Discounts",
+    "description": "Deliver individualized deals based on user lifecycle, interests, or past purchases.",
+    "rationale": "Broadened to include 'Offers' to cover non-discount promotions.",
+    "products": [
+      "Segment",
+      "SendGrid",
+      "Twilio SMS"
+    ],
+    "kpis": [
+      "Campaign conversion rate",
+      "ROAS"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Outbound Sales Campaigns",
+    "originalName": "Outbound sales campaigns",
+    "description": "Proactively contacts potential customers for sales-related purposes via voice or text.",
+    "rationale": "Retained original name.",
+    "products": [
+      "Twilio Voice",
+      "SMS"
+    ],
+    "kpis": [
+      "Answer rate",
+      "Campaign conversion rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Event Promotions & Invites",
+    "originalName": "Event promotions and invites",
+    "description": "Automated communications to drive attendance and engagement for physical or virtual events.",
+    "rationale": "Retained original name.",
+    "products": [
+      "SendGrid",
+      "Twilio SMS"
+    ],
+    "kpis": [
+      "Campaign conversion rate",
+      "Web traffic"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "High Propensity Audience Targeting",
+    "originalName": "Build High Propensity & Value Audiences",
+    "description": "Build and sync high-value audiences to advertising platforms to optimize ad spend.",
+    "rationale": "Shortened for clarity; aligns directly with Segment Personas.",
+    "products": [
+      "Segment Personas"
+    ],
+    "kpis": [
+      "ROAS",
+      "Customer acquisition cost (CAC)"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Ad Spend Optimization",
+    "originalName": "Optimize Advertising",
+    "description": "Suppress existing customers from acquisition ads or target lookalikes of high-LTV users.",
+    "rationale": "Translated generic 'optimization' into a specific financial action (Spend).",
+    "products": [
+      "Segment"
+    ],
+    "kpis": [
+      "ROAS",
+      "Customer acquisition cost (CAC)"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Click-to-Call Functionality",
+    "originalName": "Click-to-call",
+    "description": "Embed voice calling directly into web or mobile apps to instantly connect prospects to sales.",
+    "rationale": "Retained original name.",
+    "products": [
+      "Twilio Voice"
+    ],
+    "kpis": [
+      "Sales cycle length",
+      "Campaign conversion rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing",
+      "Agent Productivity"
+    ],
+    "name": "Speed to Lead Routing",
+    "originalName": "Speed to Lead",
+    "description": "Engage new potential customers immediately upon interest to accelerate response times.",
+    "rationale": "Added 'Routing' to emphasize the architectural action.",
+    "products": [
+      "Twilio Functions",
+      "SMS"
+    ],
+    "kpis": [
+      "Sales cycle length",
+      "Answer rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing",
+      "Agent Productivity"
+    ],
+    "name": "Conversational Inbound Sales",
+    "originalName": "Inbound/Conversational sales campaigns",
+    "description": "Nurture incoming leads via interactive dialogues and routing to guide sales prospects.",
+    "rationale": "Cleaned up naming convention for better presentation.",
+    "products": [
+      "Twilio Conversations"
+    ],
+    "kpis": [
+      "Sales cycle length",
+      "Campaign conversion rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Acquire Customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Inbound Communications Routing",
+    "originalName": "Inbound communications",
+    "description": "Manage and route incoming customer inquiries across channels to the appropriate teams.",
+    "rationale": "Added 'Routing' to specify the actual action being taken.",
+    "products": [
+      "Twilio Studio",
+      "TaskRouter"
+    ],
+    "kpis": [
+      "Sales cycle length",
+      "Answer rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Automated Lifecycle Nurture Campaigns",
+    "originalName": "Lifecycle marketing campaigns",
+    "description": "Marketing campaigns that touch every part of the customer's journey with the right message.",
+    "rationale": "Added 'Automated' to highlight the 'build it once' value of Journey Builder.",
+    "products": [
+      "Segment",
+      "SendGrid",
+      "Twilio SMS"
+    ],
+    "kpis": [
+      "Renewal rate",
+      "Customer LTV"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Cross-Channel Abandoned Cart Recovery",
+    "originalName": "Tackling abandoned carts",
+    "description": "Strategies to prompt customers to complete pending online purchases across email and SMS.",
+    "rationale": "Shifted from a problem ('Tackling') to a solution ('Cross-Channel Recovery').",
+    "products": [
+      "Segment",
+      "SendGrid",
+      "Twilio SMS"
+    ],
+    "kpis": [
+      "Campaign conversion rate",
+      "Revenue retention rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Tailored Product Recommendations",
+    "originalName": "Tailored product recommendations",
+    "description": "Personalized product suggestions based on unified user data or preferences.",
+    "rationale": "Retained original name.",
+    "products": [
+      "Segment",
+      "SendGrid"
+    ],
+    "kpis": [
+      "Upsell / cross-sell rate",
+      "Repeat purchase rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Nurture & Drip Campaigns",
+    "originalName": "Nurture and drip marketing campaigns",
+    "description": "Sequential, automated messages designed to educate and convert prospects over time.",
+    "rationale": "Simplified name for brevity.",
+    "products": [
+      "SendGrid",
+      "Twilio SMS"
+    ],
+    "kpis": [
+      "Renewal rate",
+      "Customer LTV"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Upsell & Cross-Sell Campaigns",
+    "originalName": "Upsell & Cross-Sell",
+    "description": "Targeted campaigns offering complementary products or premium tier upgrades.",
+    "rationale": "Added 'Campaigns' for clarity.",
+    "products": [
+      "Segment",
+      "SendGrid"
+    ],
+    "kpis": [
+      "Upsell / cross-sell rate",
+      "Customer LTV"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Intelligent Marketing"
+    ],
+    "name": "Churn Mitigation & Winback",
+    "originalName": "Winback and Mitigate Churn",
+    "description": "Identify at-risk customers and trigger automated campaigns to retain or win them back.",
+    "rationale": "Reordered for standard industry phrasing.",
+    "products": [
+      "Segment",
+      "SendGrid"
+    ],
+    "kpis": [
+      "Renewal rate",
+      "Revenue retention rate"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Loyalty & Trust"
+    ],
+    "name": "Customer Loyalty & Rewards",
+    "originalName": "Customer Loyalty",
+    "description": "Manage and communicate loyalty points, tier statuses, and exclusive reward offers.",
+    "rationale": "Added 'Rewards' to cover the operational execution of loyalty programs.",
+    "products": [
+      "Segment",
+      "SendGrid"
+    ],
+    "kpis": [
+      "Repeat purchase rate",
+      "Customer LTV"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Reminders & Alerts"
+    ],
+    "name": "Targeted Push Notifications",
+    "originalName": "Push Notifications",
+    "description": "In-app alerts designed to pull users back into the digital product experience.",
+    "rationale": "Added 'Targeted' to emphasize the Segment integration value.",
+    "products": [
+      "Twilio",
+      "Segment"
+    ],
+    "kpis": [
+      "Repeat purchase rate",
+      "Customer LTV"
+    ]
+  },
+  {
+    "valuePool": "Growth & Revenue",
+    "businessGoal": "Retain & grow customers",
+    "category": [
+      "Reminders & Alerts"
+    ],
+    "name": "Automated Billing & Payment Reminders",
+    "originalName": "Payment & Billing Reminders",
+    "description": "Reminders for upcoming payments, billing cycles, or missed payment due dates.",
+    "rationale": "Added 'Automated' to emphasize programmatic execution.",
+    "products": [
+      "Twilio SMS",
+      "SendGrid"
+    ],
+    "kpis": [
+      "Revenue retention rate",
+      "Renewal rate"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity"
+    ],
+    "name": "Multi-Factor Authentication (MFA)",
+    "originalName": "Secure login protection (2FA/OTP)",
+    "description": "Secure login protection utilizing 2FA/OTP via SMS, Voice, WhatsApp, or Email.",
+    "rationale": "Updated to standard enterprise identity terminology (MFA).",
+    "products": [
+      "Twilio Verify"
+    ],
+    "kpis": [
+      "OTP conversion rate",
+      "Account takeovers"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity"
+    ],
+    "name": "Account & Identity Management",
+    "originalName": "Account and identity management",
+    "description": "Tools and processes for securely managing user identities, credentials, and access.",
+    "rationale": "Retained original name.",
+    "products": [
+      "Segment Unify"
+    ],
+    "kpis": [
+      "Fraud incidents",
+      "False positives"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity"
+    ],
+    "name": "Secure Audience Segmentation",
+    "originalName": "Secure Audience Segmentation",
+    "description": "Segmenting users while strictly adhering to privacy regulations (GDPR, CCPA) and data masking.",
+    "rationale": "Retained original name.",
+    "products": [
+      "Segment"
+    ],
+    "kpis": [
+      "Compliance violations",
+      "Data privacy"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity"
+    ],
+    "name": "Security & Account Alerts",
+    "originalName": "Security and Account Alerts",
+    "description": "Real-time notifications for suspicious account activity, password changes, or new logins.",
+    "rationale": "Retained original name.",
+    "products": [
+      "Twilio Verify",
+      "SMS"
+    ],
+    "kpis": [
+      "Account takeovers",
+      "Fraud incidents"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity"
+    ],
+    "name": "Secure Masked Communication",
+    "originalName": "Secure Communication",
+    "description": "Allow two parties (e.g., driver/rider) to communicate without exposing real phone numbers.",
+    "rationale": "Added 'Masked' to clarify the specific technical use case (Proxy).",
+    "products": [
+      "Twilio Proxy"
+    ],
+    "kpis": [
+      "Compliance violations",
+      "CSAT / NPS"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity"
+    ],
+    "name": "Identity Intelligence & Analytics",
+    "originalName": "Intelligence & Analytics",
+    "description": "Analyzing identity data patterns to improve customer profiles and platform security.",
+    "rationale": "Added 'Identity' context to avoid confusion with Flex analytics.",
+    "products": [
+      "Segment"
+    ],
+    "kpis": [
+      "False positives",
+      "Fraud incidents"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity"
+    ],
+    "name": "Fraud Detection & Mitigation",
+    "originalName": "Fraud Detection and Mitigation",
+    "description": "Utilize carrier data (SIM swap, line type) to block fraudulent signups and transactions.",
+    "rationale": "Retained original name.",
+    "products": [
+      "Twilio Lookup",
+      "Verify"
+    ],
+    "kpis": [
+      "Fraud incidents",
+      "False positives"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Loyalty & Trust"
+    ],
+    "name": "Verified Branded Calling & SMS",
+    "originalName": "Branded Communications",
+    "description": "Increase answer rates by displaying verified brand names and logos on outbound communications.",
+    "rationale": "Made more specific to highlight the 'Verified' trust aspect.",
+    "products": [
+      "Twilio Trust Hub",
+      "Voice"
+    ],
+    "kpis": [
+      "Answer rate",
+      "Fraud incidents (Spoofing)"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Loyalty & Trust"
+    ],
+    "name": "Service Consent & Opt-In",
+    "originalName": "Service Consent",
+    "description": "Secure and document verifiable consent before initiating automated marketing communications.",
+    "rationale": "Added 'Opt-In' to clarify the regulatory action.",
+    "products": [
+      "Twilio SMS/WhatsApp"
+    ],
+    "kpis": [
+      "Compliance violations",
+      "Opt-in rate"
+    ]
+  },
+  {
+    "valuePool": "Risk, Trust & Compliance",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Reminders & Alerts"
+    ],
+    "name": "Employee/Workforce Shift Alerts",
+    "originalName": "Employee/Workforce Alerts",
+    "description": "Notify employees, contractors, or sales teams of important updates or schedule changes.",
+    "rationale": "Added 'Shift' to ground it in a specific, common operational reality.",
+    "products": [
+      "Twilio SMS"
+    ],
+    "kpis": [
+      "Compliance violations",
+      "Incident response time"
+    ]
+  },
+  {
+    "valuePool": "Agility, Resilience & Scale",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Agent Productivity"
+    ],
+    "name": "Distributed Contact Center Enablement",
+    "originalName": "Remote Agents",
+    "description": "Enable distributed customer-service teams to work seamlessly from anywhere.",
+    "rationale": "Replaced 'Remote Agents' with enterprise infrastructure terminology.",
+    "products": [
+      "Twilio Flex",
+      "Voice",
+      "Studio"
+    ],
+    "kpis": [
+      "Call deflection rate",
+      "Wait time"
+    ]
+  },
+  {
+    "valuePool": "Agility, Resilience & Scale",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity",
+      "Intelligent Marketing"
+    ],
+    "name": "Complete Identity Resolution",
+    "originalName": "Complete Identity Resolution",
+    "description": "Merge fragmented customer data points across platforms into a single, unified Golden Record.",
+    "rationale": "Retained original name.",
+    "products": [
+      "Segment Unify"
+    ],
+    "kpis": [
+      "False positives",
+      "Compliance violations"
+    ]
+  },
+  {
+    "valuePool": "Agility, Resilience & Scale",
+    "businessGoal": "Protect the business",
+    "category": [
+      "Intelligent Identity",
+      "Intelligent Marketing"
+    ],
+    "name": "Accelerated Onboarding",
+    "originalName": "Accelerate Onboarding",
+    "description": "Speed customers through initial setup by combining identity verification with contextual flows.",
+    "rationale": "Adjusted to standard noun phrasing.",
+    "products": [
+      "Twilio Verify",
+      "Segment"
+    ],
+    "kpis": [
+      "OTP conversion rate",
+      "Fraud incidents"
+    ]
+  },
+  {
+    "valuePool": "Agility, Resilience & Scale",
+    "businessGoal": "Improve customer experience",
+    "category": [
+      "Reminders & Alerts"
+    ],
+    "name": "Emergency Broadcasts & Notifications",
+    "originalName": "Emergency Alerts & Notifications",
+    "description": "Rapidly communicate urgent safety protocols, weather alerts, or critical event information.",
+    "rationale": "Standardized naming.",
+    "products": [
+      "Twilio SMS",
+      "Voice"
+    ],
+    "kpis": [
+      "Answer rate",
+      "Read rate"
+    ]
+  }
+]

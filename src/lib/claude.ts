@@ -32,11 +32,19 @@ export interface ComplianceAnalysis {
   };
 }
 
+export interface PersonaContext {
+  title: string;
+  careabouts: string[];
+  challenges: string[];
+  metrics: string[];
+}
+
 export async function analyzeCompliance(
   product: TwilioProduct,
   targetCountry: string,
   targetIndustry: string,
-  regulations: Regulation[]
+  regulations: Regulation[],
+  personaContext?: PersonaContext | null
 ): Promise<ComplianceAnalysis> {
   const regulationContext = regulations.map(r => `
 Regulation: ${r.name} (${r.fullName})
@@ -52,6 +60,16 @@ Key Requirements: ${r.keyRequirements.join("; ")}
 ${regId}: Status=${entry.status}, Details=${entry.details}
 Customer Actions: ${entry.customerActions?.join("; ") || "None specified"}
     `).join("\n");
+
+  const personaPromptContext = personaContext ? `
+BUYER PERSONA CONTEXT:
+You are helping a sales rep sell to a "${personaContext.title}".
+This person cares about: ${personaContext.careabouts.join("; ")}
+Their technology challenges: ${personaContext.challenges.join("; ")}
+Metrics they track: ${personaContext.metrics.join("; ")}
+
+Tailor talk track bullets and positioning to resonate with this specific persona. Frame compliance as solving their specific challenges and helping their specific metrics.
+` : "";
 
   const residencyContext = !product.euDataResidency ? `
 IMPORTANT CONTEXT — NO EU DATA RESIDENCY:
@@ -72,7 +90,7 @@ DESCRIPTION: ${product.description}
 DATA PROCESSED: ${product.dataProcessed.join(", ")}
 CERTIFICATIONS: ${product.complianceCertifications.join(", ")}
 EU DATA RESIDENCY: ${product.euDataResidency ? "Available in IE1 (Dublin)" : "Not available in EU"} — ${product.euDataResidencyDetails}
-${residencyContext}
+${residencyContext}${personaPromptContext}
 TARGET MARKET: ${targetCountry}
 TARGET INDUSTRY: ${targetIndustry}
 

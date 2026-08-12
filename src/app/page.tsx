@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, Loader2, Building2, Languages, ExternalLink } from "lucide-react";
+import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, MessageSquare } from "lucide-react";
 
 const PRODUCTS = [
   { id: "conversation-memory", name: "Conversation Memory", category: "Conversations" },
@@ -54,17 +54,50 @@ const COUNTRIES = [
   { code: "Finland", language: "fi", label: "Finland" },
 ];
 
-const INDUSTRIES = [
-  "Financial Services",
-  "Healthcare",
-  "Retail & E-commerce",
-  "Technology",
-  "Telecommunications",
-  "Government & Public Sector",
-  "Insurance",
-  "Energy & Utilities",
-  "Manufacturing",
-  "General",
+const INDUSTRY_SEGMENTS = [
+  {
+    segment: "Retail",
+    verticals: ["Retail", "Hospitality", "Travel & Hospitality", "Transportation", "CPG", "On-Demand / Gig Economy"],
+  },
+  {
+    segment: "High Tech & AI",
+    verticals: ["Technology", "SaaS", "Education", "Media"],
+  },
+  {
+    segment: "Healthcare & Life Sciences",
+    verticals: ["Healthcare", "Life Sciences"],
+  },
+  {
+    segment: "Financial Services",
+    verticals: ["Financial Services"],
+  },
+  {
+    segment: "ISV",
+    verticals: ["Professional Services", "Real Estate", "Nonprofit"],
+  },
+  {
+    segment: "Martech",
+    verticals: ["Retail", "Media", "CPG"],
+  },
+];
+
+const BUYER_PERSONAS = [
+  { id: "", label: "Any buyer (general)", tier: "" },
+  { id: "cmo", label: "CMO", tier: "c-suite" },
+  { id: "cxo", label: "Chief Experience Officer", tier: "c-suite" },
+  { id: "cto", label: "CTO", tier: "c-suite" },
+  { id: "ciso", label: "CISO", tier: "c-suite" },
+  { id: "cdo", label: "Chief Data Officer", tier: "c-suite" },
+  { id: "cfo", label: "CFO", tier: "c-suite" },
+  { id: "marketing_director", label: "VP/Director of Marketing", tier: "lob" },
+  { id: "product_engineering_leader", label: "Product/Engineering Leader", tier: "lob" },
+  { id: "it_director", label: "IT Director", tier: "lob" },
+  { id: "vp_customer_support", label: "VP of Customer Support", tier: "lob" },
+  { id: "cpo", label: "Chief Product Officer", tier: "lob" },
+  { id: "marketing_practitioner", label: "Marketing Practitioner", tier: "practitioners" },
+  { id: "data_engineer", label: "Data Engineer/Scientist", tier: "practitioners" },
+  { id: "software_developer", label: "Software Developer", tier: "practitioners" },
+  { id: "lead_developer", label: "Lead Developer", tier: "practitioners" },
 ];
 
 interface AnalysisResult {
@@ -123,6 +156,34 @@ interface AnalysisResult {
     supportingLinks: { label: string; url: string }[];
   }[];
   alternativeProducts: { name: string; url: string }[];
+  gtmContext?: {
+    persona: {
+      id: string;
+      title: string;
+      tier: string;
+      careabouts: string[];
+      challenges: string[];
+      metrics: string[];
+    } | null;
+    useCases: {
+      name: string;
+      description: string;
+      valuePool: string;
+      businessGoal: string;
+      kpis: string[];
+    }[];
+    customerStories: {
+      customer: string;
+      vertical: string;
+      region: string;
+      link: string;
+      summary: string;
+      outcomes: string[];
+      products_used: string[];
+    }[];
+    kpiDirections: Record<string, string>;
+    northStars: Record<string, { metric: string; dir: string }>;
+  };
 }
 
 function StatusBadge({ status }: { status: string }) {
@@ -162,11 +223,15 @@ function ScoreGauge({ score }: { score: number }) {
 export default function Home() {
   const [productId, setProductId] = useState("");
   const [country, setCountry] = useState("");
-  const [industry, setIndustry] = useState("General");
+  const [segment, setSegment] = useState("");
+  const [vertical, setVertical] = useState("");
+  const [persona, setPersona] = useState("");
   const [includeLocalization, setIncludeLocalization] = useState(true);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState("");
+
+  const selectedSegment = INDUSTRY_SEGMENTS.find(s => s.segment === segment);
 
   const selectedCountry = COUNTRIES.find(c => c.code === country);
 
@@ -183,7 +248,9 @@ export default function Home() {
         body: JSON.stringify({
           productId,
           country,
-          industry,
+          industry: vertical || segment || "General",
+          vertical: vertical || segment || "",
+          persona,
           language: includeLocalization ? selectedCountry?.language : "en",
         }),
       });
@@ -219,7 +286,7 @@ export default function Home() {
         {/* Input Panel */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">What do you want to check?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Which product?</label>
               <select
@@ -253,14 +320,45 @@ export default function Home() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Which industry?</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Industry segment</label>
               <select
-                value={industry}
-                onChange={(e) => setIndustry(e.target.value)}
+                value={segment}
+                onChange={(e) => { setSegment(e.target.value); setVertical(""); }}
                 className="w-full rounded-lg border-gray-300 border px-3 py-2 text-sm text-gray-900 bg-white focus:ring-2 focus:ring-red-500 focus:border-red-500"
               >
-                {INDUSTRIES.map(i => (
-                  <option key={i} value={i}>{i}</option>
+                <option value="">Any industry</option>
+                {INDUSTRY_SEGMENTS.map(s => (
+                  <option key={s.segment} value={s.segment}>{s.segment}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Industry vertical</label>
+              <select
+                value={vertical}
+                onChange={(e) => setVertical(e.target.value)}
+                disabled={!segment}
+                className="w-full rounded-lg border-gray-300 border px-3 py-2 text-sm text-gray-900 bg-white focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-100 disabled:text-gray-400"
+              >
+                <option value="">All verticals</option>
+                {selectedSegment?.verticals.map(v => (
+                  <option key={v} value={v}>{v}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Who are you selling to?</label>
+              <select
+                value={persona}
+                onChange={(e) => setPersona(e.target.value)}
+                className="w-full rounded-lg border-gray-300 border px-3 py-2 text-sm text-gray-900 bg-white focus:ring-2 focus:ring-red-500 focus:border-red-500"
+              >
+                {BUYER_PERSONAS.map(p => (
+                  <option key={p.id} value={p.id}>{p.label}</option>
                 ))}
               </select>
             </div>
@@ -633,6 +731,122 @@ export default function Home() {
               </div>
             )}
 
+            {/* GTM Context: Persona, Use Cases, Customer Stories */}
+            {result.gtmContext && (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Use Cases */}
+                {result.gtmContext.useCases.length > 0 && (
+                  <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <TrendingUp className="w-5 h-5 text-gray-600" />
+                      Relevant use cases for this product
+                    </h3>
+                    <div className="space-y-3">
+                      {result.gtmContext.useCases.map((uc, i) => (
+                        <div key={i} className="border border-gray-100 rounded-lg p-3">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-sm font-medium text-gray-900">{uc.name}</span>
+                            <span className="px-2 py-0.5 rounded text-xs bg-purple-50 text-purple-700">{uc.valuePool}</span>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-2">{uc.description}</p>
+                          <div className="flex flex-wrap gap-1">
+                            {uc.kpis.map((kpi, j) => (
+                              <span key={j} className="px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-600">
+                                {result.gtmContext?.kpiDirections[kpi] === "up" ? "↑" : "↓"} {kpi}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Customer Stories */}
+                {result.gtmContext.customerStories.length > 0 && (
+                  <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <MessageSquare className="w-5 h-5 text-gray-600" />
+                      Customer proof points
+                    </h3>
+                    <div className="space-y-3">
+                      {result.gtmContext.customerStories.map((story, i) => (
+                        <div key={i} className="border border-gray-100 rounded-lg p-3">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-sm font-medium text-gray-900">{story.customer}</span>
+                            <div className="flex items-center gap-2">
+                              <span className="px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-700">{story.vertical}</span>
+                              <span className="px-2 py-0.5 rounded text-xs bg-green-50 text-green-700">{story.region}</span>
+                            </div>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-2">{story.summary}</p>
+                          <ul className="text-xs text-gray-700 space-y-0.5">
+                            {story.outcomes.map((o, j) => (
+                              <li key={j} className="flex items-start gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-400 mt-0.5 shrink-0" />
+                                {o}
+                              </li>
+                            ))}
+                          </ul>
+                          {story.link && !story.link.startsWith("[REDACTED") && (
+                            <a href={story.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-2 text-xs text-blue-700 hover:text-blue-900">
+                              <ExternalLink className="w-3 h-3" />
+                              Read full story
+                            </a>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Persona Context */}
+            {result.gtmContext?.persona && (
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-gray-600" />
+                  Selling to: {result.gtmContext.persona.title}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <h4 className="text-xs font-semibold text-gray-500 uppercase mb-2">They care about</h4>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      {result.gtmContext.persona.careabouts.map((c, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <ChevronRight className="w-3.5 h-3.5 text-red-400 mt-0.5 shrink-0" />
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-gray-500 uppercase mb-2">Technology challenges</h4>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      {result.gtmContext.persona.challenges.map((c, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <AlertTriangle className="w-3.5 h-3.5 text-amber-400 mt-0.5 shrink-0" />
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-gray-500 uppercase mb-2">Metrics they track</h4>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      {result.gtmContext.persona.metrics.map((m, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <TrendingUp className="w-3.5 h-3.5 text-blue-400 mt-0.5 shrink-0" />
+                          {m}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Applicable Regulations Reference */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h3 className="font-semibold text-gray-900 mb-4">Which regulations apply (reference table)</h3>
@@ -688,7 +902,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white mt-12">
         <div className="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-gray-400">
-          AI Compliance & Localization Engine — Powered by Claude (AWS Bedrock) — Based on public Twilio docs
+          AI Compliance & Localization Engine — Powered by OpenAI GPT-4o — Based on public Twilio docs
           <br />
           This tool gives guidance only. Always check with legal before making compliance claims to customers.
         </div>

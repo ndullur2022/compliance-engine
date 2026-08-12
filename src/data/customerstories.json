@@ -1,0 +1,1849 @@
+{
+  "customer_stories": [
+    {
+      "story_id": "story_resy",
+      "customer": "Resy",
+      "vertical": "Hospitality",
+      "subvertical": "Restaurant Tech",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/resy",
+      "KPIs": {
+        "messages_sent_monthly": "21M+",
+        "registered_users": "35M+",
+        "restaurants": "16K+"
+      },
+      "business_outcomes": [
+        "Seamless guest communications for reservations and waitlists",
+        "Scalable messaging infrastructure for rapid growth"
+      ],
+      "summary": [
+        "Resy uses Twilio Messaging to connect restaurants and diners.",
+        "Handles over 21 million messages monthly.",
+        "Supports 16,000+ restaurants and 35 million+ users."
+      ],
+      "challenge": {
+        "title": "Scaling Guest Communications",
+        "description": "Resy needed to reliably connect thousands of restaurants with millions of diners, ensuring timely reservation and waitlist notifications at scale."
+      },
+      "solution": {
+        "title": "Programmable Messaging & Conversations API",
+        "description": "Resy implemented Twilio’s Messaging and Conversations APIs to automate and personalize SMS communications between restaurants and guests."
+      },
+      "outcome": {
+        "title": "Massive Scale & Seamless Experience",
+        "description": "Resy now sends over 21 million messages monthly, supporting 16,000+ restaurants and 35M+ users with reliable, scalable communications."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Conversations API"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_customer_support_contact_center"
+      ]
+    },
+    {
+      "story_id": "story_duolingo",
+      "customer": "Duolingo",
+      "vertical": "Education",
+      "subvertical": "EdTech",
+      "region": "EMEA",
+      "link": "https://customers.twilio.com/en-us/duolingo",
+      "KPIs": {
+        "increase_in_active_users": "100K+ per day",
+        "verification_success_rate": "99.9%"
+      },
+      "business_outcomes": [
+        "Boosted daily active users by 100,000+",
+        "Secured user accounts and social features"
+      ],
+      "summary": [
+        "Duolingo uses Twilio Verify to secure contact syncing and boost app engagement.",
+        "Achieved 99.9% verification success rate.",
+        "Gained 100K+ more active users per day."
+      ],
+      "challenge": {
+        "title": "Secure and Frictionless User Verification",
+        "description": "Duolingo needed to secure user accounts and enable social features without adding friction to the sign-up or login process."
+      },
+      "solution": {
+        "title": "Twilio Verify for Seamless Authentication",
+        "description": "Duolingo integrated Twilio Verify for SMS-based authentication, ensuring secure and reliable user verification globally."
+      },
+      "outcome": {
+        "title": "Higher Engagement & Security",
+        "description": "Duolingo improved security, increased daily active users by 100K+, and maintained a 99.9% verification success rate."
+      },
+      "products_used": [
+        "Verify",
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_auth_security",
+        "uc_identity_verification",
+        "uc_fraud_detection"
+      ]
+    },
+    {
+      "story_id": "story_vacasa",
+      "customer": "Vacasa",
+      "vertical": "Travel & Hospitality",
+      "subvertical": "Vacation Rentals",
+      "region": "APJ",
+      "link": "https://customers.twilio.com/en-us/vacasa",
+      "KPIs": {
+        "increase_in_bookings": "3-10x",
+        "properties_managed": "35,000+"
+      },
+      "business_outcomes": [
+        "Drove 3-10x more bookings with personalized messaging",
+        "Frictionless guest experience across 35,000+ properties"
+      ],
+      "summary": [
+        "Vacasa leverages Twilio and Segment to deliver personalized guest messaging and campaigns.",
+        "Manages 35,000+ properties with frictionless communications.",
+        "Achieved 3-10x more bookings through targeted engagement."
+      ],
+      "challenge": {
+        "title": "Personalizing Guest Engagement at Scale",
+        "description": "Vacasa needed to engage guests with relevant, timely communications across thousands of properties and multiple channels."
+      },
+      "solution": {
+        "title": "Segment + Twilio Messaging & Email",
+        "description": "Vacasa unified guest data with Segment and orchestrated personalized SMS and email campaigns using Twilio."
+      },
+      "outcome": {
+        "title": "Higher Bookings & Guest Satisfaction",
+        "description": "Vacasa saw 3-10x more bookings and improved guest satisfaction with personalized, automated communications."
+      },
+      "products_used": [
+        "Segment",
+        "Programmable Messaging",
+        "SendGrid Email API"
+      ],
+      "use_cases": [
+        "uc_marketing_promotions",
+        "uc_customer_data_personalization",
+        "uc_alerts_notifications"
+      ]
+    },
+    {
+      "story_id": "story_lyft",
+      "customer": "Lyft",
+      "vertical": "Transportation",
+      "subvertical": "Rideshare",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/lyft",
+      "KPIs": {
+        "weekly_interactions": "30M+",
+        "support_associates": "2,000+"
+      },
+      "business_outcomes": [
+        "Customizable, scalable support center",
+        "Improved driver and rider satisfaction"
+      ],
+      "summary": [
+        "Lyft uses Twilio Flex to build a customizable call center.",
+        "Supports 30M+ weekly interactions and 2,000+ associates."
+      ],
+      "challenge": {
+        "title": "Scaling Support for Millions",
+        "description": "Lyft needed a flexible, scalable support platform to handle millions of driver and rider interactions weekly."
+      },
+      "solution": {
+        "title": "Twilio Flex Contact Center",
+        "description": "Lyft implemented Twilio Flex for omnichannel support, enabling rapid customization and scaling."
+      },
+      "outcome": {
+        "title": "Efficient, Scalable Support",
+        "description": "Lyft now supports 30M+ weekly interactions with improved satisfaction for both drivers and riders."
+      },
+      "products_used": [
+        "Flex",
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_customer_support_contact_center",
+        "uc_alerts_notifications"
+      ]
+    },
+    {
+      "story_id": "story_dominos",
+      "customer": "Domino's",
+      "vertical": "Retail",
+      "subvertical": "QSR",
+      "region": "LATAM",
+      "link": "https://customers.twilio.com/en-us/dominos",
+      "KPIs": {
+        "decrease_in_cpa": "65%",
+        "increase_in_facebook_conversions": "Significant"
+      },
+      "business_outcomes": [
+        "Reduced cost per acquisition by 65%",
+        "Increased conversions through data-driven marketing"
+      ],
+      "summary": [
+        "Domino’s decreased cost per acquisition by 65% and increased Facebook conversions by using Twilio Segment.",
+        "Enabled data-driven marketing and improved ROI."
+      ],
+      "challenge": {
+        "title": "Improving Marketing ROI",
+        "description": "Domino’s needed to unify customer data and optimize marketing spend across channels."
+      },
+      "solution": {
+        "title": "Segment for Data-Driven Marketing",
+        "description": "Domino’s implemented Segment to unify data and power targeted, efficient marketing campaigns."
+      },
+      "outcome": {
+        "title": "Lower CPA, Higher Conversions",
+        "description": "Domino’s reduced CPA by 65% and increased conversions with personalized, data-driven marketing."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_marketing_promotions",
+        "uc_customer_data_personalization"
+      ]
+    },
+    {
+      "story_id": "story_fox",
+      "customer": "FOX",
+      "vertical": "Media",
+      "subvertical": "Broadcasting",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/fox",
+      "KPIs": {
+        "increase_in_app_visitors": "376%",
+        "annual_savings": "$1.2M"
+      },
+      "business_outcomes": [
+        "Generated 376% more mobile app visitors",
+        "Saved $1.2M annually by personalizing content"
+      ],
+      "summary": [
+        "FOX generated 376% more mobile app visitors and saved $1.2M annually by personalizing content with Twilio Segment."
+      ],
+      "challenge": {
+        "title": "Personalizing Content at Scale",
+        "description": "FOX needed to deliver personalized content to millions of viewers across platforms to increase engagement and reduce costs."
+      },
+      "solution": {
+        "title": "Segment for Data Unification",
+        "description": "FOX used Segment to unify customer data and power personalized content recommendations."
+      },
+      "outcome": {
+        "title": "Higher Engagement, Lower Cost",
+        "description": "FOX increased app visitors by 376% and saved $1.2M annually."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization"
+      ]
+    },
+    {
+      "story_id": "story_fender",
+      "customer": "Fender",
+      "vertical": "Media",
+      "subvertical": "Music/EdTech",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/fender",
+      "KPIs": {
+        "churn_reduction": "29%",
+        "increase_in_active_users": "5%"
+      },
+      "business_outcomes": [
+        "Reduced churn by 29%",
+        "Increased active paying users by 5%"
+      ],
+      "summary": [
+        "Fender Play reduced churn by 29% and increased active paying users by 5% using Twilio Segment for engagement and personalization."
+      ],
+      "challenge": {
+        "title": "Reducing Churn in Digital Learning",
+        "description": "Fender needed to keep users engaged and reduce churn in its digital learning platform."
+      },
+      "solution": {
+        "title": "Segment for Personalization",
+        "description": "Fender used Segment to personalize communications and product experiences."
+      },
+      "outcome": {
+        "title": "More Engaged, Loyal Users",
+        "description": "Fender Play saw a 29% reduction in churn and a 5% increase in active paying users."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization",
+        "uc_marketing_promotions"
+      ]
+    },
+    {
+      "story_id": "story_ab_inbev",
+      "customer": "AB InBev",
+      "vertical": "CPG",
+      "subvertical": "Beverages",
+      "region": "EMEA",
+      "link": "https://customers.twilio.com/en-us/ab-inbev",
+      "KPIs": {
+        "data_points_collected_monthly": "3B",
+        "app_orders_processed_weekly": "1.3M"
+      },
+      "business_outcomes": [
+        "Processes 1.3M app orders per week",
+        "Collects 3B data points per month"
+      ],
+      "summary": [
+        "AB InBev collects 3B data points/month and processes 1.3M app orders/week with Twilio Segment powering its B2B platform."
+      ],
+      "challenge": {
+        "title": "Scaling B2B Data and Orders",
+        "description": "AB InBev needed to process millions of orders and data points efficiently for its B2B customers."
+      },
+      "solution": {
+        "title": "Segment for Data Infrastructure",
+        "description": "AB InBev implemented Segment to unify and activate data across its B2B platform."
+      },
+      "outcome": {
+        "title": "Efficient, Data-Driven Operations",
+        "description": "AB InBev now processes 1.3M orders weekly and collects 3B data points monthly."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_order_management",
+        "uc_customer_data_personalization"
+      ]
+    },
+    {
+      "story_id": "story_panera_bread",
+      "customer": "Panera Bread",
+      "vertical": "Hospitality",
+      "subvertical": "QSR",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/panera-bread",
+      "KPIs": {
+        "contactless_service": "Enabled nationwide",
+        "guest_choice": "Increased"
+      },
+      "business_outcomes": [
+        "Extended contactless service",
+        "Increased guest choice and satisfaction"
+      ],
+      "summary": [
+        "Panera Bread extends contactless service and increases guest choice with SMS messaging powered by Twilio."
+      ],
+      "challenge": {
+        "title": "Contactless Service at Scale",
+        "description": "Panera needed to provide safe, contactless service options for guests nationwide."
+      },
+      "solution": {
+        "title": "Twilio Messaging for Guest Engagement",
+        "description": "Panera used Twilio Messaging to power SMS notifications for order readiness and pickup."
+      },
+      "outcome": {
+        "title": "Safer, Happier Guests",
+        "description": "Panera enabled contactless service and improved guest satisfaction."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_yelp",
+      "customer": "Yelp",
+      "vertical": "Media",
+      "subvertical": "Local Discovery",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/yelp",
+      "KPIs": {
+        "restaurants_supported": "200K+",
+        "messages_sent_monthly": "Millions"
+      },
+      "business_outcomes": [
+        "Keeps restaurants full and diners happy",
+        "Automates waitlist and reservation notifications"
+      ],
+      "summary": [
+        "Yelp keeps restaurants full and diners happy using two-way SMS powered by Twilio.",
+        "Automates millions of notifications for 200,000+ restaurants."
+      ],
+      "challenge": {
+        "title": "Automating Restaurant-Diner Communication",
+        "description": "Yelp needed to automate and scale two-way communications between restaurants and diners for waitlists and reservations."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Yelp integrated Twilio Messaging to power automated, two-way SMS for waitlist and reservation notifications."
+      },
+      "outcome": {
+        "title": "Efficient, Automated Engagement",
+        "description": "Yelp now automates millions of notifications, keeping restaurants full and diners happy."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_norwegian_refugee_council",
+      "customer": "Norwegian Refugee Council",
+      "vertical": "Nonprofit",
+      "subvertical": "Humanitarian",
+      "region": "EMEA",
+      "link": "https://customers.twilio.com/en-us/norwegian-refugee-council",
+      "KPIs": {
+        "contact_centers_built": "10+",
+        "countries_served": "12"
+      },
+      "business_outcomes": [
+        "Rapidly deployed contact centers for humanitarian aid",
+        "Improved support for refugees globally"
+      ],
+      "summary": [
+        "NRC built 10+ Flex contact centers in 12 months to support refugees globally.",
+        "Enabled rapid, scalable humanitarian response."
+      ],
+      "challenge": {
+        "title": "Scaling Humanitarian Support",
+        "description": "NRC needed to quickly deploy contact centers to support refugees in multiple countries."
+      },
+      "solution": {
+        "title": "Twilio Flex for Rapid Deployment",
+        "description": "NRC used Twilio Flex to build and launch contact centers in over 12 countries within a year."
+      },
+      "outcome": {
+        "title": "Global Humanitarian Impact",
+        "description": "NRC improved support for refugees by rapidly scaling contact center operations."
+      },
+      "products_used": [
+        "Flex"
+      ],
+      "use_cases": [
+        "uc_customer_support_contact_center"
+      ]
+    },
+    {
+      "story_id": "story_luisaviaroma",
+      "customer": "LUISAVIAROMA",
+      "vertical": "Retail",
+      "subvertical": "Luxury Fashion",
+      "region": "EMEA",
+      "link": "https://customers.twilio.com/en-us/luisaviaroma",
+      "KPIs": {
+        "roas_increase": "Significant",
+        "process_efficiency_gain": "High"
+      },
+      "business_outcomes": [
+        "Boosted ROAS on Meta",
+        "Improved process efficiency"
+      ],
+      "summary": [
+        "LUISAVIAROMA’s data unification strategy with Segment boosted ROAS on Meta and led to process efficiency gains."
+      ],
+      "challenge": {
+        "title": "Unifying Customer Data",
+        "description": "LUISAVIAROMA needed to unify customer data to improve marketing efficiency and return on ad spend."
+      },
+      "solution": {
+        "title": "Segment for Data Unification",
+        "description": "LUISAVIAROMA implemented Segment to unify and activate customer data for targeted marketing."
+      },
+      "outcome": {
+        "title": "Higher ROAS, Greater Efficiency",
+        "description": "LUISAVIAROMA saw significant ROAS improvement and process efficiency gains."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization",
+        "uc_marketing_promotions"
+      ]
+    },
+    {
+      "story_id": "story_camping_world",
+      "customer": "Camping World",
+      "vertical": "Retail",
+      "subvertical": "RV Sales",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/camping-world",
+      "KPIs": {
+        "sales_increase": "35%",
+        "customer_relationships": "Deeper"
+      },
+      "business_outcomes": [
+        "Built deeper RV customer relationships",
+        "Increased sales by 35%"
+      ],
+      "summary": [
+        "Camping World builds deeper RV customer relationships, increasing sales by 35% with Twilio Segment."
+      ],
+      "challenge": {
+        "title": "Deepening Customer Relationships",
+        "description": "Camping World needed to better understand and engage RV customers to drive sales."
+      },
+      "solution": {
+        "title": "Segment for Customer Data",
+        "description": "Camping World used Segment to unify and activate customer data for personalized engagement."
+      },
+      "outcome": {
+        "title": "More Sales, Happier Customers",
+        "description": "Camping World increased sales by 35% and built deeper customer relationships."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization",
+        "uc_marketing_promotions"
+      ]
+    },
+    {
+      "story_id": "story_smava",
+      "customer": "smava",
+      "vertical": "Financial Services",
+      "subvertical": "Lending",
+      "region": "EMEA",
+      "link": "https://customers.twilio.com/en-us/smava",
+      "KPIs": {
+        "customer_engagement": "Increased",
+        "data_trust": "Improved"
+      },
+      "business_outcomes": [
+        "Trusted, data-driven customer engagement",
+        "Improved identity verification"
+      ],
+      "summary": [
+        "smava’s journey to trusted, data-driven customer engagement with Twilio Segment."
+      ],
+      "challenge": {
+        "title": "Building Trust with Data",
+        "description": "smava needed to improve customer engagement and trust through better data and identity verification."
+      },
+      "solution": {
+        "title": "Segment for Data-Driven Engagement",
+        "description": "smava used Segment to unify customer data and power secure, personalized engagement."
+      },
+      "outcome": {
+        "title": "Trusted Engagement",
+        "description": "smava improved engagement and trust with data-driven strategies."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization",
+        "uc_identity_verification"
+      ]
+    },
+    {
+      "story_id": "story_asana",
+      "customer": "Asana",
+      "vertical": "SaaS",
+      "subvertical": "Productivity",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/asana",
+      "KPIs": {
+        "data_unification": "Achieved",
+        "team_alignment": "Improved"
+      },
+      "business_outcomes": [
+        "Unified customer data and teams",
+        "Improved collaboration and insights"
+      ],
+      "summary": [
+        "Asana unifies customer data and teams using Twilio Segment."
+      ],
+      "challenge": {
+        "title": "Unifying Data Across Teams",
+        "description": "Asana needed to unify customer data across teams for better collaboration and insights."
+      },
+      "solution": {
+        "title": "Segment for Data Unification",
+        "description": "Asana implemented Segment to centralize and activate customer data."
+      },
+      "outcome": {
+        "title": "Aligned Teams, Better Insights",
+        "description": "Asana improved team alignment and insights with unified data."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization"
+      ]
+    },
+    {
+      "story_id": "story_ohmd",
+      "customer": "OhMD",
+      "vertical": "Healthcare",
+      "subvertical": "Patient Engagement",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/ohmd0",
+      "KPIs": {
+        "patient_communication": "AI-powered",
+        "scalability": "High"
+      },
+      "business_outcomes": [
+        "Empathetic, scalable patient communication",
+        "Improved patient engagement"
+      ],
+      "summary": [
+        "OhMD and Twilio: Empathetic AI-powered patient communication at scale."
+      ],
+      "challenge": {
+        "title": "Scaling Patient Communication",
+        "description": "OhMD needed to scale patient communication while maintaining empathy and compliance."
+      },
+      "solution": {
+        "title": "Twilio Messaging & Flex",
+        "description": "OhMD used Twilio Messaging and Flex to power AI-driven, scalable patient communications."
+      },
+      "outcome": {
+        "title": "Better Patient Engagement",
+        "description": "OhMD improved patient engagement with scalable, empathetic communication."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Flex"
+      ],
+      "use_cases": [
+        "uc_customer_support_contact_center",
+        "uc_alerts_notifications"
+      ]
+    },
+    {
+      "story_id": "story_rocket_mortgage",
+      "customer": "Rocket Mortgage",
+      "vertical": "Financial Services",
+      "subvertical": "Mortgage",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/en-us/rocket-mortgage",
+      "KPIs": {
+        "homeownership_relaunched": "Yes",
+        "customer_experience": "Enhanced"
+      },
+      "business_outcomes": [
+        "Relaunched the American dream of homeownership",
+        "Enhanced customer experience"
+      ],
+      "summary": [
+        "Rocket Mortgage relaunches the American dream of homeownership with Twilio."
+      ],
+      "challenge": {
+        "title": "Modernizing Mortgage Experience",
+        "description": "Rocket Mortgage needed to modernize and personalize the mortgage experience for customers."
+      },
+      "solution": {
+        "title": "Twilio Messaging & Segment",
+        "description": "Rocket Mortgage used Twilio Messaging and Segment to personalize and automate customer communications."
+      },
+      "outcome": {
+        "title": "Modern, Personalized Experience",
+        "description": "Rocket Mortgage enhanced the customer experience and relaunched the American dream of homeownership."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization",
+        "uc_alerts_notifications"
+      ]
+    },
+    {
+      "story_id": "story_airbnb",
+      "customer": "Airbnb",
+      "vertical": "Travel & Hospitality",
+      "subvertical": "Vacation Rentals",
+      "region": "NAMER",
+      "link": "[REDACTED:12345678:URL]",
+      "KPIs": {
+        "global_users": "150M+",
+        "countries_served": "220+"
+      },
+      "business_outcomes": [
+        "Enabled secure, global communications between hosts and guests",
+        "Improved trust and safety for millions of users"
+      ],
+      "summary": [
+        "Airbnb uses Twilio to power secure communications between hosts and guests in over 220 countries.",
+        "Supports 150M+ users with reliable, privacy-protected messaging."
+      ],
+      "challenge": {
+        "title": "Secure, Scalable Global Messaging",
+        "description": "Airbnb needed to enable secure, privacy-protected communications between hosts and guests worldwide, at massive scale."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging & Proxy",
+        "description": "Airbnb implemented Twilio’s Programmable Messaging and Proxy to anonymize phone numbers and enable seamless, secure communications."
+      },
+      "outcome": {
+        "title": "Trusted, Global Connections",
+        "description": "Airbnb now supports secure, scalable communications for 150M+ users in 220+ countries."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Proxy"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_privacy"
+      ]
+    },
+    {
+      "story_id": "story_whatsapp",
+      "customer": "WhatsApp",
+      "vertical": "Technology",
+      "subvertical": "Messaging",
+      "region": "Global",
+      "link": "[REDACTED:23456789:URL]",
+      "KPIs": {
+        "messages_sent_daily": "100B+",
+        "active_users": "2B+"
+      },
+      "business_outcomes": [
+        "Enabled businesses to reach customers on their preferred channel",
+        "Scaled to billions of users globally"
+      ],
+      "summary": [
+        "WhatsApp leverages Twilio APIs to enable businesses to send messages to customers worldwide.",
+        "Supports 2B+ active users and 100B+ messages sent daily."
+      ],
+      "challenge": {
+        "title": "Business Messaging at Global Scale",
+        "description": "WhatsApp needed to provide a reliable, scalable API for businesses to reach customers on their preferred messaging channel."
+      },
+      "solution": {
+        "title": "Twilio Messaging API",
+        "description": "WhatsApp integrated Twilio’s Messaging API to power business-to-customer communications at scale."
+      },
+      "outcome": {
+        "title": "Billions Reached, Seamlessly",
+        "description": "WhatsApp enables businesses to reach billions of users with reliable, scalable messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_marketing_promotions"
+      ]
+    },
+    {
+      "story_id": "story_norwegian_air",
+      "customer": "Norwegian Air",
+      "vertical": "Travel & Hospitality",
+      "subvertical": "Airlines",
+      "region": "EMEA",
+      "link": "[REDACTED:34567890:URL]",
+      "KPIs": {
+        "passengers_notified": "Millions",
+        "flight_updates": "Real-time"
+      },
+      "business_outcomes": [
+        "Improved passenger experience with real-time notifications",
+        "Reduced missed flights and confusion"
+      ],
+      "summary": [
+        "Norwegian Air uses Twilio to send real-time flight updates and notifications to millions of passengers.",
+        "Improved passenger experience and reduced missed flights."
+      ],
+      "challenge": {
+        "title": "Real-Time Passenger Communication",
+        "description": "Norwegian Air needed to keep passengers informed with real-time updates to reduce missed flights and improve satisfaction."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Norwegian Air implemented Twilio Messaging to send automated, real-time notifications to passengers."
+      },
+      "outcome": {
+        "title": "Happier, Informed Passengers",
+        "description": "Norwegian Air improved passenger experience and operational efficiency with real-time messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_instacart",
+      "customer": "Instacart",
+      "vertical": "Retail",
+      "subvertical": "Grocery Delivery",
+      "region": "NAMER",
+      "link": "[REDACTED:45678901:URL]",
+      "KPIs": {
+        "orders_fulfilled": "Millions",
+        "shoppers_supported": "500K+"
+      },
+      "business_outcomes": [
+        "Enabled seamless communication between shoppers and customers",
+        "Improved order accuracy and satisfaction"
+      ],
+      "summary": [
+        "Instacart uses Twilio to connect shoppers and customers for real-time order updates and support.",
+        "Supports millions of orders and 500K+ shoppers."
+      ],
+      "challenge": {
+        "title": "Connecting Shoppers and Customers",
+        "description": "Instacart needed to enable real-time, secure communications between shoppers and customers to improve order accuracy."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging & Proxy",
+        "description": "Instacart implemented Twilio Messaging and Proxy to anonymize communications and enable real-time updates."
+      },
+      "outcome": {
+        "title": "Faster, More Accurate Orders",
+        "description": "Instacart improved order accuracy and customer satisfaction with real-time, secure messaging."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Proxy"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_privacy"
+      ]
+    },
+    {
+      "story_id": "story_amex",
+      "customer": "American Express",
+      "vertical": "Financial Services",
+      "subvertical": "Credit Cards",
+      "region": "NAMER",
+      "link": "[REDACTED:56789012:URL]",
+      "KPIs": {
+        "fraud_alerts_sent": "Millions",
+        "customer_engagement": "Increased"
+      },
+      "business_outcomes": [
+        "Reduced fraud losses",
+        "Improved customer trust and engagement"
+      ],
+      "summary": [
+        "American Express uses Twilio to send real-time fraud alerts and account notifications to cardholders.",
+        "Reduced fraud losses and improved customer trust."
+      ],
+      "challenge": {
+        "title": "Real-Time Fraud Prevention",
+        "description": "American Express needed to notify customers instantly about suspicious activity to prevent fraud."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Amex implemented Twilio Messaging to send real-time fraud alerts and notifications."
+      },
+      "outcome": {
+        "title": "Safer Customers, Less Fraud",
+        "description": "American Express reduced fraud losses and improved customer engagement with real-time alerts."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_fraud_detection"
+      ]
+    },
+    {
+      "story_id": "story_uber",
+      "customer": "Uber",
+      "vertical": "Transportation",
+      "subvertical": "Rideshare",
+      "region": "Global",
+      "link": "[REDACTED:67890123:URL]",
+      "KPIs": {
+        "rides_completed": "Millions daily",
+        "countries_served": "60+"
+      },
+      "business_outcomes": [
+        "Enabled secure, real-time communication between drivers and riders",
+        "Improved safety and satisfaction"
+      ],
+      "summary": [
+        "Uber uses Twilio to power secure, real-time communications between drivers and riders in over 60 countries.",
+        "Supports millions of rides daily with privacy-protected messaging."
+      ],
+      "challenge": {
+        "title": "Secure, Scalable Global Messaging",
+        "description": "Uber needed to enable secure, privacy-protected communications between drivers and riders worldwide, at massive scale."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging & Proxy",
+        "description": "Uber implemented Twilio’s Programmable Messaging and Proxy to anonymize phone numbers and enable seamless, secure communications."
+      },
+      "outcome": {
+        "title": "Trusted, Global Connections",
+        "description": "Uber now supports secure, scalable communications for millions of rides daily in 60+ countries."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Proxy"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_privacy"
+      ]
+    },
+    {
+      "story_id": "story_salesforce",
+      "customer": "Salesforce",
+      "vertical": "SaaS",
+      "subvertical": "CRM",
+      "region": "Global",
+      "link": "[REDACTED:78901234:URL]",
+      "KPIs": {
+        "users_supported": "150K+",
+        "messages_sent": "Millions monthly"
+      },
+      "business_outcomes": [
+        "Enabled automated notifications and reminders for CRM users",
+        "Improved user engagement and productivity"
+      ],
+      "summary": [
+        "Salesforce uses Twilio to send automated notifications and reminders to CRM users worldwide.",
+        "Supports 150K+ users and millions of messages monthly."
+      ],
+      "challenge": {
+        "title": "Automated CRM Communication",
+        "description": "Salesforce needed to automate notifications and reminders for CRM users to improve engagement and productivity."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Salesforce integrated Twilio Messaging to power automated, scalable notifications and reminders."
+      },
+      "outcome": {
+        "title": "Engaged, Productive Users",
+        "description": "Salesforce improved user engagement and productivity with automated messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_cvs_health",
+      "customer": "CVS Health",
+      "vertical": "Healthcare",
+      "subvertical": "Pharmacy",
+      "region": "NAMER",
+      "link": "[REDACTED:89012345:URL]",
+      "KPIs": {
+        "prescription_reminders_sent": "Millions",
+        "patients_served": "50M+"
+      },
+      "business_outcomes": [
+        "Enabled automated prescription reminders for millions of patients",
+        "Improved medication adherence and health outcomes"
+      ],
+      "summary": [
+        "CVS Health uses Twilio to send automated prescription reminders to millions of patients, improving medication adherence and health outcomes."
+      ],
+      "challenge": {
+        "title": "Automated Patient Communication",
+        "description": "CVS Health needed to automate prescription reminders for millions of patients to improve medication adherence."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "CVS Health implemented Twilio Messaging to send automated, scalable prescription reminders."
+      },
+      "outcome": {
+        "title": "Healthier Patients, Better Outcomes",
+        "description": "CVS Health improved medication adherence and health outcomes with automated reminders."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_etsy",
+      "customer": "Etsy",
+      "vertical": "Retail",
+      "subvertical": "Marketplace",
+      "region": "Global",
+      "link": "[REDACTED:90123456:URL]",
+      "KPIs": {
+        "sellers_supported": "4M+",
+        "buyers_served": "90M+"
+      },
+      "business_outcomes": [
+        "Enabled real-time order notifications for sellers and buyers",
+        "Improved marketplace trust and satisfaction"
+      ],
+      "summary": [
+        "Etsy uses Twilio to send real-time order notifications to 4M+ sellers and 90M+ buyers worldwide.",
+        "Improved marketplace trust and satisfaction."
+      ],
+      "challenge": {
+        "title": "Real-Time Marketplace Communication",
+        "description": "Etsy needed to enable real-time order notifications for sellers and buyers to improve trust and satisfaction."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Etsy implemented Twilio Messaging to send automated, real-time order notifications."
+      },
+      "outcome": {
+        "title": "Trusted, Satisfied Marketplace",
+        "description": "Etsy improved trust and satisfaction with real-time notifications."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_teleperformance",
+      "customer": "Teleperformance",
+      "vertical": "Professional Services",
+      "subvertical": "BPO",
+      "region": "Global",
+      "link": "[REDACTED:01234567:URL]",
+      "KPIs": {
+        "contact_centers_supported": "100+",
+        "agents_served": "300K+"
+      },
+      "business_outcomes": [
+        "Enabled scalable, omnichannel contact center operations",
+        "Improved agent productivity and customer satisfaction"
+      ],
+      "summary": [
+        "Teleperformance uses Twilio Flex to power scalable, omnichannel contact center operations for 300K+ agents in 100+ centers worldwide."
+      ],
+      "challenge": {
+        "title": "Scalable Contact Center Operations",
+        "description": "Teleperformance needed to scale omnichannel contact center operations for hundreds of thousands of agents globally."
+      },
+      "solution": {
+        "title": "Twilio Flex Contact Center",
+        "description": "Teleperformance implemented Twilio Flex to enable scalable, customizable contact center operations."
+      },
+      "outcome": {
+        "title": "Productive Agents, Satisfied Customers",
+        "description": "Teleperformance improved agent productivity and customer satisfaction with scalable contact centers."
+      },
+      "products_used": [
+        "Flex"
+      ],
+      "use_cases": [
+        "uc_customer_support_contact_center"
+      ]
+    },
+    {
+      "story_id": "story_doordash",
+      "customer": "DoorDash",
+      "vertical": "Retail",
+      "subvertical": "Food Delivery",
+      "region": "NAMER",
+      "link": "[REDACTED:11223344:URL]",
+      "KPIs": {
+        "orders_delivered": "Millions monthly",
+        "dashers_supported": "2M+"
+      },
+      "business_outcomes": [
+        "Enabled real-time communication between customers, dashers, and restaurants",
+        "Improved delivery accuracy and satisfaction"
+      ],
+      "summary": [
+        "DoorDash uses Twilio to power real-time communications for millions of orders monthly, supporting 2M+ dashers.",
+        "Improved delivery accuracy and customer satisfaction."
+      ],
+      "challenge": {
+        "title": "Coordinating Real-Time Delivery",
+        "description": "DoorDash needed to enable seamless, secure communication between customers, dashers, and restaurants to ensure timely deliveries."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging & Proxy",
+        "description": "DoorDash implemented Twilio Messaging and Proxy to anonymize communications and enable real-time updates."
+      },
+      "outcome": {
+        "title": "Faster, More Accurate Deliveries",
+        "description": "DoorDash improved delivery accuracy and satisfaction with real-time, secure messaging."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Proxy"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_privacy"
+      ]
+    },
+    {
+      "story_id": "story_nike",
+      "customer": "Nike",
+      "vertical": "Retail",
+      "subvertical": "Apparel",
+      "region": "Global",
+      "link": "[REDACTED:22334455:URL]",
+      "KPIs": {
+        "members_engaged": "300M+",
+        "countries_served": "190+"
+      },
+      "business_outcomes": [
+        "Enabled personalized engagement for Nike Members worldwide",
+        "Increased loyalty and sales"
+      ],
+      "summary": [
+        "Nike uses Twilio Segment to personalize engagement for 300M+ members in 190+ countries.",
+        "Increased loyalty and sales through data-driven marketing."
+      ],
+      "challenge": {
+        "title": "Personalizing Global Engagement",
+        "description": "Nike needed to unify customer data and personalize engagement for hundreds of millions of members globally."
+      },
+      "solution": {
+        "title": "Twilio Segment for Data Unification",
+        "description": "Nike implemented Segment to unify and activate customer data for personalized marketing and engagement."
+      },
+      "outcome": {
+        "title": "Loyal, Engaged Members",
+        "description": "Nike increased loyalty and sales with personalized, data-driven engagement."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization",
+        "uc_marketing_promotions"
+      ]
+    },
+    {
+      "story_id": "story_hilton",
+      "customer": "Hilton",
+      "vertical": "Travel & Hospitality",
+      "subvertical": "Hotels",
+      "region": "Global",
+      "link": "[REDACTED:33445566:URL]",
+      "KPIs": {
+        "guests_served": "Millions annually",
+        "properties": "6,800+"
+      },
+      "business_outcomes": [
+        "Enabled automated guest communications across 6,800+ properties",
+        "Improved guest satisfaction and operational efficiency"
+      ],
+      "summary": [
+        "Hilton uses Twilio to automate guest communications across 6,800+ properties, serving millions of guests annually.",
+        "Improved guest satisfaction and operational efficiency."
+      ],
+      "challenge": {
+        "title": "Automating Guest Communications",
+        "description": "Hilton needed to automate and personalize communications for guests across thousands of properties worldwide."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Hilton implemented Twilio Messaging to automate and personalize guest notifications and communications."
+      },
+      "outcome": {
+        "title": "Happier Guests, Smoother Operations",
+        "description": "Hilton improved guest satisfaction and operational efficiency with automated messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_axa",
+      "customer": "AXA",
+      "vertical": "Financial Services",
+      "subvertical": "Insurance",
+      "region": "EMEA",
+      "link": "[REDACTED:44556677:URL]",
+      "KPIs": {
+        "claims_processed": "Millions",
+        "customers_served": "100M+"
+      },
+      "business_outcomes": [
+        "Enabled automated claims notifications for millions of customers",
+        "Improved claims processing speed and satisfaction"
+      ],
+      "summary": [
+        "AXA uses Twilio to automate claims notifications for millions of customers, improving processing speed and satisfaction."
+      ],
+      "challenge": {
+        "title": "Automating Claims Communication",
+        "description": "AXA needed to automate claims notifications to improve processing speed and customer satisfaction."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "AXA implemented Twilio Messaging to send automated, real-time claims notifications."
+      },
+      "outcome": {
+        "title": "Faster Claims, Happier Customers",
+        "description": "AXA improved claims processing speed and customer satisfaction with automated messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_just_eat_takeaway",
+      "customer": "Just Eat Takeaway",
+      "vertical": "Retail",
+      "subvertical": "Food Delivery",
+      "region": "EMEA",
+      "link": "[REDACTED:55667788:URL]",
+      "KPIs": {
+        "orders_delivered": "Millions monthly",
+        "countries_served": "20+"
+      },
+      "business_outcomes": [
+        "Enabled real-time order notifications for customers and couriers",
+        "Improved delivery speed and satisfaction"
+      ],
+      "summary": [
+        "Just Eat Takeaway uses Twilio to send real-time order notifications to customers and couriers in 20+ countries.",
+        "Improved delivery speed and satisfaction."
+      ],
+      "challenge": {
+        "title": "Coordinating Food Delivery at Scale",
+        "description": "Just Eat Takeaway needed to enable real-time, automated communications for millions of orders monthly."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Just Eat Takeaway implemented Twilio Messaging to automate order notifications and updates."
+      },
+      "outcome": {
+        "title": "Faster, Smoother Deliveries",
+        "description": "Just Eat Takeaway improved delivery speed and satisfaction with real-time messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_lyft",
+      "customer": "Lyft",
+      "vertical": "Transportation",
+      "subvertical": "Rideshare",
+      "region": "NAMER",
+      "link": "[REDACTED:66778899:URL]",
+      "KPIs": {
+        "rides_completed": "Millions monthly",
+        "drivers_supported": "1M+"
+      },
+      "business_outcomes": [
+        "Enabled secure, real-time communication between drivers and riders",
+        "Improved ride coordination and safety"
+      ],
+      "summary": [
+        "Lyft uses Twilio to power secure, real-time communications for millions of rides monthly, supporting over 1M drivers.",
+        "Improved ride coordination and safety."
+      ],
+      "challenge": {
+        "title": "Coordinating Rides at Scale",
+        "description": "Lyft needed to enable seamless, secure communication between drivers and riders to ensure safe, timely rides."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging & Proxy",
+        "description": "Lyft implemented Twilio Messaging and Proxy to anonymize communications and enable real-time updates."
+      },
+      "outcome": {
+        "title": "Safer, More Reliable Rides",
+        "description": "Lyft improved ride coordination and safety with real-time, secure messaging."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Proxy"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_privacy"
+      ]
+    },
+    {
+      "story_id": "story_ikea",
+      "customer": "IKEA",
+      "vertical": "Retail",
+      "subvertical": "Home Goods",
+      "region": "EMEA",
+      "link": "[REDACTED:77889900:URL]",
+      "KPIs": {
+        "customers_served": "Millions",
+        "countries_served": "50+"
+      },
+      "business_outcomes": [
+        "Enabled automated order and delivery notifications for millions of customers",
+        "Improved customer satisfaction and operational efficiency"
+      ],
+      "summary": [
+        "IKEA uses Twilio to automate order and delivery notifications for millions of customers in 50+ countries.",
+        "Improved customer satisfaction and operational efficiency."
+      ],
+      "challenge": {
+        "title": "Automating Customer Notifications",
+        "description": "IKEA needed to automate and personalize order and delivery notifications for customers worldwide."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "IKEA implemented Twilio Messaging to automate and personalize customer notifications."
+      },
+      "outcome": {
+        "title": "Happier Customers, Smoother Operations",
+        "description": "IKEA improved customer satisfaction and operational efficiency with automated messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_ups",
+      "customer": "UPS",
+      "vertical": "Transportation",
+      "subvertical": "Logistics",
+      "region": "Global",
+      "link": "[REDACTED:88990011:URL]",
+      "KPIs": {
+        "packages_delivered": "20M+ daily",
+        "countries_served": "220+"
+      },
+      "business_outcomes": [
+        "Enabled real-time package tracking and notifications for millions of customers",
+        "Improved delivery accuracy and customer satisfaction"
+      ],
+      "summary": [
+        "UPS uses Twilio to send real-time package tracking and delivery notifications to millions of customers in 220+ countries.",
+        "Improved delivery accuracy and customer satisfaction."
+      ],
+      "challenge": {
+        "title": "Real-Time Delivery Communication",
+        "description": "UPS needed to provide real-time tracking and notifications for millions of packages delivered daily."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "UPS implemented Twilio Messaging to automate package tracking and delivery notifications."
+      },
+      "outcome": {
+        "title": "On-Time, Informed Deliveries",
+        "description": "UPS improved delivery accuracy and customer satisfaction with real-time messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_virgin_pulse",
+      "customer": "Virgin Pulse",
+      "vertical": "Healthcare",
+      "subvertical": "Wellness",
+      "region": "Global",
+      "link": "[REDACTED:99001122:URL]",
+      "KPIs": {
+        "members_engaged": "20M+",
+        "countries_served": "190+"
+      },
+      "business_outcomes": [
+        "Enabled personalized wellness engagement for millions of members",
+        "Improved health outcomes and program participation"
+      ],
+      "summary": [
+        "Virgin Pulse uses Twilio to personalize wellness engagement for 20M+ members in 190+ countries.",
+        "Improved health outcomes and program participation."
+      ],
+      "challenge": {
+        "title": "Personalizing Wellness Engagement",
+        "description": "Virgin Pulse needed to unify member data and personalize engagement for millions of members globally."
+      },
+      "solution": {
+        "title": "Twilio Segment for Data Unification",
+        "description": "Virgin Pulse implemented Segment to unify and activate member data for personalized wellness engagement."
+      },
+      "outcome": {
+        "title": "Healthier, Engaged Members",
+        "description": "Virgin Pulse improved health outcomes and program participation with personalized engagement."
+      },
+      "products_used": [
+        "Segment"
+      ],
+      "use_cases": [
+        "uc_customer_data_personalization",
+        "uc_marketing_promotions"
+      ]
+    },
+    {
+      "story_id": "story_american_red_cross",
+      "customer": "American Red Cross",
+      "vertical": "Nonprofit",
+      "subvertical": "Disaster Relief",
+      "region": "NAMER",
+      "link": "[REDACTED:10111213:URL]",
+      "KPIs": {
+        "donors_engaged": "Millions",
+        "disasters_responded": "60K+ annually"
+      },
+      "business_outcomes": [
+        "Enabled rapid donor and volunteer engagement during disasters",
+        "Improved response speed and fundraising"
+      ],
+      "summary": [
+        "American Red Cross uses Twilio to engage millions of donors and volunteers rapidly during 60K+ disasters annually.",
+        "Improved response speed and fundraising."
+      ],
+      "challenge": {
+        "title": "Rapid Disaster Response Communication",
+        "description": "American Red Cross needed to engage donors and volunteers quickly during disasters to maximize response and fundraising."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "American Red Cross implemented Twilio Messaging to automate rapid donor and volunteer engagement."
+      },
+      "outcome": {
+        "title": "Faster Response, More Support",
+        "description": "American Red Cross improved disaster response speed and fundraising with automated messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_marketing_promotions"
+      ]
+    },
+    {
+      "story_id": "story_airfrance_klm",
+      "customer": "Air France-KLM",
+      "vertical": "Travel & Hospitality",
+      "subvertical": "Airlines",
+      "region": "EMEA",
+      "link": "[REDACTED:11121314:URL]",
+      "KPIs": {
+        "passengers_notified": "Millions",
+        "countries_served": "100+"
+      },
+      "business_outcomes": [
+        "Enabled real-time flight notifications for millions of passengers",
+        "Improved passenger satisfaction and operational efficiency"
+      ],
+      "summary": [
+        "Air France-KLM uses Twilio to send real-time flight notifications to millions of passengers in 100+ countries.",
+        "Improved passenger satisfaction and operational efficiency."
+      ],
+      "challenge": {
+        "title": "Real-Time Passenger Communication",
+        "description": "Air France-KLM needed to keep passengers informed with real-time updates to reduce missed flights and improve satisfaction."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Air France-KLM implemented Twilio Messaging to send automated, real-time notifications to passengers."
+      },
+      "outcome": {
+        "title": "Happier, Informed Passengers",
+        "description": "Air France-KLM improved passenger experience and operational efficiency with real-time messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_zoopla",
+      "customer": "Zoopla",
+      "vertical": "Real Estate",
+      "subvertical": "Property Marketplace",
+      "region": "EMEA",
+      "link": "[REDACTED:12131415:URL]",
+      "KPIs": {
+        "users_served": "Millions",
+        "properties_listed": "Hundreds of thousands"
+      },
+      "business_outcomes": [
+        "Enabled real-time property alerts for millions of users",
+        "Improved engagement and property matches"
+      ],
+      "summary": [
+        "Zoopla uses Twilio to send real-time property alerts to millions of users, improving engagement and property matches."
+      ],
+      "challenge": {
+        "title": "Real-Time Property Alerts",
+        "description": "Zoopla needed to keep users informed with real-time property alerts to improve engagement and matches."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Zoopla implemented Twilio Messaging to send automated, real-time property alerts."
+      },
+      "outcome": {
+        "title": "Engaged Users, Better Matches",
+        "description": "Zoopla improved user engagement and property matches with real-time messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_justworks",
+      "customer": "Justworks",
+      "vertical": "Professional Services",
+      "subvertical": "HR & Payroll",
+      "region": "NAMER",
+      "link": "[REDACTED:13141516:URL]",
+      "KPIs": {
+        "businesses_served": "10K+",
+        "employees_supported": "150K+"
+      },
+      "business_outcomes": [
+        "Enabled automated HR and payroll notifications for thousands of businesses",
+        "Improved compliance and employee satisfaction"
+      ],
+      "summary": [
+        "Justworks uses Twilio to automate HR and payroll notifications for 10K+ businesses and 150K+ employees.",
+        "Improved compliance and employee satisfaction."
+      ],
+      "challenge": {
+        "title": "Automating HR Communication",
+        "description": "Justworks needed to automate HR and payroll notifications to improve compliance and employee satisfaction."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Justworks implemented Twilio Messaging to automate HR and payroll notifications."
+      },
+      "outcome": {
+        "title": "Compliant, Satisfied Employees",
+        "description": "Justworks improved compliance and employee satisfaction with automated messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_amex_gbt",
+      "customer": "American Express Global Business Travel",
+      "vertical": "Travel & Hospitality",
+      "subvertical": "Business Travel",
+      "region": "Global",
+      "link": "[REDACTED:14151617:URL]",
+      "KPIs": {
+        "travelers_served": "Millions",
+        "countries_served": "140+"
+      },
+      "business_outcomes": [
+        "Enabled real-time travel notifications for business travelers",
+        "Improved traveler experience and operational efficiency"
+      ],
+      "summary": [
+        "Amex GBT uses Twilio to send real-time travel notifications to millions of business travelers in 140+ countries.",
+        "Improved traveler experience and operational efficiency."
+      ],
+      "challenge": {
+        "title": "Real-Time Business Travel Communication",
+        "description": "Amex GBT needed to keep business travelers informed with real-time updates to improve experience and efficiency."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Amex GBT implemented Twilio Messaging to send automated, real-time travel notifications."
+      },
+      "outcome": {
+        "title": "Informed, Satisfied Travelers",
+        "description": "Amex GBT improved traveler experience and operational efficiency with real-time messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_mercadolibre",
+      "customer": "Mercado Libre",
+      "vertical": "Retail",
+      "subvertical": "Marketplace",
+      "region": "LATAM",
+      "link": "[REDACTED:15161718:URL]",
+      "KPIs": {
+        "users_served": "100M+",
+        "countries_served": "18"
+      },
+      "business_outcomes": [
+        "Enabled real-time order and shipping notifications for millions of users",
+        "Improved marketplace trust and satisfaction"
+      ],
+      "summary": [
+        "Mercado Libre uses Twilio to send real-time order and shipping notifications to 100M+ users in 18 countries.",
+        "Improved marketplace trust and satisfaction."
+      ],
+      "challenge": {
+        "title": "Real-Time Marketplace Communication",
+        "description": "Mercado Libre needed to enable real-time order and shipping notifications for millions of users."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Mercado Libre implemented Twilio Messaging to automate order and shipping notifications."
+      },
+      "outcome": {
+        "title": "Trusted, Satisfied Marketplace",
+        "description": "Mercado Libre improved trust and satisfaction with real-time notifications."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_airbnb",
+      "customer": "Airbnb",
+      "vertical": "Travel & Hospitality",
+      "subvertical": "Marketplace",
+      "region": "Global",
+      "link": "https://customers.twilio.com/airbnb",
+      "KPIs": {
+        "guests_served": "Millions annually",
+        "countries_served": "190+"
+      },
+      "business_outcomes": [
+        "Enabled secure, real-time communication between hosts and guests",
+        "Improved booking experience and trust"
+      ],
+      "summary": [
+        "Airbnb uses Twilio to power secure, real-time communications between hosts and guests in 190+ countries.",
+        "Improved booking experience and trust."
+      ],
+      "challenge": {
+        "title": "Secure Global Messaging",
+        "description": "Airbnb needed to enable secure, privacy-protected communications between hosts and guests worldwide."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging & Proxy",
+        "description": "Airbnb implemented Twilio's Messaging and Proxy to anonymize phone numbers and enable seamless, secure communications."
+      },
+      "outcome": {
+        "title": "Trusted, Global Connections",
+        "description": "Airbnb now supports secure, scalable communications for millions of bookings annually."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Proxy"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_privacy"
+      ]
+    },
+    {
+      "story_id": "story_instacart",
+      "customer": "Instacart",
+      "vertical": "Retail",
+      "subvertical": "Grocery Delivery",
+      "region": "NAMER",
+      "link": "https://customers.twilio.com/instacart",
+      "KPIs": {
+        "orders_delivered": "Millions monthly",
+        "shoppers_supported": "500K+"
+      },
+      "business_outcomes": [
+        "Enabled real-time communication between customers and shoppers",
+        "Improved delivery accuracy and satisfaction"
+      ],
+      "summary": [
+        "Instacart uses Twilio to power real-time communications for millions of orders monthly, supporting 500K+ shoppers.",
+        "Improved delivery accuracy and customer satisfaction."
+      ],
+      "challenge": {
+        "title": "Coordinating Real-Time Delivery",
+        "description": "Instacart needed to enable seamless, secure communication between customers and shoppers to ensure timely deliveries."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging & Proxy",
+        "description": "Instacart implemented Twilio Messaging and Proxy to anonymize communications and enable real-time updates."
+      },
+      "outcome": {
+        "title": "Faster, More Accurate Deliveries",
+        "description": "Instacart improved delivery accuracy and satisfaction with real-time, secure messaging."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Proxy"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_privacy"
+      ]
+    },
+    {
+      "story_id": "story_rappi",
+      "customer": "Rappi",
+      "vertical": "Retail",
+      "subvertical": "On-Demand Delivery",
+      "region": "LATAM",
+      "link": "https://customers.twilio.com/rappi",
+      "KPIs": {
+        "orders_delivered": "Millions monthly",
+        "countries_served": "9"
+      },
+      "business_outcomes": [
+        "Enabled real-time order notifications for customers and couriers",
+        "Improved delivery speed and satisfaction"
+      ],
+      "summary": [
+        "Rappi uses Twilio to send real-time order notifications to customers and couriers in 9 countries.",
+        "Improved delivery speed and satisfaction."
+      ],
+      "challenge": {
+        "title": "Coordinating Delivery at Scale",
+        "description": "Rappi needed to enable real-time, automated communications for millions of orders monthly."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Rappi implemented Twilio Messaging to automate order notifications and updates."
+      },
+      "outcome": {
+        "title": "Faster, Smoother Deliveries",
+        "description": "Rappi improved delivery speed and satisfaction with real-time messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    },
+    {
+      "story_id": "story_uber_eats",
+      "customer": "Uber Eats",
+      "vertical": "Retail",
+      "subvertical": "Food Delivery",
+      "region": "Global",
+      "link": "https://customers.twilio.com/uber-eats",
+      "KPIs": {
+        "orders_delivered": "Millions monthly",
+        "countries_served": "45+"
+      },
+      "business_outcomes": [
+        "Enabled real-time communication between customers, couriers, and restaurants",
+        "Improved delivery accuracy and satisfaction"
+      ],
+      "summary": [
+        "Uber Eats uses Twilio to power real-time communications for millions of orders monthly in 45+ countries.",
+        "Improved delivery accuracy and customer satisfaction."
+      ],
+      "challenge": {
+        "title": "Coordinating Real-Time Delivery",
+        "description": "Uber Eats needed to enable seamless, secure communication between customers, couriers, and restaurants to ensure timely deliveries."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging & Proxy",
+        "description": "Uber Eats implemented Twilio Messaging and Proxy to anonymize communications and enable real-time updates."
+      },
+      "outcome": {
+        "title": "Faster, More Accurate Deliveries",
+        "description": "Uber Eats improved delivery accuracy and satisfaction with real-time, secure messaging."
+      },
+      "products_used": [
+        "Programmable Messaging",
+        "Proxy"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging",
+        "uc_privacy"
+      ]
+    },
+    {
+      "story_id": "story_samsung",
+      "customer": "Samsung",
+      "vertical": "High Tech",
+      "subvertical": "Consumer Electronics",
+      "region": "Global",
+      "link": "https://customers.twilio.com/samsung",
+      "KPIs": {
+        "devices_supported": "Hundreds of millions",
+        "countries_served": "100+"
+      },
+      "business_outcomes": [
+        "Enabled automated device notifications and support",
+        "Improved customer satisfaction and operational efficiency"
+      ],
+      "summary": [
+        "Samsung uses Twilio to automate device notifications and support for hundreds of millions of devices in 100+ countries.",
+        "Improved customer satisfaction and operational efficiency."
+      ],
+      "challenge": {
+        "title": "Automating Device Support",
+        "description": "Samsung needed to automate and personalize device notifications and support for customers worldwide."
+      },
+      "solution": {
+        "title": "Twilio Programmable Messaging",
+        "description": "Samsung implemented Twilio Messaging to automate and personalize device notifications and support."
+      },
+      "outcome": {
+        "title": "Happier Customers, Smoother Operations",
+        "description": "Samsung improved customer satisfaction and operational efficiency with automated messaging."
+      },
+      "products_used": [
+        "Programmable Messaging"
+      ],
+      "use_cases": [
+        "uc_alerts_notifications",
+        "uc_transactional_messaging"
+      ]
+    }
+  ]
+}

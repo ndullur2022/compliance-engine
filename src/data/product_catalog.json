@@ -1,0 +1,572 @@
+[
+  {
+    "category": "Communication APIs",
+    "description": "APIs for messaging, voice, video, and email communication.",
+    "subcategories": [
+      {
+        "subcategory": "Messaging",
+        "description": "APIs and tools for sending and managing messages across channels.",
+        "products": [
+          {
+            "product": "Programmable Messaging",
+            "description": "Send/receive messages via API.",
+            "capabilities": [
+              "Messaging",
+              "Compliance",
+              "Analytics"
+            ],
+            "channels": [
+              "SMS",
+              "MMS",
+              "RCS",
+              "WhatsApp"
+            ]
+          },
+          {
+            "product": "Conversations API",
+            "description": "Cross-channel 2-way messaging.",
+            "capabilities": [
+              "2-way Messaging",
+              "Multi-channel",
+              "Chat"
+            ],
+            "channels": [
+              "SMS",
+              "MMS",
+              "WhatsApp"
+            ]
+          },
+          {
+            "product": "Compliance Toolkit",
+            "description": "Messaging compliance controls for quiet hours, opt-out handling, and reassigned number checks.",
+            "capabilities": [
+              "Silent Hours",
+              "Opt Out",
+              "Reassigned Number",
+              "Compliance"
+            ],
+            "channels": [
+              "SMS"
+            ]
+          },
+          {
+            "product": "Engagement Suite",
+            "description": "Messaging optimization tools for link shortening, scheduling, and advanced analytics.",
+            "capabilities": [
+              "Link Shortening",
+              "Message Scheduling",
+              "Advanced Analytics",
+              "Analytics"
+            ],
+            "channels": [
+              "SMS"
+            ]
+          }
+        ]
+      },
+      {
+        "subcategory": "Voice",
+        "description": "APIs and tools for voice calls and related features.",
+        "products": [
+          {
+            "product": "Programmable Voice",
+            "description": "Make/receive voice calls, IVR, SIP.",
+            "capabilities": [
+              "Voice Calls",
+              "IVR",
+              "SIP",
+              "Branded Calling"
+            ],
+            "channels": [
+              "Voice"
+            ]
+          },
+          {
+            "product": "Branded Calling",
+            "description": "Display brand info on outbound calls.",
+            "capabilities": [
+              "Branded Caller ID"
+            ],
+            "channels": [
+              "Voice"
+            ]
+          },
+          {
+            "product": "Voice Add-ons (Recording)",
+            "description": "Record voice calls.",
+            "capabilities": [
+              "Recording"
+            ],
+            "channels": [
+              "Voice"
+            ]
+          },
+          {
+            "product": "Voice Add-ons (Transcription)",
+            "description": "Transcribe voice calls.",
+            "capabilities": [
+              "Transcription"
+            ],
+            "channels": [
+              "Voice"
+            ]
+          },
+          {
+            "product": "Voice Add-ons (Media Streams)",
+            "description": "Real-time media stream access.",
+            "capabilities": [
+              "Media Streams"
+            ],
+            "channels": [
+              "Voice"
+            ]
+          }
+        ]
+      },
+      {
+        "subcategory": "Video",
+        "description": "APIs for video calling and conferencing.",
+        "products": [
+          {
+            "product": "Programmable Video",
+            "description": "Video calling and conferencing.",
+            "capabilities": [
+              "Video Calls",
+              "Telehealth",
+              "Embedded"
+            ],
+            "channels": []
+          }
+        ]
+      },
+      {
+        "subcategory": "Email",
+        "description": "APIs and tools for email delivery and validation.",
+        "products": [
+          {
+            "product": "SendGrid Email API",
+            "description": "Transactional email delivery.",
+            "capabilities": [
+              "Email Delivery",
+              "API"
+            ],
+            "channels": [
+              "Email"
+            ]
+          },
+          {
+            "product": "Email Validation API",
+            "description": "Real-time email validation.",
+            "capabilities": [
+              "Email Validation"
+            ],
+            "channels": [
+              "Email"
+            ]
+          },
+          {
+            "product": "SendGrid Marketing Campaigns",
+            "description": "Email marketing platform.",
+            "capabilities": [
+              "Marketing Campaigns",
+              "Email Delivery"
+            ],
+            "channels": [
+              "Email"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "User Authentication & Identity",
+    "description": "APIs and tools for user authentication, verification, and identity management.",
+    "subcategories": [
+      {
+        "subcategory": "Verification",
+        "description": "Multi-channel end-user verification and phone intelligence.",
+        "products": [
+          {
+            "product": "Verify (SMS)",
+            "description": "User verification via SMS.",
+            "capabilities": [
+              "Verification",
+              "2FA"
+            ],
+            "channels": [
+              "SMS"
+            ]
+          },
+          {
+            "product": "Verify (RCS)",
+            "description": "User verification via RCS.",
+            "capabilities": [
+              "Verification",
+              "2FA"
+            ],
+            "channels": [
+              "RCS"
+            ]
+          },
+          {
+            "product": "Verify (WhatsApp)",
+            "description": "User verification via WhatsApp.",
+            "capabilities": [
+              "Verification",
+              "2FA"
+            ],
+            "channels": [
+              "WhatsApp"
+            ]
+          },
+          {
+            "product": "Verify (Voice)",
+            "description": "User verification via Voice.",
+            "capabilities": [
+              "Verification",
+              "2FA"
+            ],
+            "channels": [
+              "Voice"
+            ]
+          },
+          {
+            "product": "Verify (Email)",
+            "description": "User verification via Email.",
+            "capabilities": [
+              "Verification",
+              "2FA"
+            ],
+            "channels": [
+              "Email"
+            ]
+          },
+          {
+            "product": "Verify (Passkeys, Push, TOTP)",
+            "description": "User verification via passkeys, push, TOTP.",
+            "capabilities": [
+              "Verification",
+              "2FA"
+            ],
+            "channels": []
+          },
+          {
+            "product": "Lookup",
+            "description": "Phone number intelligence & validation.",
+            "capabilities": [
+              "Lookup",
+              "Fraud Prevention"
+            ],
+            "channels": [
+              "SMS"
+            ]
+          },
+          {
+            "product": "User Authentication & Identity",
+            "description": "Real-time phone data validation.",
+            "capabilities": [
+              "Authentication",
+              "Identity"
+            ],
+            "channels": [
+              "SMS"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Security & Compliance",
+    "description": "Tools for compliance, authentication, and fraud prevention.",
+    "subcategories": [
+      {
+        "subcategory": "Compliance",
+        "description": "Compliance management and KYC.",
+        "products": [
+          {
+            "product": "Trust Hub",
+            "description": "KYC and compliance management.",
+            "capabilities": [
+              "Compliance",
+              "KYC"
+            ],
+            "channels": []
+          }
+        ]
+      },
+      {
+        "subcategory": "Authentication",
+        "description": "Authentication and two-factor solutions.",
+        "products": [
+          {
+            "product": "2FA/OTP",
+            "description": "Two-factor authentication, one-time passcodes.",
+            "capabilities": [
+              "2FA",
+              "OTP"
+            ],
+            "channels": [
+              "SMS",
+              "Voice",
+              "Email"
+            ]
+          }
+        ]
+      },
+      {
+        "subcategory": "Fraud",
+        "description": "Fraud prevention and device approval.",
+        "products": [
+          {
+            "product": "Fraud Controls",
+            "description": "Silent Network Auth, device approval, fraud monitoring.",
+            "capabilities": [
+              "Fraud Prevention",
+              "Device Approval"
+            ],
+            "channels": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Customer Data Platform & Activation",
+    "description": "Segment tools for data collection, governance, activation, and AI.",
+    "subcategories": [
+      {
+        "subcategory": "Segment",
+        "description": "Customer data platform and activation tools.",
+        "products": [
+          {
+            "product": "Connections",
+            "description": "Collect and unify customer data.",
+            "capabilities": [
+              "Data Collection",
+              "Unification"
+            ],
+            "channels": []
+          },
+          {
+            "product": "Protocols",
+            "description": "Data governance and validation.",
+            "capabilities": [
+              "Data Governance",
+              "Validation"
+            ],
+            "channels": []
+          },
+          {
+            "product": "Unify",
+            "description": "Real-time customer profiles.",
+            "capabilities": [
+              "Identity Resolution",
+              "Profile Unification"
+            ],
+            "channels": []
+          },
+          {
+            "product": "Data Activation",
+            "description": "Activate data from CRM, warehouses, etc.",
+            "capabilities": [
+              "Data Activation"
+            ],
+            "channels": []
+          },
+          {
+            "product": "Engage",
+            "description": "Audience builder, journey orchestration, AI.",
+            "capabilities": [
+              "Audience Building",
+              "Orchestration",
+              "AI"
+            ],
+            "channels": [
+              "SMS",
+              "WhatsApp",
+              "Email"
+            ]
+          },
+          {
+            "product": "Predictions & Recommendations",
+            "description": "AI-driven predictions and recommendations.",
+            "capabilities": [
+              "Predictions",
+              "Recommendations",
+              "AI"
+            ],
+            "channels": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Engagement Solutions",
+    "description": "Solutions for contact centers, marketing automation, and traffic optimization.",
+    "subcategories": [
+      {
+        "subcategory": "Contact Center",
+        "description": "Omnichannel contact center platform.",
+        "products": [
+          {
+            "product": "Twilio Flex",
+            "description": "Omnichannel contact center platform.",
+            "capabilities": [
+              "Contact Center",
+              "Omnichannel",
+              "Routing"
+            ],
+            "channels": [
+              "SMS",
+              "MMS",
+              "WhatsApp",
+              "Voice"
+            ]
+          }
+        ]
+      },
+      {
+        "subcategory": "Traffic Optimization",
+        "description": "Multi-tenancy, throughput, traffic shaping.",
+        "products": [
+          {
+            "product": "Traffic Optimization Engine",
+            "description": "Multi-tenancy, throughput, traffic shaping.",
+            "capabilities": [
+              "Traffic Optimization",
+              "Throughput"
+            ],
+            "channels": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Add-ons & Extensions",
+    "description": "Marketplace, payments, and media add-ons.",
+    "subcategories": [
+      {
+        "subcategory": "Marketplace",
+        "description": "Enhance APIs with 3rd-party data/services.",
+        "products": [
+          {
+            "product": "Marketplace Add-ons",
+            "description": "Enhance APIs with 3rd-party data/services.",
+            "capabilities": [
+              "Add-ons",
+              "Integrations"
+            ],
+            "channels": []
+          }
+        ]
+      },
+      {
+        "subcategory": "Payments",
+        "description": "Integrate with payment processors.",
+        "products": [
+          {
+            "product": "Pay Connectors",
+            "description": "Integrate with payment processors.",
+            "capabilities": [
+              "Payments",
+              "Integrations"
+            ],
+            "channels": []
+          }
+        ]
+      },
+      {
+        "subcategory": "Media",
+        "description": "Media stream recording, transcription, analysis.",
+        "products": [
+          {
+            "product": "Stream Connectors",
+            "description": "Media stream recording, transcription, analysis.",
+            "capabilities": [
+              "Media Streams",
+              "Recording",
+              "Transcription"
+            ],
+            "channels": [
+              "Voice"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Supporting Products",
+    "description": "Branding, analytics, and compliance tools.",
+    "subcategories": [
+      {
+        "subcategory": "Branding",
+        "description": "Branded calling solutions.",
+        "products": [
+          {
+            "product": "Branded Calling (Beta)",
+            "description": "Display brand info on outbound calls (beta).",
+            "capabilities": [
+              "Branded Caller ID"
+            ],
+            "channels": [
+              "Voice"
+            ]
+          }
+        ]
+      },
+      {
+        "subcategory": "Analytics",
+        "description": "Advanced analytics and reporting.",
+        "products": [
+          {
+            "product": "Advanced Analytics",
+            "description": "Advanced analytics and reporting.",
+            "capabilities": [
+              "Analytics"
+            ],
+            "channels": []
+          }
+        ]
+      },
+      {
+        "subcategory": "Compliance",
+        "description": "Compliance management tools.",
+        "products": [
+          {
+            "product": "Compliance Tools",
+            "description": "Compliance management tools.",
+            "capabilities": [
+              "Compliance"
+            ],
+            "channels": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Platform Add-ons",
+    "description": "Enhanced features, security, compliance add-ons.",
+    "subcategories": [
+      {
+        "subcategory": "Platform Editions",
+        "description": "Category-agnostic add-ons for enhanced features.",
+        "products": [
+          {
+            "product": "Category-agnostic add-ons",
+            "description": "Enhanced features, security, compliance add-ons.",
+            "capabilities": [
+              "Platform Add-ons"
+            ],
+            "channels": []
+          }
+        ]
+      }
+    ]
+  }
+]

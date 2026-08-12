@@ -3,10 +3,18 @@ import { analyzeCompliance, generateLocalizedContent } from "@/lib/claude";
 import { getProductById } from "@/lib/products";
 import { getRegulationsForProduct, getRegulationsForCountry, EU_REGULATIONS } from "@/lib/regulations";
 import { getObjectionsForProduct, EU_RESIDENCY_PRODUCTS } from "@/lib/objections";
+import {
+  getPersonaById,
+  getUseCasesForProduct,
+  getRelevantStories,
+  getEMEACustomerStories,
+  GTM_KPI_METRICS,
+  GTM_NORTH_STARS,
+} from "@/lib/gtm-data";
 
 export async function POST(request: NextRequest) {
   try {
-    const { productId, country, industry, language } = await request.json();
+    const { productId, country, industry, language, persona, vertical } = await request.json();
 
     if (!productId || !country) {
       return NextResponse.json(
@@ -29,11 +37,20 @@ export async function POST(request: NextRequest) {
       countryRegulations.some(cr => cr.id === r.id)
     );
 
+    const selectedPersona = persona ? getPersonaById(persona) : null;
+    const personaContext = selectedPersona ? {
+      title: selectedPersona.title,
+      careabouts: selectedPersona.major_careabouts,
+      challenges: selectedPersona.technology_challenges,
+      metrics: selectedPersona.key_metrics,
+    } : null;
+
     const analysis = await analyzeCompliance(
       product,
       country,
       industry || "General",
-      applicableRegulations
+      applicableRegulations,
+      personaContext
     );
 
     let localization = null;
@@ -47,6 +64,14 @@ export async function POST(request: NextRequest) {
     }
 
     const objections = getObjectionsForProduct(product.euDataResidency, industry || "General");
+
+    const relevantUseCases = getUseCasesForProduct(product.name);
+    const relevantStories = getRelevantStories(product.name, vertical || industry || "");
+    const emea_stories = getEMEACustomerStories();
+
+    const storiesForResponse = relevantStories.length > 0
+      ? relevantStories.slice(0, 5)
+      : emea_stories.slice(0, 3);
 
     return NextResponse.json({
       product: {
@@ -71,6 +96,34 @@ export async function POST(request: NextRequest) {
       localization,
       objections,
       alternativeProducts: !product.euDataResidency ? EU_RESIDENCY_PRODUCTS : [],
+      gtmContext: {
+        persona: selectedPersona ? {
+          id: selectedPersona.persona_id,
+          title: selectedPersona.title,
+          tier: selectedPersona.tier,
+          careabouts: selectedPersona.major_careabouts,
+          challenges: selectedPersona.technology_challenges,
+          metrics: selectedPersona.key_metrics,
+        } : null,
+        useCases: relevantUseCases.slice(0, 8).map(uc => ({
+          name: uc.name,
+          description: uc.description,
+          valuePool: uc.valuePool,
+          businessGoal: uc.businessGoal,
+          kpis: uc.kpis,
+        })),
+        customerStories: storiesForResponse.map(s => ({
+          customer: s.customer,
+          vertical: s.vertical,
+          region: s.region,
+          link: s.link,
+          summary: s.summary[0],
+          outcomes: s.business_outcomes,
+          products_used: s.products_used,
+        })),
+        kpiDirections: GTM_KPI_METRICS,
+        northStars: GTM_NORTH_STARS,
+      },
     });
   } catch (error: any) {
     console.error("Analysis error:", error);

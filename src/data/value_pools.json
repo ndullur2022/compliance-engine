@@ -1,0 +1,27 @@
+[
+  {
+    "id": "Growth & Revenue",
+    "icon": "TrendingUp",
+    "desc": "Grow top-line revenue, expand revenue capacity, increase enterprise value."
+  },
+  {
+    "id": "Efficiency & Productivity",
+    "icon": "Zap",
+    "desc": "Improve resource efficiency, lower cost to serve, increase margins."
+  },
+  {
+    "id": "Customer Experience",
+    "icon": "MessageSquare",
+    "desc": "Deliver seamless experiences, increase retention, strengthen brand differentiation."
+  },
+  {
+    "id": "Risk, Trust & Compliance",
+    "icon": "Shield",
+    "desc": "Reduce operational risk, protect cash flow, preserve enterprise value."
+  },
+  {
+    "id": "Agility, Resilience & Scale",
+    "icon": "Activity",
+    "desc": "Respond quickly to change, improve resilience, increase flexibility, enable scalable growth."
+  }
+]

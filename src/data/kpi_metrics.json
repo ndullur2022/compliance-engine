@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "description": "KPI directionality map. 'up' means higher is better, 'down' means lower is better.",
+    "source": "gemini_react_paste.jsx kpiMetrics constant"
+  },
+  "metrics": {
+    "Average handle time (AHT)": "down",
+    "First Call Resolution (FCR)": "up",
+    "Call deflection rate": "up",
+    "Wait time": "down",
+    "Issue resolution time": "down",
+    "Deflection rate": "up",
+    "CSAT / NPS": "up",
+    "Ticket backlog": "down",
+    "No-show rate": "down",
+    "Renewal rate": "up",
+    "Opt-out rate": "down",
+    "Repeat purchase rate": "up",
+    "Campaign conversion rate": "up",
+    "ROAS": "up",
+    "Answer rate": "up",
+    "Web traffic": "up",
+    "Customer acquisition cost (CAC)": "down",
+    "Sales cycle length": "down",
+    "Customer LTV": "up",
+    "Revenue retention rate": "up",
+    "Upsell / cross-sell rate": "up",
+    "OTP conversion rate": "up",
+    "Account takeovers": "down",
+    "Fraud incidents": "down",
+    "Fraud incidents (Spoofing)": "down",
+    "False positives": "down",
+    "Compliance violations": "down",
+    "Data privacy": "up",
+    "Opt-in rate": "up",
+    "Incident response time": "down",
+    "Read rate": "up"
+  }
+}

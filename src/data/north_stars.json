@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "description": "Maps operational business goals to executive-level North Star metrics for CFO-level conversations.",
+    "source": "gemini_react_paste.jsx northStars constant"
+  },
+  "northStars": {
+    "Improve customer experience": { "metric": "Customer Satisfaction (CSAT)", "dir": "up" },
+    "Acquire Customers": { "metric": "Net New Revenue", "dir": "up" },
+    "Retain & grow customers": { "metric": "Customer Lifetime Value (LTV)", "dir": "up" },
+    "Protect the business": { "metric": "Total Fraud Loss", "dir": "down" }
+  }
+}

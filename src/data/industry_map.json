@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "description": "3-level industry taxonomy mapping Twilio sales segments → industry verticals → subverticals. Verticals and subverticals derived from customerstories.json and reconciled with the GTM Accelerator data model.",
+    "levels": ["segment", "vertical", "subvertical"]
+  },
+  "segments": [
+    {
+      "segment": "Retail",
+      "code": "RTAIL",
+      "verticals": [
+        {
+          "name": "Retail",
+          "subverticals": ["Automotive", "QSR", "Luxury Fashion", "RV Sales", "Grocery Delivery", "Marketplace", "Food Delivery", "Apparel", "Home Goods"]
+        },
+        {
+          "name": "Hospitality",
+          "subverticals": ["Restaurant Tech", "Hotels", "QSR"]
+        },
+        {
+          "name": "Travel & Hospitality",
+          "subverticals": ["Vacation Rentals", "Airlines", "Business Travel"]
+        },
+        {
+          "name": "Transportation",
+          "subverticals": ["Rideshare", "Logistics"]
+        },
+        {
+          "name": "CPG",
+          "subverticals": ["Beverages"]
+        },
+        {
+          "name": "On-Demand / Gig Economy",
+          "subverticals": ["On-Demand Delivery"]
+        }
+      ],
+      "story_examples": ["Resy", "Panera Bread", "Vacasa", "Lyft", "Domino's", "LUISAVIAROMA", "Camping World", "Airbnb", "Instacart", "DoorDash", "Nike", "Hilton", "Just Eat Takeaway", "Rappi", "Uber Eats", "UPS", "IKEA", "Etsy", "Mercado Libre", "Uber", "Norwegian Air", "Air France-KLM", "AB InBev"]
+    },
+    {
+      "segment": "High Tech & AI",
+      "code": "TCH",
+      "verticals": [
+        {
+          "name": "Technology",
+          "subverticals": ["Messaging", "Consumer Electronics"]
+        },
+        {
+          "name": "SaaS",
+          "subverticals": ["CRM", "Productivity"]
+        },
+        {
+          "name": "Education",
+          "subverticals": ["EdTech"]
+        },
+        {
+          "name": "Media",
+          "subverticals": ["Broadcasting", "Music/EdTech", "Local Discovery"]
+        }
+      ],
+      "story_examples": ["WhatsApp", "Samsung", "Salesforce", "Asana", "Duolingo", "Yelp"]
+    },
+    {
+      "segment": "Healthcare & Life Sciences",
+      "code": "HLS",
+      "verticals": [
+        {
+          "name": "Healthcare",
+          "subverticals": ["Patient Engagement", "Pharmacy", "Wellness"]
+        },
+        {
+          "name": "Life Sciences",
+          "subverticals": ["Biopharma", "MedTech"]
+        }
+      ],
+      "story_examples": ["OhMD", "CVS Health", "Virgin Pulse"]
+    },
+    {
+      "segment": "Financial Services",
+      "code": "FINS",
+      "verticals": [
+        {
+          "name": "Financial Services",
+          "subverticals": ["Lending", "Mortgage", "Credit Cards", "Insurance", "Banking", "Wealth Management"]
+        }
+      ],
+      "story_examples": ["smava", "Rocket Mortgage", "American Express", "AXA"]
+    },
+    {
+      "segment": "ISV",
+      "code": "ISV",
+      "notes": "Software vendors and platform builders that embed Twilio capabilities into their own products.",
+      "verticals": [
+        {
+          "name": "Professional Services",
+          "subverticals": ["BPO", "HR & Payroll", "Legal"]
+        },
+        {
+          "name": "Real Estate",
+          "subverticals": ["Property Marketplace", "PropTech"]
+        },
+        {
+          "name": "Nonprofit",
+          "subverticals": ["Humanitarian", "Disaster Relief", "Education Nonprofit"]
+        }
+      ],
+      "story_examples": ["Teleperformance", "Justworks", "Zoopla", "Norwegian Refugee Council", "American Red Cross"]
+    },
+    {
+      "segment": "Martech",
+      "code": "MRTECH",
+      "notes": "Companies whose primary Twilio use case is data-driven marketing, personalization, or audience activation — predominantly Segment/CDP motions.",
+      "verticals": [
+        {
+          "name": "Retail",
+          "subverticals": ["QSR", "Luxury Fashion", "Apparel", "Marketplace"]
+        },
+        {
+          "name": "Media",
+          "subverticals": ["Broadcasting", "Music/EdTech"]
+        },
+        {
+          "name": "CPG",
+          "subverticals": ["Beverages"]
+        }
+      ],
+      "story_examples": ["FOX", "Fender", "Domino's", "LUISAVIAROMA", "Nike", "Camping World", "AB InBev"]
+    }
+  ]
+}
