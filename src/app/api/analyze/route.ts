@@ -1,16 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { analyzeCompliance, generateLocalizedContent } from "@/lib/claude";
 import { getProductById } from "@/lib/products";
-import { getRegulationsForProduct, getRegulationsForCountry, EU_REGULATIONS } from "@/lib/regulations";
+import { getRegulationsForProduct, getRegulationsForCountry } from "@/lib/regulations";
 import { getObjectionsForProduct, EU_RESIDENCY_PRODUCTS } from "@/lib/objections";
-import {
-  getPersonaById,
-  getUseCasesForProduct,
-  getRelevantStories,
-  getEMEACustomerStories,
-  GTM_KPI_METRICS,
-  GTM_NORTH_STARS,
-} from "@/lib/gtm-data";
+import { getPersonaById, getUseCasesForProduct, GTM_KPI_METRICS, GTM_NORTH_STARS } from "@/lib/gtm-data";
+import { getStoriesForContext } from "@/lib/emea-customer-stories";
+import { getResidencyForProduct, BILLING_DATA_NOTE } from "@/lib/data-residency-nuances";
+import { getFAQForProduct } from "@/lib/emea-faq";
 
 export async function POST(request: NextRequest) {
   try {
@@ -64,14 +60,10 @@ export async function POST(request: NextRequest) {
     }
 
     const objections = getObjectionsForProduct(product.euDataResidency, industry || "General");
-
     const relevantUseCases = getUseCasesForProduct(product.name);
-    const relevantStories = getRelevantStories(product.name, vertical || industry || "");
-    const emea_stories = getEMEACustomerStories();
-
-    const storiesForResponse = relevantStories.length > 0
-      ? relevantStories.slice(0, 5)
-      : emea_stories.slice(0, 3);
+    const customerStories = getStoriesForContext(country, product.name, vertical || industry || "");
+    const residencyNuances = getResidencyForProduct(productId);
+    const relevantFAQ = getFAQForProduct(productId);
 
     return NextResponse.json({
       product: {
@@ -96,6 +88,23 @@ export async function POST(request: NextRequest) {
       localization,
       objections,
       alternativeProducts: !product.euDataResidency ? EU_RESIDENCY_PRODUCTS : [],
+      residencyNuances: residencyNuances ? {
+        ie1Status: residencyNuances.ie1Status,
+        ie1StatusLabel: residencyNuances.ie1StatusLabel,
+        channels: residencyNuances.channels || null,
+        speechProviders: residencyNuances.speechProviders || null,
+        excludedFeatures: residencyNuances.excludedFeatures,
+        notes: residencyNuances.notes,
+        roadmap: residencyNuances.roadmap || null,
+        billingNote: BILLING_DATA_NOTE,
+      } : null,
+      emea_faq: relevantFAQ.map(cat => ({
+        id: cat.id,
+        title: cat.title,
+        questions: cat.questions
+          .filter(q => !q.relatedProducts || q.relatedProducts.includes(productId))
+          .map(q => ({ question: q.question, answer: q.answer, sources: q.sources })),
+      })).filter(cat => cat.questions.length > 0),
       gtmContext: {
         persona: selectedPersona ? {
           id: selectedPersona.persona_id,
@@ -112,13 +121,12 @@ export async function POST(request: NextRequest) {
           businessGoal: uc.businessGoal,
           kpis: uc.kpis,
         })),
-        customerStories: storiesForResponse.map(s => ({
-          customer: s.customer,
+        customerStories: customerStories.map(s => ({
+          company: s.company,
+          country: s.country,
           vertical: s.vertical,
-          region: s.region,
-          link: s.link,
-          summary: s.summary[0],
-          outcomes: s.business_outcomes,
+          url: s.url,
+          summary: s.summary,
           products_used: s.products_used,
         })),
         kpiDirections: GTM_KPI_METRICS,

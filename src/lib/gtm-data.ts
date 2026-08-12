@@ -3,7 +3,7 @@ import industryMap from "@/data/industry_map.json";
 import buyerPersonas from "@/data/buyer_personas.json";
 import useCases from "@/data/use_cases.json";
 import valuePools from "@/data/value_pools.json";
-import customerStories from "@/data/customerstories.json";
+// Customer stories now sourced from emea-customer-stories.ts (twilio.com/customers EMEA)
 import kpiMetrics from "@/data/kpi_metrics.json";
 import northStars from "@/data/north_stars.json";
 
@@ -88,7 +88,7 @@ export const GTM_INDUSTRY_MAP = industryMap as { meta: any; segments: IndustrySe
 export const GTM_BUYER_PERSONAS = (buyerPersonas as any).buyer_personas as BuyerPersona[];
 export const GTM_USE_CASES = useCases as UseCase[];
 export const GTM_VALUE_POOLS = valuePools as ValuePool[];
-export const GTM_CUSTOMER_STORIES = (customerStories as any).customer_stories as CustomerStory[];
+export const GTM_CUSTOMER_STORIES = [] as CustomerStory[];
 export const GTM_KPI_METRICS = (kpiMetrics as any).metrics as Record<string, "up" | "down">;
 export const GTM_NORTH_STARS = (northStars as any).northStars as Record<string, { metric: string; dir: string }>;
 
