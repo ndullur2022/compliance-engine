@@ -1,9 +1,9 @@
-import AnthropicBedrock from "@anthropic-ai/bedrock-sdk";
+import OpenAI from "openai";
 import { TwilioProduct, ComplianceEntry } from "./products";
 import { Regulation } from "./regulations";
 
-const anthropic = new AnthropicBedrock({
-  awsRegion: process.env.AWS_REGION || "us-east-1",
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 export interface ComplianceAnalysis {
@@ -122,13 +122,13 @@ WRITING STYLE — FOLLOW STRICTLY:
 - For the localized positioning, adapt tone for ${targetCountry} buyers (e.g., German buyers want proof and certifications; French buyers care about innovation and data sovereignty).
 - Be clear about what the Twilio platform handles vs. what the customer needs to set up themselves.`;
 
-  const response = await anthropic.messages.create({
-    model: process.env.BEDROCK_MODEL_ID || "us.anthropic.claude-sonnet-4-20250514-v1:0",
+  const response = await openai.chat.completions.create({
+    model: process.env.OPENAI_MODEL || "gpt-4o",
     max_tokens: 4096,
     messages: [{ role: "user", content: prompt }],
   });
 
-  const text = response.content[0].type === "text" ? response.content[0].text : "";
+  const text = response.choices[0]?.message?.content || "";
   const jsonMatch = text.match(/\{[\s\S]*\}/);
   if (!jsonMatch) {
     throw new Error("Failed to parse compliance analysis response");
@@ -175,13 +175,13 @@ Rules:
 - Never use "Twilio's" — always "the Twilio [noun]"
 - Keep sentences short. A 7th grader should be able to follow the logic.`;
 
-  const response = await anthropic.messages.create({
-    model: process.env.BEDROCK_MODEL_ID || "us.anthropic.claude-sonnet-4-20250514-v1:0",
+  const response = await openai.chat.completions.create({
+    model: process.env.OPENAI_MODEL || "gpt-4o",
     max_tokens: 2048,
     messages: [{ role: "user", content: prompt }],
   });
 
-  const text = response.content[0].type === "text" ? response.content[0].text : "";
+  const text = response.choices[0]?.message?.content || "";
   const jsonMatch = text.match(/\{[\s\S]*\}/);
   if (!jsonMatch) {
     throw new Error("Failed to parse localization response");
