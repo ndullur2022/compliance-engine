@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, MessageSquare, HelpCircle, Database, BookOpen, Zap, Trash2, ToggleLeft, ToggleRight } from "lucide-react";
+import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, HelpCircle, Database, BookOpen, Zap, Trash2, ToggleLeft, ToggleRight } from "lucide-react";
 
 const USE_CASE_CATEGORIES = [
   { id: "growth", label: "Growth & Revenue", icon: "TrendingUp" },
@@ -135,7 +135,6 @@ interface AnalysisResult {
   gtmContext?: {
     persona: { id: string; title: string; tier: string; careabouts: string[]; challenges: string[]; metrics: string[] } | null;
     useCases: { name: string; description: string; valuePool: string; businessGoal: string; kpis: string[] }[];
-    customerStories: { company: string; country: string; vertical: string; url: string; summary: string; products_used: string[]; publishDate: string }[];
     kpiDirections: Record<string, string>;
     northStars: Record<string, { metric: string; dir: string }>;
   };
@@ -228,8 +227,8 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto px-6 py-4 flex items-center gap-3">
           <Shield className="w-8 h-8 text-[#F22F46]" />
           <div>
-            <h1 className="text-lg font-bold text-white tracking-tight">AI Compliance & Localization Engine</h1>
-            <p className="text-xs text-blue-200/70">EU regulatory compliance and sales enablement for Twilio products</p>
+            <h1 className="text-lg font-bold text-white tracking-tight">EMEA Readiness Engine</h1>
+            <p className="text-xs text-blue-200/70">EMEA regulatory compliance and sales enablement for Twilio products</p>
           </div>
         </div>
       </header>
@@ -269,14 +268,13 @@ export default function Home() {
               </div>
             ) : (
               <div>
-                <label className="block text-xs font-medium text-gray-500 mb-1">Select products (multi-select)</label>
-                <div className="flex flex-wrap gap-1.5 max-h-[80px] overflow-y-auto border border-gray-200 rounded-lg p-2">
+                <label className="block text-xs font-medium text-gray-500 mb-1">Select product</label>
+                <select value={selectedProducts[0] || ""} onChange={(e) => setSelectedProducts(e.target.value ? [e.target.value] : [])} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                  <option value="">Select product...</option>
                   {PRODUCTS.map(p => (
-                    <button key={p.id} onClick={() => toggleProductSelection(p.id)} className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${selectedProducts.includes(p.id) ? "bg-[#F22F46] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
-                      {p.name}
-                    </button>
+                    <option key={p.id} value={p.id}>{p.name}</option>
                   ))}
-                </div>
+                </select>
               </div>
             )}
 
@@ -322,10 +320,12 @@ export default function Home() {
             </div>
           )}
 
-          {/* Selected products count (products mode) */}
+          {/* Selected product (products mode) */}
           {selectionMode === "products" && selectedProducts.length > 0 && (
             <div className="mt-3 pt-3 border-t border-gray-100 flex items-center gap-2">
-              <span className="text-xs text-gray-400">{selectedProducts.length} product{selectedProducts.length > 1 ? "s" : ""} selected</span>
+              <span className="text-xs text-gray-400">
+                {PRODUCTS.find(p => p.id === selectedProducts[0])?.name} selected
+              </span>
             </div>
           )}
         </div>
@@ -593,33 +593,8 @@ export default function Home() {
               </div>
             )}
 
-            {/* Row 5: Customer Stories | Persona — two columns */}
+            {/* Row 5: Persona + Market Entry */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {/* Customer stories */}
-              {firstResult.gtmContext?.customerStories && firstResult.gtmContext.customerStories.length > 0 && (
-                <div className="bg-white rounded-xl border border-gray-200 p-4">
-                  <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                    <MessageSquare className="w-4 h-4 text-[#F22F46]" />Customer stories — {country}
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {firstResult.gtmContext.customerStories.map((story, i) => (
-                      <a key={i} href={story.url} target="_blank" rel="noopener noreferrer" className="block p-3 border border-gray-100 rounded-lg hover:border-[#F22F46]/30 transition-colors">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs font-semibold text-[#121c2d]">{story.company}</span>
-                          <span className="text-[10px] text-gray-400">{new Date(story.publishDate).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
-                        </div>
-                        <p className="text-[11px] text-gray-600 line-clamp-2 mb-1">{story.summary}</p>
-                        <div className="flex items-center gap-1">
-                          <span className="px-1.5 py-0.5 rounded text-[9px] bg-blue-50 text-blue-700">{story.vertical}</span>
-                          <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-50 text-emerald-700">{story.country}</span>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Persona + Market Entry */}
               <div className="space-y-4">
                 {firstResult.gtmContext?.persona && (
                   <div className="bg-white rounded-xl border border-gray-200 p-4">
@@ -716,14 +691,14 @@ export default function Home() {
           <div className="text-center py-16">
             <Shield className="w-14 h-14 text-gray-300 mx-auto mb-3" />
             <h3 className="text-base font-medium text-[#121c2d] mb-1">Choose a use case or products, then select a country</h3>
-            <p className="text-sm text-gray-400 max-w-lg mx-auto">Start with a use case (auto-selects products) or pick individual products. This tool checks EU regulatory compliance for each and generates localized sales content.</p>
+            <p className="text-sm text-gray-400 max-w-lg mx-auto">Start with a use case (auto-selects products) or pick individual products. This tool checks EMEA regulatory compliance for each and generates localized sales content.</p>
           </div>
         )}
       </main>
 
       <footer className="border-t border-gray-200 bg-[#121c2d] mt-8">
         <div className="max-w-[1400px] mx-auto px-6 py-3 text-center text-[11px] text-blue-200/60">
-          AI Compliance & Localization Engine — Powered by OpenAI GPT-4o — This tool gives guidance only. Always verify with legal.
+          EMEA Readiness Engine — Powered by OpenAI GPT-4o — This tool gives guidance only. Always verify with legal.
         </div>
       </footer>
     </div>

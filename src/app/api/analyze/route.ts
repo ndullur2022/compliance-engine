@@ -4,7 +4,6 @@ import { getProductById } from "@/lib/products";
 import { getRegulationsForProduct, getRegulationsForCountry } from "@/lib/regulations";
 import { getObjectionsForProduct, EU_RESIDENCY_PRODUCTS } from "@/lib/objections";
 import { getPersonaById, getUseCasesForProduct, GTM_KPI_METRICS, GTM_NORTH_STARS } from "@/lib/gtm-data";
-import { getStoriesForContext } from "@/lib/emea-customer-stories";
 import { getResidencyForProduct, BILLING_DATA_NOTE } from "@/lib/data-residency-nuances";
 import { getFAQForProduct } from "@/lib/emea-faq";
 import { getRelevantArticles } from "@/lib/blog-articles";
@@ -63,7 +62,6 @@ export async function POST(request: NextRequest) {
 
     const objections = getObjectionsForProduct(product.euDataResidency, industry || "General");
     const relevantUseCases = getUseCasesForProduct(product.name);
-    const customerStories = getStoriesForContext(country, product.name, vertical || industry || "");
     const residencyNuances = getResidencyForProduct(productId);
     const relevantFAQ = getFAQForProduct(productId);
     const blogArticles = getRelevantArticles(productId);
@@ -146,15 +144,6 @@ export async function POST(request: NextRequest) {
           valuePool: uc.valuePool,
           businessGoal: uc.businessGoal,
           kpis: uc.kpis,
-        })),
-        customerStories: customerStories.map(s => ({
-          company: s.company,
-          country: s.country,
-          vertical: s.vertical,
-          url: s.url,
-          summary: s.summary,
-          products_used: s.products_used,
-          publishDate: s.publishDate,
         })),
         kpiDirections: GTM_KPI_METRICS,
         northStars: GTM_NORTH_STARS,

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Compliance & Localization Engine",
-  description: "EU regulatory compliance checker for Twilio products",
+  title: "EMEA Readiness Engine",
+  description: "EMEA regulatory compliance and readiness checker for Twilio products",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
