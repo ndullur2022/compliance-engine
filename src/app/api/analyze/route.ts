@@ -8,6 +8,7 @@ import { getStoriesForContext } from "@/lib/emea-customer-stories";
 import { getResidencyForProduct, BILLING_DATA_NOTE } from "@/lib/data-residency-nuances";
 import { getFAQForProduct } from "@/lib/emea-faq";
 import { getRelevantArticles } from "@/lib/blog-articles";
+import { getDeletionSolutionForProduct } from "@/lib/data-deletion-solutions";
 
 export async function POST(request: NextRequest) {
   try {
@@ -66,6 +67,7 @@ export async function POST(request: NextRequest) {
     const residencyNuances = getResidencyForProduct(productId);
     const relevantFAQ = getFAQForProduct(productId);
     const blogArticles = getRelevantArticles(productId);
+    const deletionSolution = getDeletionSolutionForProduct(productId);
 
     return NextResponse.json({
       product: {
@@ -115,6 +117,20 @@ export async function POST(request: NextRequest) {
           .filter(q => !q.relatedProducts || q.relatedProducts.includes(productId))
           .map(q => ({ question: q.question, answer: q.answer, sources: q.sources })),
       })).filter(cat => cat.questions.length > 0),
+      deletionSolution: deletionSolution ? {
+        productId: deletionSolution.productId,
+        productName: deletionSolution.productName,
+        deletionMethod: deletionSolution.deletionMethod,
+        deletionEndpoint: deletionSolution.deletionEndpoint || null,
+        retentionDefault: deletionSolution.retentionDefault,
+        configurableRetention: deletionSolution.configurableRetention,
+        redactionCapabilities: deletionSolution.redactionCapabilities,
+        automatedDeletion: deletionSolution.automatedDeletion,
+        dsarSupport: deletionSolution.dsarSupport,
+        steps: deletionSolution.steps,
+        caveats: deletionSolution.caveats,
+        documentationUrl: deletionSolution.documentationUrl || null,
+      } : null,
       gtmContext: {
         persona: selectedPersona ? {
           id: selectedPersona.persona_id,

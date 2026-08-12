@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, MessageSquare, HelpCircle, Database, BookOpen, Zap } from "lucide-react";
+import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, MessageSquare, HelpCircle, Database, BookOpen, Zap, Trash2, ToggleLeft, ToggleRight } from "lucide-react";
 
 const USE_CASE_CATEGORIES = [
   { id: "growth", label: "Growth & Revenue", icon: "TrendingUp" },
@@ -130,6 +130,7 @@ interface AnalysisResult {
   alternativeProducts: { name: string; url: string }[];
   residencyNuances: { ie1Status: string; ie1StatusLabel: string; channels: any[] | null; speechProviders: any[] | null; excludedFeatures: string[]; notes: string[]; roadmap: string | null; billingNote: string } | null;
   blogArticles: { title: string; url: string; author: string; date: string; summary: string; tags: string[] }[];
+  deletionSolution: { productId: string; productName: string; deletionMethod: string; deletionEndpoint: string | null; retentionDefault: string; configurableRetention: boolean; redactionCapabilities: string[]; automatedDeletion: boolean; dsarSupport: string; steps: string[]; caveats: string[]; documentationUrl: string | null } | null;
   emea_faq: { id: string; title: string; questions: { question: string; answer: string; sources?: string[] }[] }[];
   gtmContext?: {
     persona: { id: string; title: string; tier: string; careabouts: string[]; challenges: string[]; metrics: string[] } | null;
@@ -153,8 +154,10 @@ function ResidencyBadge({ status }: { status: string }) {
 }
 
 export default function Home() {
+  const [selectionMode, setSelectionMode] = useState<"useCase" | "products">("useCase");
   const [useCaseCategory, setUseCaseCategory] = useState("");
   const [selectedUseCase, setSelectedUseCase] = useState("");
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [country, setCountry] = useState("");
   const [segment, setSegment] = useState("");
   const [persona, setPersona] = useState("");
@@ -165,17 +168,29 @@ export default function Home() {
   const filteredUseCases = useCaseCategory ? USE_CASES.filter(uc => uc.category === useCaseCategory) : USE_CASES;
   const activeUseCase = USE_CASES.find(uc => uc.id === selectedUseCase);
   const selectedCountry = COUNTRIES.find(c => c.code === country);
-  const autoProducts = activeUseCase?.products || [];
+  const activeProducts = selectionMode === "useCase" ? (activeUseCase?.products || []) : selectedProducts;
+
+  function toggleProductSelection(pid: string) {
+    setSelectedProducts(prev => prev.includes(pid) ? prev.filter(p => p !== pid) : [...prev, pid]);
+  }
+
+  function switchMode(mode: "useCase" | "products") {
+    setSelectionMode(mode);
+    setResults({});
+    if (mode === "useCase") { setSelectedProducts([]); }
+    else { setSelectedUseCase(""); setUseCaseCategory(""); }
+  }
 
   async function runAnalysis() {
-    if (!selectedUseCase || !country || autoProducts.length === 0) return;
+    if (!country || activeProducts.length === 0) return;
+    if (selectionMode === "useCase" && !selectedUseCase) return;
     setLoading(true);
     setError("");
     setResults({});
 
     try {
       const analyses = await Promise.all(
-        autoProducts.map(async (productId) => {
+        activeProducts.map(async (productId) => {
           const res = await fetch("/api/analyze", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -220,26 +235,50 @@ export default function Home() {
       </header>
 
       <main className="max-w-[1400px] mx-auto px-6 py-6">
-        {/* Step 1: Use Case Selection */}
+        {/* Step 1: Selection Mode + Context */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 mb-5">
+          {/* Mode toggle */}
+          <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-100">
+            <span className="text-xs font-medium text-gray-500">Select by:</span>
+            <button onClick={() => switchMode("useCase")} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${selectionMode === "useCase" ? "bg-[#121c2d] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
+              Use case
+            </button>
+            <button onClick={() => switchMode("products")} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${selectionMode === "products" ? "bg-[#121c2d] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
+              Products
+            </button>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_auto] gap-4 items-end">
-            {/* Left: Use case picker */}
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-medium text-gray-500 mb-1">What are you solving for?</label>
-                <select value={useCaseCategory} onChange={(e) => { setUseCaseCategory(e.target.value); setSelectedUseCase(""); }} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
-                  <option value="">All categories</option>
-                  {USE_CASE_CATEGORIES.map(c => (<option key={c.id} value={c.id}>{c.label}</option>))}
-                </select>
+            {/* Left: Use case picker OR product multi-select */}
+            {selectionMode === "useCase" ? (
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-gray-500 mb-1">What are you solving for?</label>
+                  <select value={useCaseCategory} onChange={(e) => { setUseCaseCategory(e.target.value); setSelectedUseCase(""); }} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                    <option value="">All categories</option>
+                    {USE_CASE_CATEGORIES.map(c => (<option key={c.id} value={c.id}>{c.label}</option>))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-500 mb-1">Use case</label>
+                  <select value={selectedUseCase} onChange={(e) => setSelectedUseCase(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                    <option value="">Select use case...</option>
+                    {filteredUseCases.map(uc => (<option key={uc.id} value={uc.id}>{uc.name}</option>))}
+                  </select>
+                </div>
               </div>
+            ) : (
               <div>
-                <label className="block text-xs font-medium text-gray-500 mb-1">Use case</label>
-                <select value={selectedUseCase} onChange={(e) => setSelectedUseCase(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
-                  <option value="">Select use case...</option>
-                  {filteredUseCases.map(uc => (<option key={uc.id} value={uc.id}>{uc.name}</option>))}
-                </select>
+                <label className="block text-xs font-medium text-gray-500 mb-1">Select products (multi-select)</label>
+                <div className="flex flex-wrap gap-1.5 max-h-[80px] overflow-y-auto border border-gray-200 rounded-lg p-2">
+                  {PRODUCTS.map(p => (
+                    <button key={p.id} onClick={() => toggleProductSelection(p.id)} className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${selectedProducts.includes(p.id) ? "bg-[#F22F46] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
+                      {p.name}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Middle: Context */}
             <div className="grid grid-cols-3 gap-3">
@@ -266,20 +305,27 @@ export default function Home() {
             </div>
 
             {/* Right: Action */}
-            <button onClick={runAnalysis} disabled={!selectedUseCase || !country || loading} className="bg-[#F22F46] hover:bg-[#d91e3a] disabled:bg-gray-300 text-white font-medium py-2 px-5 rounded-lg transition-colors flex items-center gap-2 whitespace-nowrap">
+            <button onClick={runAnalysis} disabled={!country || activeProducts.length === 0 || (selectionMode === "useCase" && !selectedUseCase) || loading} className="bg-[#F22F46] hover:bg-[#d91e3a] disabled:bg-gray-300 text-white font-medium py-2 px-5 rounded-lg transition-colors flex items-center gap-2 whitespace-nowrap">
               {loading ? <><Loader2 className="w-4 h-4 animate-spin" />Analyzing...</> : <><Shield className="w-4 h-4" />Analyze</>}
             </button>
           </div>
 
-          {/* Auto-selected products */}
-          {activeUseCase && (
+          {/* Auto-selected products (use case mode) */}
+          {selectionMode === "useCase" && activeUseCase && (
             <div className="mt-3 pt-3 border-t border-gray-100 flex items-center gap-2 flex-wrap">
               <span className="text-xs text-gray-400">Products needed:</span>
-              {autoProducts.map(pid => {
+              {activeProducts.map(pid => {
                 const p = PRODUCTS.find(x => x.id === pid);
                 return p ? <span key={pid} className="px-2 py-0.5 rounded text-xs bg-[#121c2d]/5 text-[#121c2d] font-medium">{p.name}</span> : null;
               })}
               <span className="ml-auto text-xs text-gray-400 italic">{activeUseCase.description}</span>
+            </div>
+          )}
+
+          {/* Selected products count (products mode) */}
+          {selectionMode === "products" && selectedProducts.length > 0 && (
+            <div className="mt-3 pt-3 border-t border-gray-100 flex items-center gap-2">
+              <span className="text-xs text-gray-400">{selectedProducts.length} product{selectedProducts.length > 1 ? "s" : ""} selected</span>
             </div>
           )}
         </div>
@@ -293,7 +339,7 @@ export default function Home() {
         {/* Results - Dense multi-column layout */}
         {hasResults && firstResult && (
           <div className="space-y-5">
-            {/* Row 1: Score cards per product */}
+            {/* Row 1: Product cards (no score) */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {Object.entries(results).map(([pid, r]) => (
                 <div key={pid} className="bg-white rounded-xl border border-gray-200 p-4">
@@ -301,16 +347,10 @@ export default function Home() {
                     <span className="text-sm font-semibold text-[#121c2d] truncate">{r.product.name}</span>
                     <StatusBadge status={r.analysis.overallStatus} />
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className={`text-2xl font-bold ${r.analysis.marketEntryReadiness.score >= 80 ? "text-emerald-600" : r.analysis.marketEntryReadiness.score >= 60 ? "text-amber-600" : "text-red-600"}`}>
-                      {r.analysis.marketEntryReadiness.score}
-                    </div>
-                    <div className="text-xs text-gray-500 leading-tight">
-                      <div>readiness</div>
-                      <div>{r.analysis.marketEntryReadiness.timeToMarket}</div>
-                    </div>
+                  <div className="text-xs text-gray-500 mb-2">
+                    <span>Time to market: {r.analysis.marketEntryReadiness.timeToMarket}</span>
                   </div>
-                  <div className="mt-2 flex items-center gap-1">
+                  <div className="flex items-center gap-1 flex-wrap">
                     {r.residencyNuances && <ResidencyBadge status={r.residencyNuances.ie1Status} />}
                     <div className="flex gap-0.5 ml-auto">
                       {r.product.certifications?.slice(0, 3).map((c: string) => (
@@ -495,7 +535,65 @@ export default function Home() {
               )}
             </div>
 
-            {/* Row 4: Customer Stories | Persona — two columns */}
+            {/* Row 4: Data Deletion & Redaction Solutions */}
+            {Object.values(results).some(r => r.deletionSolution) && (
+              <div className="bg-white rounded-xl border border-gray-200 p-4">
+                <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
+                  <Trash2 className="w-4 h-4 text-[#F22F46]" />Data removal, redaction, and deletion
+                </h3>
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+                  {Object.entries(results).filter(([, r]) => r.deletionSolution).map(([pid, r]) => (
+                    <div key={pid} className="border border-gray-100 rounded-lg p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-semibold text-[#121c2d]">{r.deletionSolution!.productName}</span>
+                        <span className={`px-1.5 py-0.5 rounded text-[9px] font-medium ${r.deletionSolution!.automatedDeletion ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"}`}>
+                          {r.deletionSolution!.automatedDeletion ? "Auto-purge" : "Manual"}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-gray-600 mb-2">{r.deletionSolution!.deletionMethod}</p>
+                      {r.deletionSolution!.deletionEndpoint && (
+                        <code className="block text-[10px] bg-gray-50 rounded px-2 py-1 text-gray-700 mb-2 overflow-x-auto">{r.deletionSolution!.deletionEndpoint}</code>
+                      )}
+                      <div className="space-y-1.5">
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-400 uppercase">Retention</p>
+                          <p className="text-[11px] text-gray-700">{r.deletionSolution!.retentionDefault}</p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-400 uppercase">Redaction options</p>
+                          <ul className="text-[11px] text-gray-600 space-y-0.5">
+                            {r.deletionSolution!.redactionCapabilities.slice(0, 2).map((cap, i) => (
+                              <li key={i} className="flex items-start gap-1"><CheckCircle className="w-2.5 h-2.5 text-emerald-400 mt-0.5 shrink-0" />{cap}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-400 uppercase">DSAR handling</p>
+                          <p className="text-[11px] text-gray-600">{r.deletionSolution!.dsarSupport}</p>
+                        </div>
+                        {r.deletionSolution!.caveats.length > 0 && (
+                          <div>
+                            <p className="text-[10px] font-semibold text-amber-500 uppercase">Caveats</p>
+                            <ul className="text-[10px] text-gray-500 space-y-0.5">
+                              {r.deletionSolution!.caveats.slice(0, 2).map((c, i) => (
+                                <li key={i} className="flex items-start gap-1"><AlertTriangle className="w-2.5 h-2.5 text-amber-400 mt-0.5 shrink-0" />{c}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {r.deletionSolution!.documentationUrl && (
+                          <a href={r.deletionSolution!.documentationUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[10px] text-[#F22F46] hover:underline mt-1">
+                            <ExternalLink className="w-2.5 h-2.5" />API docs
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Row 5: Customer Stories | Persona — two columns */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {/* Customer stories */}
               {firstResult.gtmContext?.customerStories && firstResult.gtmContext.customerStories.length > 0 && (
@@ -617,8 +715,8 @@ export default function Home() {
         {!hasResults && !loading && !error && (
           <div className="text-center py-16">
             <Shield className="w-14 h-14 text-gray-300 mx-auto mb-3" />
-            <h3 className="text-base font-medium text-[#121c2d] mb-1">Choose a use case and country to get started</h3>
-            <p className="text-sm text-gray-400 max-w-lg mx-auto">Select what you are solving for, and this tool will identify the products needed, check EU regulatory compliance for each, and generate localized sales content.</p>
+            <h3 className="text-base font-medium text-[#121c2d] mb-1">Choose a use case or products, then select a country</h3>
+            <p className="text-sm text-gray-400 max-w-lg mx-auto">Start with a use case (auto-selects products) or pick individual products. This tool checks EU regulatory compliance for each and generates localized sales content.</p>
           </div>
         )}
       </main>
