@@ -1,46 +1,55 @@
 "use client";
 
 import { useState } from "react";
-import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, HelpCircle, Database, BookOpen, Zap, Trash2, ToggleLeft, ToggleRight } from "lucide-react";
+import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, MessageSquare, HelpCircle, Database, BookOpen, Zap, Trash2, ToggleLeft, ToggleRight } from "lucide-react";
 
 const USE_CASE_CATEGORIES = [
-  { id: "growth", label: "Growth & Revenue", icon: "TrendingUp" },
-  { id: "efficiency", label: "Efficiency & Productivity", icon: "Zap" },
-  { id: "cx", label: "Customer Experience", icon: "Users" },
-  { id: "trust", label: "Risk, Trust & Compliance", icon: "Shield" },
-  { id: "agility", label: "Agility & Scale", icon: "Globe" },
+  { id: "marketing", label: "Marketing", icon: "TrendingUp" },
+  { id: "sales", label: "Sales", icon: "Users" },
+  { id: "service", label: "Service", icon: "MessageSquare" },
+  { id: "product", label: "Product", icon: "Zap" },
+  { id: "it-security", label: "IT & Security", icon: "Shield" },
 ];
 
 const USE_CASES = [
-  { id: "ai-agent-assist", name: "AI-Powered Agent Assist", category: "efficiency", products: ["flex", "conversation-intelligence"], description: "Tools that support live agents during calls, including transcription and knowledge base suggestions." },
-  { id: "intelligent-ivr", name: "Intelligent IVR", category: "efficiency", products: ["voice", "studio"], description: "Automated phone menus that let callers self-route or solve routine tasks." },
-  { id: "intelligent-routing", name: "Intelligent Routing", category: "efficiency", products: ["taskrouter"], description: "Dynamically route inbound requests to the most qualified agent." },
-  { id: "self-service-automation", name: "Self-Service Automation", category: "efficiency", products: ["studio", "conversation-relay"], description: "AI-powered bots handling routine tasks without human intervention." },
-  { id: "chatbots-virtual-assistants", name: "Chatbots & Virtual Assistants", category: "efficiency", products: ["studio", "flex", "conversation-relay"], description: "Conversational AI for customer self-service across channels." },
-  { id: "call-tracking", name: "Call Tracking & Analytics", category: "efficiency", products: ["voice", "event-streams"], description: "Track and analyze voice interactions for performance insights." },
-  { id: "omnichannel-comms", name: "Omnichannel 2-Way Communication", category: "cx", products: ["messaging", "voice", "sendgrid"], description: "Engage customers on their preferred channel with unified context." },
-  { id: "omnichannel-support", name: "Omnichannel Support Chat", category: "cx", products: ["messaging", "flex"], description: "Unified support across chat, SMS, WhatsApp, and voice." },
-  { id: "proactive-outreach", name: "Proactive Customer Outreach", category: "cx", products: ["messaging", "sendgrid", "segment-engage"], description: "Reach customers before they reach you with personalized notifications." },
-  { id: "appointment-reminders", name: "Appointment Reminders & Scheduling", category: "cx", products: ["messaging", "voice"], description: "Reduce no-shows with automated multi-channel reminders." },
-  { id: "customer-surveys", name: "Customer Surveys & Feedback", category: "cx", products: ["messaging", "sendgrid"], description: "Collect feedback at key moments via SMS, email, or WhatsApp." },
-  { id: "personalized-marketing", name: "Personalized Marketing Campaigns", category: "growth", products: ["segment-engage", "messaging", "sendgrid", "marketing-campaigns"], description: "Data-driven campaigns personalized using unified customer profiles." },
-  { id: "lead-nurturing", name: "Lead Nurturing & Conversion", category: "growth", products: ["messaging", "sendgrid", "segment-connections"], description: "Automated sequences to convert prospects across channels." },
-  { id: "loyalty-programs", name: "Loyalty & Retention Programs", category: "growth", products: ["messaging", "segment-engage", "sendgrid"], description: "Drive repeat purchases with personalized loyalty communications." },
-  { id: "abandoned-cart", name: "Abandoned Cart Recovery", category: "growth", products: ["messaging", "segment-engage"], description: "Win back shoppers with timely, personalized cart reminders." },
-  { id: "account-notifications", name: "Account Notifications & Alerts", category: "growth", products: ["messaging", "sendgrid", "voice"], description: "Keep customers informed with real-time transactional updates." },
-  { id: "referral-programs", name: "Referral & Invite Programs", category: "growth", products: ["messaging", "sendgrid", "verify"], description: "Grow through customer advocacy with verified referral flows." },
-  { id: "user-onboarding", name: "User Onboarding & Activation", category: "growth", products: ["messaging", "sendgrid", "verify", "segment-connections"], description: "Reduce time-to-value with guided multi-channel onboarding." },
-  { id: "mfa-authentication", name: "Multi-Factor Authentication", category: "trust", products: ["verify", "lookup"], description: "Secure user accounts with SMS, voice, push, or TOTP verification." },
-  { id: "fraud-prevention", name: "Fraud Prevention & Detection", category: "trust", products: ["verify", "lookup"], description: "Detect and block fraud with phone intelligence and verification." },
-  { id: "identity-verification", name: "Identity Verification", category: "trust", products: ["verify", "lookup"], description: "Verify user identity with SIM swap detection and silent network auth." },
-  { id: "consent-management", name: "Consent & Preference Management", category: "trust", products: ["segment-connections", "privacy-portal", "messaging"], description: "Manage opt-in/opt-out and consent across channels and jurisdictions." },
-  { id: "compliance-monitoring", name: "Compliance Monitoring & Audit", category: "trust", products: ["event-streams", "trust-hub", "privacy-portal"], description: "Monitor communications for regulatory compliance with audit trails." },
-  { id: "secure-payments", name: "Secure Payment Authentication", category: "trust", products: ["verify", "voice"], description: "PSD2-compliant strong customer authentication for payment flows." },
-  { id: "data-portability", name: "Data Portability & DSARs", category: "trust", products: ["segment-connections", "privacy-portal"], description: "Handle data subject requests and portability obligations." },
-  { id: "cdp-unification", name: "Customer Data Unification", category: "agility", products: ["segment-connections", "segment-unify"], description: "Consolidate first-party data from all sources into unified profiles." },
-  { id: "real-time-personalization", name: "Real-Time Personalization", category: "agility", products: ["segment-engage", "segment-unify", "messaging"], description: "Deliver contextual experiences using real-time customer signals." },
-  { id: "platform-migration", name: "Platform Migration & Consolidation", category: "agility", products: ["elastic-sip-trunking", "voice", "messaging"], description: "Migrate from legacy CPaaS or on-prem to the Twilio platform." },
-  { id: "global-expansion", name: "Global Communications Expansion", category: "agility", products: ["messaging", "voice", "phone-numbers", "verify"], description: "Expand to new markets with local numbers and compliant messaging." },
+  // Service buying center
+  { id: "ai-agent-assist", name: "AI-Powered Agent Assist", category: "service", products: ["flex", "conversation-intelligence"], description: "Tools that support live agents during calls, including transcription and knowledge base suggestions." },
+  { id: "intelligent-ivr", name: "Intelligent IVR", category: "service", products: ["voice", "studio"], description: "Automated phone menus that let callers self-route or solve routine tasks." },
+  { id: "intelligent-routing", name: "Intelligent Routing", category: "service", products: ["taskrouter"], description: "Dynamically route inbound requests to the most qualified agent." },
+  { id: "self-service-automation", name: "Self-Service Automation", category: "service", products: ["studio", "conversation-relay"], description: "AI-powered bots handling routine tasks without human intervention." },
+  { id: "chatbots-virtual-assistants", name: "Chatbots & Virtual Assistants", category: "service", products: ["studio", "flex", "conversation-relay"], description: "Conversational AI for customer self-service across channels." },
+  { id: "call-tracking", name: "Call Tracking & Analytics", category: "service", products: ["voice", "event-streams"], description: "Track and analyze voice interactions for performance insights." },
+  { id: "omnichannel-comms", name: "Omnichannel 2-Way Communication", category: "service", products: ["messaging", "voice", "sendgrid"], description: "Engage customers on their preferred channel with unified context." },
+  { id: "omnichannel-support", name: "Omnichannel Support Chat", category: "service", products: ["messaging", "flex"], description: "Unified support across chat, SMS, WhatsApp, and voice." },
+  { id: "appointment-reminders", name: "Appointment Reminders & Scheduling", category: "service", products: ["messaging", "voice"], description: "Reduce no-shows with automated multi-channel reminders." },
+
+  // Marketing buying center
+  { id: "proactive-outreach", name: "Proactive Customer Outreach", category: "marketing", products: ["messaging", "sendgrid", "segment-engage"], description: "Reach customers before they reach you with personalized notifications." },
+  { id: "customer-surveys", name: "Customer Surveys & Feedback", category: "marketing", products: ["messaging", "sendgrid"], description: "Collect feedback at key moments via SMS, email, or WhatsApp." },
+  { id: "personalized-marketing", name: "Personalized Marketing Campaigns", category: "marketing", products: ["segment-engage", "messaging", "sendgrid", "marketing-campaigns"], description: "Data-driven campaigns personalized using unified customer profiles." },
+  { id: "loyalty-programs", name: "Loyalty & Retention Programs", category: "marketing", products: ["messaging", "segment-engage", "sendgrid"], description: "Drive repeat purchases with personalized loyalty communications." },
+  { id: "abandoned-cart", name: "Abandoned Cart Recovery", category: "marketing", products: ["messaging", "segment-engage"], description: "Win back shoppers with timely, personalized cart reminders." },
+  { id: "referral-programs", name: "Referral & Invite Programs", category: "marketing", products: ["messaging", "sendgrid", "verify"], description: "Grow through customer advocacy with verified referral flows." },
+
+  // Sales buying center
+  { id: "lead-nurturing", name: "Lead Nurturing & Conversion", category: "sales", products: ["messaging", "sendgrid", "segment-connections"], description: "Automated sequences to convert prospects across channels." },
+
+  // Product buying center
+  { id: "account-notifications", name: "Account Notifications & Alerts", category: "product", products: ["messaging", "sendgrid", "voice"], description: "Keep customers informed with real-time transactional updates." },
+  { id: "user-onboarding", name: "User Onboarding & Activation", category: "product", products: ["messaging", "sendgrid", "verify", "segment-connections"], description: "Reduce time-to-value with guided multi-channel onboarding." },
+  { id: "cdp-unification", name: "Customer Data Unification", category: "product", products: ["segment-connections", "segment-unify"], description: "Consolidate first-party data from all sources into unified profiles." },
+  { id: "real-time-personalization", name: "Real-Time Personalization", category: "product", products: ["segment-engage", "segment-unify", "messaging"], description: "Deliver contextual experiences using real-time customer signals." },
+  { id: "global-expansion", name: "Global Communications Expansion", category: "product", products: ["messaging", "voice", "phone-numbers", "verify"], description: "Expand to new markets with local numbers and compliant messaging." },
+
+  // IT & Security buying center
+  { id: "mfa-authentication", name: "Multi-Factor Authentication", category: "it-security", products: ["verify", "lookup"], description: "Secure user accounts with SMS, voice, push, or TOTP verification." },
+  { id: "fraud-prevention", name: "Fraud Prevention & Detection", category: "it-security", products: ["verify", "lookup"], description: "Detect and block fraud with phone intelligence and verification." },
+  { id: "identity-verification", name: "Identity Verification", category: "it-security", products: ["verify", "lookup"], description: "Verify user identity with SIM swap detection and silent network auth." },
+  { id: "consent-management", name: "Consent & Preference Management", category: "it-security", products: ["segment-connections", "privacy-portal", "messaging"], description: "Manage opt-in/opt-out and consent across channels and jurisdictions." },
+  { id: "compliance-monitoring", name: "Compliance Monitoring & Audit", category: "it-security", products: ["event-streams", "trust-hub", "privacy-portal"], description: "Monitor communications for regulatory compliance with audit trails." },
+  { id: "secure-payments", name: "Secure Payment Authentication", category: "it-security", products: ["verify", "voice"], description: "PSD2-compliant strong customer authentication for payment flows." },
+  { id: "data-portability", name: "Data Portability & DSARs", category: "it-security", products: ["segment-connections", "privacy-portal"], description: "Handle data subject requests and portability obligations." },
+  { id: "platform-migration", name: "Platform Migration & Consolidation", category: "it-security", products: ["elastic-sip-trunking", "voice", "messaging"], description: "Migrate from legacy CPaaS or on-prem to the Twilio platform." },
 ];
 
 const PRODUCTS = [
@@ -252,9 +261,9 @@ export default function Home() {
             {selectionMode === "useCase" ? (
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-gray-500 mb-1">What are you solving for?</label>
+                  <label className="block text-xs font-medium text-gray-500 mb-1">Buying center</label>
                   <select value={useCaseCategory} onChange={(e) => { setUseCaseCategory(e.target.value); setSelectedUseCase(""); }} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
-                    <option value="">All categories</option>
+                    <option value="">All buying centers</option>
                     {USE_CASE_CATEGORIES.map(c => (<option key={c.id} value={c.id}>{c.label}</option>))}
                   </select>
                 </div>
