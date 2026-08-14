@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, MessageSquare, HelpCircle, Database, BookOpen, Zap, Trash2, ToggleLeft, ToggleRight, Send } from "lucide-react";
 
 const USE_CASE_CATEGORIES = [
@@ -159,6 +159,39 @@ function ResidencyBadge({ status }: { status: string }) {
   return <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium ${styles[status] || ""}`}>{labels[status] || status}</span>;
 }
 
+function ExpandableSection({ title, icon, children, defaultOpen = false, borderColor = "border-gray-200" }: { title: string; icon: React.ReactNode; children: React.ReactNode; defaultOpen?: boolean; borderColor?: string }) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className={`border ${borderColor} rounded-lg overflow-hidden transition-all ${open ? "bg-white" : "bg-slate-50 hover:bg-white"}`}>
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center gap-2 p-3 text-left group">
+        {icon}
+        <span className="text-xs font-medium text-gray-800 flex-1">{title}</span>
+        <span className={`text-[9px] font-medium uppercase tracking-wide ${open ? "text-transparent" : "text-slate-400 group-hover:text-red-500"} transition-colors`}>
+          {open ? "" : "Expand"}
+        </span>
+        <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+      </button>
+      <div className={`transition-all duration-200 ease-in-out ${open ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"} overflow-hidden`}>
+        <div className="px-3 pb-3 border-t border-gray-100">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const NAV_SECTIONS = [
+  { id: "products", label: "Products", icon: "shield" },
+  { id: "talk-track", label: "Talk track", icon: "globe" },
+  { id: "regulations", label: "Regulations", icon: "shield" },
+  { id: "residency", label: "Data residency", icon: "database" },
+  { id: "objections", label: "Objections", icon: "alert" },
+  { id: "faq", label: "FAQ", icon: "help" },
+  { id: "deletion", label: "Deletion", icon: "trash" },
+  { id: "persona", label: "Persona", icon: "users" },
+  { id: "market-entry", label: "Market entry", icon: "clock" },
+];
+
 export default function Home() {
   const [selectionMode, setSelectionMode] = useState<"useCase" | "products">("useCase");
   const [useCaseCategory, setUseCaseCategory] = useState("");
@@ -174,6 +207,23 @@ export default function Home() {
   const [askLoading, setAskLoading] = useState(false);
   const [askAnswer, setAskAnswer] = useState<{ answer: string; sources: string[]; confidence: string; caveat: string | null } | null>(null);
   const [askError, setAskError] = useState("");
+  const [activeSection, setActiveSection] = useState("products");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+    NAV_SECTIONS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [results]);
 
   const filteredUseCases = useCaseCategory ? USE_CASES.filter(uc => uc.category === useCaseCategory) : USE_CASES;
   const activeUseCase = USE_CASES.find(uc => uc.id === selectedUseCase);
@@ -375,11 +425,36 @@ export default function Home() {
           </div>
         )}
 
-        {/* Results - Dense multi-column layout */}
+        {/* Results with sticky sidebar */}
         {hasResults && firstResult && (
-          <div className="space-y-5">
+          <div className="flex gap-5">
+            {/* Sticky dark sidebar nav */}
+            <nav className="hidden lg:block w-48 shrink-0">
+              <div className="sticky top-6 bg-slate-900 rounded-xl p-3 space-y-0.5">
+                <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-2">Sections</p>
+                {NAV_SECTIONS.map(({ id, label }) => {
+                  const el = typeof document !== "undefined" ? document.getElementById(id) : null;
+                  const exists = !!el;
+                  if (!exists && id !== "products") return null;
+                  return (
+                    <a
+                      key={id}
+                      href={`#${id}`}
+                      onClick={(e) => { e.preventDefault(); document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                      className={`flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs transition-all ${activeSection === id ? "bg-red-500/10 text-red-400 font-medium" : "text-slate-400 hover:text-white hover:bg-slate-800"}`}
+                    >
+                      <span className={`w-1.5 h-1.5 rounded-full ${activeSection === id ? "bg-red-500" : "bg-slate-600"}`} />
+                      {label}
+                    </a>
+                  );
+                })}
+              </div>
+            </nav>
+
+            {/* Main content */}
+            <div className="flex-1 space-y-5 min-w-0">
             {/* Row 1: Product cards (no score) */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div id="products" className="grid grid-cols-2 lg:grid-cols-3 gap-3 scroll-mt-6">
               {Object.entries(results).map(([pid, r]) => (
                 <div key={pid} className="bg-white rounded-xl border border-gray-200 p-4">
                   <div className="flex items-center justify-between mb-2">
@@ -404,7 +479,7 @@ export default function Home() {
             {/* Row 2: Three columns - Positioning | Regulations | Data Residency */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* Col 1: Sales positioning */}
-              <div className="bg-white rounded-xl border border-gray-200 p-4">
+              <div id="talk-track" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
                 <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                   <Globe className="w-4 h-4 text-red-500" />Talk track for {country}
                 </h3>
@@ -431,29 +506,25 @@ export default function Home() {
               </div>
 
               {/* Col 2: Regulatory breakdown */}
-              <div className="bg-white rounded-xl border border-gray-200 p-4">
+              <div id="regulations" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
                 <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                   <Shield className="w-4 h-4 text-red-500" />Regulations
                 </h3>
                 <div className="space-y-2 max-h-[400px] overflow-y-auto">
                   {firstResult.analysis.regulatoryFit.map((reg) => (
-                    <details key={reg.regulationId} className="border border-gray-100 rounded-lg">
-                      <summary className="flex items-center gap-2 p-2 cursor-pointer hover:bg-gray-50 text-xs">
-                        <StatusBadge status={reg.status} />
-                        <span className="font-medium text-gray-800">{reg.regulationName}</span>
-                      </summary>
-                      <div className="px-2 pb-2 text-xs text-gray-600">
+                    <ExpandableSection key={reg.regulationId} title={reg.regulationName} icon={<StatusBadge status={reg.status} />}>
+                      <div className="text-xs text-gray-600 pt-2">
                         <p className="mb-1">{reg.explanation}</p>
                         {reg.risks.length > 0 && <div className="text-red-600 text-[11px]">{reg.risks.join("; ")}</div>}
                         {reg.mitigations.length > 0 && <div className="text-emerald-600 text-[11px] mt-1">{reg.mitigations.join("; ")}</div>}
                       </div>
-                    </details>
+                    </ExpandableSection>
                   ))}
                 </div>
               </div>
 
               {/* Col 3: Data residency */}
-              <div className="bg-white rounded-xl border border-gray-200 p-4">
+              <div id="residency" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
                 <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                   <Database className="w-4 h-4 text-red-500" />Data residency (IE1)
                 </h3>
@@ -498,17 +569,14 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* Objections */}
               {firstResult.objections && firstResult.objections.length > 0 && (
-                <div className="bg-white rounded-xl border border-amber-200 p-4">
+                <div id="objections" className="bg-white rounded-xl border border-amber-200 p-4 scroll-mt-6">
                   <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4 text-amber-500" />Objection handling
                   </h3>
                   <div className="space-y-2 max-h-[350px] overflow-y-auto">
                     {firstResult.objections.map((obj) => (
-                      <details key={obj.id} className="border border-amber-100 rounded-lg">
-                        <summary className="p-2 cursor-pointer hover:bg-amber-50 text-xs">
-                          <span className="italic text-gray-600">&ldquo;{obj.customerSays}&rdquo;</span>
-                        </summary>
-                        <div className="px-2 pb-2 text-xs space-y-1">
+                      <ExpandableSection key={obj.id} title={`"${obj.customerSays}"`} icon={<MessageSquare className="w-3.5 h-3.5 text-amber-500 shrink-0" />} borderColor="border-amber-100">
+                        <div className="text-xs space-y-1 pt-2">
                           <p className="text-gray-600">{obj.reality}</p>
                           <p className="bg-amber-50 p-2 rounded text-gray-800">{obj.whatToSay}</p>
                           {obj.supportingLinks && obj.supportingLinks.length > 0 && (
@@ -522,7 +590,7 @@ export default function Home() {
                             </div>
                           )}
                         </div>
-                      </details>
+                      </ExpandableSection>
                     ))}
                   </div>
                   {firstResult.alternativeProducts && firstResult.alternativeProducts.length > 0 && (
@@ -540,7 +608,7 @@ export default function Home() {
 
               {/* FAQ + Ask */}
               {firstResult.emea_faq && firstResult.emea_faq.length > 0 && (
-                <div className="bg-white rounded-xl border border-gray-200 p-4">
+                <div id="faq" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
                   <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                     <HelpCircle className="w-4 h-4 text-red-500" />EMEA compliance FAQ
                   </h3>
@@ -592,9 +660,8 @@ export default function Home() {
                       <div key={cat.id}>
                         <p className="text-[10px] font-semibold text-gray-400 uppercase mb-1">{cat.title}</p>
                         {cat.questions.slice(0, 2).map((q, i) => (
-                          <details key={i} className="border border-gray-100 rounded-lg mb-1">
-                            <summary className="p-2 cursor-pointer hover:bg-gray-50 text-xs font-medium text-gray-700">{q.question}</summary>
-                            <div className="px-2 pb-2 text-[11px] text-gray-600">
+                          <ExpandableSection key={i} title={q.question} icon={<HelpCircle className="w-3.5 h-3.5 text-slate-400 shrink-0" />}>
+                            <div className="text-[11px] text-gray-600 pt-2">
                               {q.answer}
                               {q.sources && q.sources.length > 0 && (
                                 <div className="mt-1.5 pt-1.5 border-t border-gray-100">
@@ -607,7 +674,7 @@ export default function Home() {
                                 </div>
                               )}
                             </div>
-                          </details>
+                          </ExpandableSection>
                         ))}
                       </div>
                     ))}
@@ -619,7 +686,7 @@ export default function Home() {
 
             {/* Row 4: Data Deletion & Redaction Solutions */}
             {Object.values(results).some(r => r.deletionSolution) && (
-              <div className="bg-white rounded-xl border border-gray-200 p-4">
+              <div id="deletion" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
                 <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                   <Trash2 className="w-4 h-4 text-red-500" />Data removal, redaction, and deletion
                 </h3>
@@ -679,7 +746,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="space-y-4">
                 {firstResult.gtmContext?.persona && (
-                  <div className="bg-white rounded-xl border border-gray-200 p-4">
+                  <div id="persona" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
                     <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                       <Users className="w-4 h-4 text-red-500" />Selling to: {firstResult.gtmContext.persona.title}
                     </h3>
@@ -713,7 +780,7 @@ export default function Home() {
                 )}
 
                 {/* Market entry */}
-                <div className="bg-white rounded-xl border border-gray-200 p-4">
+                <div id="market-entry" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
                   <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                     <Clock className="w-4 h-4 text-red-500" />Market entry
                   </h3>
@@ -765,6 +832,7 @@ export default function Home() {
                 </div>
               </div>
             )}
+          </div>
           </div>
         )}
 
