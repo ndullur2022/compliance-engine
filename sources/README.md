@@ -32,6 +32,7 @@ This directory contains the static source material that powers the EMEA Readines
 | URL | Content | Used for |
 |-----|---------|----------|
 | [Trust Center — Product Features](https://security.twilio.com/?itemName=product_features&source=click) | Product datasheets, pen test reports, SOC 2 | Data roles, residency, AI claims |
+| [Trust Center — Legal](https://security.twilio.com/?itemName=legal&source=click) | DPA, sub-processors list, customer audit rights, acceptable use policy | Transfer mechanisms, processor obligations, sub-processor transparency |
 | [Trust Center — ESG](https://security.twilio.com/?itemName=environment_social_governance&source=click) | Certifications, compliance docs | Certification claims |
 
 ## Important notes
