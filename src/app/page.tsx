@@ -571,6 +571,16 @@ export default function Home() {
                       {r.residencyNuances?.excludedFeatures && r.residencyNuances.excludedFeatures.length > 0 && (
                         <div className="mt-1 text-[10px] text-red-500">{r.residencyNuances.excludedFeatures.slice(0, 2).join("; ")}</div>
                       )}
+                      {r.residencyNuances?.notes && r.residencyNuances.notes.length > 0 && (
+                        <ul className="mt-1 space-y-0.5">
+                          {r.residencyNuances.notes.map((note: string, ni: number) => (
+                            <li key={ni} className="flex items-start gap-1 text-[10px] text-gray-500">
+                              <HelpCircle className="w-2.5 h-2.5 text-slate-400 mt-0.5 shrink-0" />
+                              {note}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   ))}
                 </div>
