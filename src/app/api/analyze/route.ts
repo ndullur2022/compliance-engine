@@ -8,6 +8,7 @@ import { getResidencyForProduct, BILLING_DATA_NOTE } from "@/lib/data-residency-
 import { getFAQForProduct } from "@/lib/emea-faq";
 import { getRelevantArticles } from "@/lib/blog-articles";
 import { getDeletionSolutionForProduct } from "@/lib/data-deletion-solutions";
+import { getCompetitorGapsForProduct } from "@/lib/competitors";
 
 export async function POST(request: NextRequest) {
   try {
@@ -66,6 +67,7 @@ export async function POST(request: NextRequest) {
     const relevantFAQ = getFAQForProduct(productId);
     const blogArticles = getRelevantArticles(productId);
     const deletionSolution = getDeletionSolutionForProduct(productId);
+    const competitors = getCompetitorGapsForProduct(productId);
 
     return NextResponse.json({
       product: {
@@ -129,6 +131,12 @@ export async function POST(request: NextRequest) {
         caveats: deletionSolution.caveats,
         documentationUrl: deletionSolution.documentationUrl || null,
       } : null,
+      competitors: competitors.map(c => ({
+        competitor: c.competitor,
+        gapClaim: c.gapClaim,
+        whatToSay: c.whatToSay,
+        sources: c.sources,
+      })),
       gtmContext: {
         persona: selectedPersona ? {
           id: selectedPersona.persona_id,

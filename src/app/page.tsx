@@ -139,6 +139,7 @@ interface AnalysisResult {
   blogArticles: { title: string; url: string; author: string; date: string; summary: string; tags: string[] }[];
   deletionSolution: { productId: string; productName: string; deletionMethod: string; deletionEndpoint: string | null; retentionDefault: string; configurableRetention: boolean; redactionCapabilities: string[]; automatedDeletion: boolean; dsarSupport: string; steps: string[]; caveats: string[]; documentationUrl: string | null } | null;
   emea_faq: { id: string; title: string; questions: { question: string; answer: string; sources?: string[] }[] }[];
+  competitors: { competitor: string; gapClaim: string; whatToSay: string; sources: { label: string; url: string }[] }[];
   gtmContext?: {
     persona: { id: string; title: string; tier: string; careabouts: string[]; challenges: string[]; metrics: string[] } | null;
     useCases: { name: string; description: string; valuePool: string; businessGoal: string; kpis: string[] }[];
@@ -186,6 +187,7 @@ const NAV_SECTIONS = [
   { id: "regulations", label: "Regulations", icon: "shield" },
   { id: "residency", label: "Data residency", icon: "database" },
   { id: "objections", label: "Objections", icon: "alert" },
+  { id: "competitors", label: "Competitors", icon: "shield" },
   { id: "faq", label: "FAQ", icon: "help" },
   { id: "deletion", label: "Deletion", icon: "trash" },
   { id: "persona", label: "Persona", icon: "users" },
@@ -678,6 +680,47 @@ export default function Home() {
               )}
 
             </div>
+
+            {/* Row 3.5: Competitive positioning — data residency / regulatory gap objections */}
+            {firstResult.competitors && firstResult.competitors.length > 0 && (
+              <div id="competitors" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+                <h3 className="text-sm font-semibold text-slate-900 mb-2 flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-red-500" />Competitive gap objections
+                </h3>
+                <div className="mb-3 p-2 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2 text-red-800 text-[11px]">
+                  <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold">Internal sales enablement only.</span> Sourced from internal competitive battlecards — do not share externally or paste into customer-facing communications.
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                  {firstResult.competitors.map((c, i) => (
+                    <ExpandableSection key={i} title={c.competitor} icon={<Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />}>
+                      <div className="text-xs space-y-2 pt-2">
+                        <div>
+                          <p className="text-[9px] font-semibold text-amber-600 uppercase mb-1">Their claim</p>
+                          <p className="text-gray-700">{c.gapClaim}</p>
+                        </div>
+                        <div>
+                          <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">What to say</p>
+                          <p className="bg-slate-50 p-2 rounded text-gray-800">{c.whatToSay}</p>
+                        </div>
+                        {c.sources && c.sources.length > 0 && (
+                          <div className="pt-1.5 border-t border-gray-100">
+                            <span className="text-[9px] font-semibold text-gray-400 uppercase">Sources: </span>
+                            {c.sources.map((src, si) => (
+                              <a key={si} href={src.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-red-500 hover:underline mr-2">
+                                <ExternalLink className="w-2.5 h-2.5" />{src.label}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </ExpandableSection>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Row 4: Data Deletion & Redaction Solutions */}
             {Object.values(results).some(r => r.deletionSolution) && (

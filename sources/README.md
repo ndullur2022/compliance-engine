@@ -26,6 +26,7 @@ This directory contains the static source material that powers the EMEA Readines
 | [regulations.md](regulations.md) | Regulatory frameworks referenced (GDPR, DORA, NIS2, ePrivacy, etc.) | 2026-08-14 |
 | [ai-and-llm.md](ai-and-llm.md) | AI/LLM data handling claims, EU AI Act positioning | 2026-08-14 |
 | [product-datasheets.md](product-datasheets.md) | Key claims from official Privacy, Security & AI Governance Datasheets (July 2026) | 2026-08-14 |
+| [competitive-positioning.md](competitive-positioning.md) | Competitor data residency/regulatory gap objections, sourced from internal Crayon battlecards — **internal sales enablement only, not for customer-facing use** | 2026-08-14 |
 
 ## External source URLs
 
@@ -41,3 +42,4 @@ This directory contains the static source material that powers the EMEA Readines
 - **Do not modify legal instrument names** (DPA, BCR, SCC, DPF) — use exact terminology
 - **Data residency is not a value prop** for SMS, Voice, and Email per internal policy — position transfer mechanisms instead
 - All content in this directory may be copy-pasted by sales reps into customer-facing emails. Write accordingly.
+- **Exception:** [competitive-positioning.md](competitive-positioning.md) is sourced from internal Crayon battlecards (themselves marked confidential) and must NOT be copy-pasted externally or into customer-facing communications — internal sales prep only.
