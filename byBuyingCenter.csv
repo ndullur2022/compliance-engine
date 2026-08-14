@@ -1,0 +1,28 @@
+﻿Finalized UC,Problem (Customer Pain),Finalized KPIs,Finalized Buying Center(s)
+Automated Surveys & NPS,Lack customer feedback and insights,"Churn rate,CSAT / NPS,Business FTE Productivity","Marketing,Sales,Support,Product & Ops"
+Multi-Channel Inbound Self-Service & IVR/IVA,Support costs are too high,"First-time Buyer conversion rate,Sales cycle length,CSAT / NPS,First call resolution (FCR),Wait time,Deflection rate,Ticket backlog","Support,Sales"
+Click to Call,Friction slows sales conversations,"First-time Buyer conversion rate,Sales cycle length",Sales
+Supervisor Coaching & Insights,Limited visibility into agent performance,"CSAT / NPS,Average handle time (AHT),Issue resolution time,Ticket backlog","Support,Sales"
+New User Onboarding & Activation,New users drop off or fail to complete account setup due to friction,"Account Activation Rate,Opt-in rate","Marketing,Product & Ops"
+Real-Time Live Agent Assist,Human agents lack answers in real time,"First call resolution (FCR),Average handle time (AHT)","Support,Sales"
+Intelligent Contextual Handoff,Customers don't get to the right agent,"Sales cycle length,Call Answer Rate,Wait time,Issue resolution time",Support
+Drip & Lifecycle Campaigns,Low engagement across customer lifecycle,"First-time Buyer conversion rate,Churn rate,Email Deliverability Rate,Messaging Deliverability Rate",Marketing
+Account & Transaction Specific Alerts,Customers miss critical account updates,"Churn rate,Fraud incidents,Account takeovers,Messaging Deliverability Rate,Upsell / Cross-sell / Repeat purchase rate","Sales,Product & Ops,Security"
+Secure Signup,Fake or fraudulent accounts are created without proper safeguards,"Account Activation Rate,Signup Completion Rate","Product & Ops,Security"
+Ad Spend Optimization,Marketing spend isn't delivering ROI,"ROAS,Customer acquisition cost (CAC)",Marketing
+"Compliant Consent, Preference Management & Secure Segmentation","Struggling to manage consent compliance, preference management, or segmentation","ROAS,Customer acquisition cost (CAC),Churn rate,Opt-out rate,Compliance violations,Data privacy,Opt-in rate","Marketing,Sales,Support,Product & Ops,Security"
+Warm-Start Outbound Agents,Don't want to waste human agent time on leads,"First-time Buyer conversion rate,Call Answer Rate","Sales,Support"
+Mass Promotions,Need to reach customers at scale,"First-time Buyer conversion rate,Upsell / Cross-sell / Repeat purchase rate,Email Deliverability Rate,Messaging Deliverability Rate",Marketing
+Unified Profiles & Identity Management/Resolution,Customer data exists in silos,"Fraud incidents,False positives,Compliance violations,Business FTE Productivity,Engineering FTE Productivity","Marketing,Sales,Support,Product & Ops,Security"
+Mass Alerts & Notifications,Need to communicate urgent updates,"Read rate,Incident response time,Compliance violations,Email Deliverability Rate,Messaging Deliverability Rate","Marketing,Sales,Support,Product & Ops"
+Real-Time Observability & Compliance Monitoring,Can't trust AI agents at scale,"First call resolution (FCR),Average handle time (AHT),Issue resolution time","Support,Sales,Product & Ops,Security"
+Fraud Detection & Mitigation,Fraud losses are increasing,"Fraud incidents,False positives,Messaging Deliverability Rate","Product & Ops,Security"
+Loyalty & Rewards,Struggling to retain existing customers,"Email Deliverability Rate,Messaging Deliverability Rate,Upsell / Cross-sell / Repeat purchase rate",Marketing
+Persistent Conversations & Contextual History,Customer context is fragmented,"CSAT / NPS,First call resolution (FCR),Deflection rate,Ticket backlog","Marketing,Sales,Support,Product & Ops,Security"
+Lead Prioritization & Alerts,Reps waste time on low-value leads,"Sales cycle length,Call Answer Rate",Sales
+Multi-Channel Contact Center,"Live agents lack a unified, multi-channel workspace and communications layer to conduct two-way inbound and outbound conversations after automated self-service routing or lead assignment.","CSAT / NPS,First call resolution (FCR),Issue resolution time,Average handle time (AHT),Wait time,Call Answer Rate","Support,Sales"
+Personalized Promotions,Offers feel generic and ineffective,"First-time Buyer conversion rate,Web traffic,ROAS,Upsell / Cross-sell / Repeat purchase rate,Email Deliverability Rate,Messaging Deliverability Rate","Marketing,Sales"
+Appointment Scheduling & Rescheduling,Scheduling processes are manual,"No-show rate,Wait time,Messaging Deliverability Rate","Sales,Support,Product & Ops"
+Automated Wrap-Up & Knowledge Capture,Agents spend too much time documenting,"First call resolution (FCR),Average handle time (AHT)","Support,Sales"
+Abandon Cart & Winback,Lost revenue from abandoned journeys,"First-time Buyer conversion rate,Upsell / Cross-sell / Repeat purchase rate,Churn rate,Email Deliverability Rate,Messaging Deliverability Rate",Marketing
+Secure Login,Logins create friction or risk around account takeovers,"Account takeovers,OTP success/conversion rate","Product & Ops,Security"

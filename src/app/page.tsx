@@ -6,50 +6,48 @@ import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, Chevron
 const USE_CASE_CATEGORIES = [
   { id: "marketing", label: "Marketing", icon: "TrendingUp" },
   { id: "sales", label: "Sales", icon: "Users" },
-  { id: "service", label: "Service", icon: "MessageSquare" },
-  { id: "product", label: "Product", icon: "Zap" },
-  { id: "it-security", label: "IT & Security", icon: "Shield" },
+  { id: "support", label: "Support", icon: "MessageSquare" },
+  { id: "product-ops", label: "Product & Ops", icon: "Zap" },
+  { id: "security", label: "Security", icon: "Shield" },
 ];
 
 const USE_CASES = [
-  // Service buying center
-  { id: "ai-agent-assist", name: "AI-Powered Agent Assist", category: "service", products: ["flex", "conversation-intelligence"], description: "Tools that support live agents during calls, including transcription and knowledge base suggestions." },
-  { id: "intelligent-ivr", name: "Intelligent IVR", category: "service", products: ["voice", "studio"], description: "Automated phone menus that let callers self-route or solve routine tasks." },
-  { id: "intelligent-routing", name: "Intelligent Routing", category: "service", products: ["taskrouter"], description: "Dynamically route inbound requests to the most qualified agent." },
-  { id: "self-service-automation", name: "Self-Service Automation", category: "service", products: ["studio", "conversation-relay"], description: "AI-powered bots handling routine tasks without human intervention." },
-  { id: "chatbots-virtual-assistants", name: "Chatbots & Virtual Assistants", category: "service", products: ["studio", "flex", "conversation-relay"], description: "Conversational AI for customer self-service across channels." },
-  { id: "call-tracking", name: "Call Tracking & Analytics", category: "service", products: ["voice", "event-streams"], description: "Track and analyze voice interactions for performance insights." },
-  { id: "omnichannel-comms", name: "Omnichannel 2-Way Communication", category: "service", products: ["messaging", "voice", "sendgrid"], description: "Engage customers on their preferred channel with unified context." },
-  { id: "omnichannel-support", name: "Omnichannel Support Chat", category: "service", products: ["messaging", "flex"], description: "Unified support across chat, SMS, WhatsApp, and voice." },
-  { id: "appointment-reminders", name: "Appointment Reminders & Scheduling", category: "service", products: ["messaging", "voice"], description: "Reduce no-shows with automated multi-channel reminders." },
-
-  // Marketing buying center
-  { id: "proactive-outreach", name: "Proactive Customer Outreach", category: "marketing", products: ["messaging", "sendgrid", "segment-engage"], description: "Reach customers before they reach you with personalized notifications." },
-  { id: "customer-surveys", name: "Customer Surveys & Feedback", category: "marketing", products: ["messaging", "sendgrid"], description: "Collect feedback at key moments via SMS, email, or WhatsApp." },
-  { id: "personalized-marketing", name: "Personalized Marketing Campaigns", category: "marketing", products: ["segment-engage", "messaging", "sendgrid", "marketing-campaigns"], description: "Data-driven campaigns personalized using unified customer profiles." },
-  { id: "loyalty-programs", name: "Loyalty & Retention Programs", category: "marketing", products: ["messaging", "segment-engage", "sendgrid"], description: "Drive repeat purchases with personalized loyalty communications." },
-  { id: "abandoned-cart", name: "Abandoned Cart Recovery", category: "marketing", products: ["messaging", "segment-engage"], description: "Win back shoppers with timely, personalized cart reminders." },
-  { id: "referral-programs", name: "Referral & Invite Programs", category: "marketing", products: ["messaging", "sendgrid", "verify"], description: "Grow through customer advocacy with verified referral flows." },
+  // Support buying center
+  { id: "multi-channel-ivr", name: "Multi-Channel Inbound Self-Service & IVR/IVA", category: "support", products: ["voice", "studio", "conversation-relay"], description: "Support costs are too high. Reduce first call resolution time, wait time, and ticket backlog with intelligent self-service." },
+  { id: "supervisor-coaching", name: "Supervisor Coaching & Insights", category: "support", products: ["flex", "conversation-intelligence"], description: "Limited visibility into agent performance. Improve CSAT, average handle time, and issue resolution." },
+  { id: "live-agent-assist", name: "Real-Time Live Agent Assist", category: "support", products: ["flex", "conversation-intelligence"], description: "Human agents lack answers in real time. Improve first call resolution and reduce average handle time." },
+  { id: "contextual-handoff", name: "Intelligent Contextual Handoff", category: "support", products: ["taskrouter", "flex"], description: "Customers don't get to the right agent. Reduce wait time and improve issue resolution time." },
+  { id: "multi-channel-contact-center", name: "Multi-Channel Contact Center", category: "support", products: ["flex", "messaging", "voice"], description: "Live agents lack a unified workspace for two-way conversations across channels after automated routing." },
+  { id: "appointment-scheduling", name: "Appointment Scheduling & Rescheduling", category: "support", products: ["messaging", "voice", "studio"], description: "Scheduling processes are manual. Reduce no-show rate and wait time with automated reminders." },
+  { id: "automated-wrap-up", name: "Automated Wrap-Up & Knowledge Capture", category: "support", products: ["conversation-intelligence", "flex"], description: "Agents spend too much time documenting. Reduce average handle time and improve first call resolution." },
+  { id: "persistent-conversations", name: "Persistent Conversations & Contextual History", category: "support", products: ["flex", "segment-unify"], description: "Customer context is fragmented. Improve CSAT, first call resolution, and reduce ticket backlog." },
+  { id: "observability-monitoring", name: "Real-Time Observability & Compliance Monitoring", category: "support", products: ["event-streams", "conversation-intelligence"], description: "Can't trust AI agents at scale. Monitor first call resolution, average handle time, and issue resolution." },
 
   // Sales buying center
-  { id: "lead-nurturing", name: "Lead Nurturing & Conversion", category: "sales", products: ["messaging", "sendgrid", "segment-connections"], description: "Automated sequences to convert prospects across channels." },
+  { id: "click-to-call", name: "Click to Call", category: "sales", products: ["voice", "flex"], description: "Friction slows sales conversations. Improve first-time buyer conversion rate and reduce sales cycle length." },
+  { id: "warm-start-outbound", name: "Warm-Start Outbound Agents", category: "sales", products: ["voice", "conversation-relay", "flex"], description: "Don't want to waste human agent time on leads. Improve call answer rate and conversion." },
+  { id: "lead-prioritization", name: "Lead Prioritization & Alerts", category: "sales", products: ["messaging", "voice"], description: "Reps waste time on low-value leads. Reduce sales cycle length and improve call answer rate." },
+  { id: "personalized-promotions", name: "Personalized Promotions", category: "sales", products: ["segment-engage", "messaging", "sendgrid"], description: "Offers feel generic and ineffective. Improve conversion, ROAS, and upsell rates." },
 
-  // Product buying center
-  { id: "account-notifications", name: "Account Notifications & Alerts", category: "product", products: ["messaging", "sendgrid", "voice"], description: "Keep customers informed with real-time transactional updates." },
-  { id: "user-onboarding", name: "User Onboarding & Activation", category: "product", products: ["messaging", "sendgrid", "verify", "segment-connections"], description: "Reduce time-to-value with guided multi-channel onboarding." },
-  { id: "cdp-unification", name: "Customer Data Unification", category: "product", products: ["segment-connections", "segment-unify"], description: "Consolidate first-party data from all sources into unified profiles." },
-  { id: "real-time-personalization", name: "Real-Time Personalization", category: "product", products: ["segment-engage", "segment-unify", "messaging"], description: "Deliver contextual experiences using real-time customer signals." },
-  { id: "global-expansion", name: "Global Communications Expansion", category: "product", products: ["messaging", "voice", "phone-numbers", "verify"], description: "Expand to new markets with local numbers and compliant messaging." },
+  // Marketing buying center
+  { id: "automated-surveys", name: "Automated Surveys & NPS", category: "marketing", products: ["messaging", "sendgrid", "studio"], description: "Lack customer feedback and insights. Track churn rate, CSAT/NPS, and business productivity." },
+  { id: "drip-lifecycle", name: "Drip & Lifecycle Campaigns", category: "marketing", products: ["segment-engage", "messaging", "sendgrid"], description: "Low engagement across customer lifecycle. Improve conversion, reduce churn, boost deliverability." },
+  { id: "ad-spend-optimization", name: "Ad Spend Optimization", category: "marketing", products: ["segment-engage", "messaging"], description: "Marketing spend isn't delivering ROI. Improve ROAS and reduce customer acquisition cost." },
+  { id: "mass-promotions", name: "Mass Promotions", category: "marketing", products: ["messaging", "sendgrid", "marketing-campaigns"], description: "Need to reach customers at scale. Boost conversion, upsell, and deliverability rates." },
+  { id: "loyalty-rewards", name: "Loyalty & Rewards", category: "marketing", products: ["messaging", "sendgrid", "segment-engage"], description: "Struggling to retain existing customers. Improve deliverability, upsell, and repeat purchase rates." },
+  { id: "abandon-cart-winback", name: "Abandon Cart & Winback", category: "marketing", products: ["segment-engage", "messaging", "sendgrid"], description: "Lost revenue from abandoned journeys. Recover conversion, upsell, and reduce churn." },
+  { id: "mass-alerts", name: "Mass Alerts & Notifications", category: "marketing", products: ["messaging", "sendgrid", "voice"], description: "Need to communicate urgent updates. Improve read rate, incident response, reduce compliance violations." },
 
-  // IT & Security buying center
-  { id: "mfa-authentication", name: "Multi-Factor Authentication", category: "it-security", products: ["verify", "lookup"], description: "Secure user accounts with SMS, voice, push, or TOTP verification." },
-  { id: "fraud-prevention", name: "Fraud Prevention & Detection", category: "it-security", products: ["verify", "lookup"], description: "Detect and block fraud with phone intelligence and verification." },
-  { id: "identity-verification", name: "Identity Verification", category: "it-security", products: ["verify", "lookup"], description: "Verify user identity with SIM swap detection and silent network auth." },
-  { id: "consent-management", name: "Consent & Preference Management", category: "it-security", products: ["segment-connections", "privacy-portal", "messaging"], description: "Manage opt-in/opt-out and consent across channels and jurisdictions." },
-  { id: "compliance-monitoring", name: "Compliance Monitoring & Audit", category: "it-security", products: ["event-streams", "trust-hub", "privacy-portal"], description: "Monitor communications for regulatory compliance with audit trails." },
-  { id: "secure-payments", name: "Secure Payment Authentication", category: "it-security", products: ["verify", "voice"], description: "PSD2-compliant strong customer authentication for payment flows." },
-  { id: "data-portability", name: "Data Portability & DSARs", category: "it-security", products: ["segment-connections", "privacy-portal"], description: "Handle data subject requests and portability obligations." },
-  { id: "platform-migration", name: "Platform Migration & Consolidation", category: "it-security", products: ["elastic-sip-trunking", "voice", "messaging"], description: "Migrate from legacy CPaaS or on-prem to the Twilio platform." },
+  // Product & Ops buying center
+  { id: "new-user-onboarding", name: "New User Onboarding & Activation", category: "product-ops", products: ["messaging", "sendgrid", "verify"], description: "New users drop off or fail to complete setup. Improve activation rate and opt-in rate." },
+  { id: "transaction-alerts", name: "Account & Transaction Specific Alerts", category: "product-ops", products: ["messaging", "sendgrid", "voice"], description: "Customers miss critical account updates. Reduce churn, fraud incidents, improve deliverability." },
+  { id: "unified-profiles", name: "Unified Profiles & Identity Management/Resolution", category: "product-ops", products: ["segment-connections", "segment-unify"], description: "Customer data exists in silos. Reduce fraud, false positives, compliance violations, boost productivity." },
+  { id: "consent-preference", name: "Compliant Consent, Preference Management & Secure Segmentation", category: "product-ops", products: ["segment-connections", "privacy-portal", "messaging"], description: "Struggling to manage consent compliance, preference management, or segmentation across channels." },
+
+  // Security buying center
+  { id: "secure-signup", name: "Secure Signup", category: "security", products: ["verify", "lookup"], description: "Fake or fraudulent accounts are created without proper safeguards. Improve activation and signup completion rates." },
+  { id: "fraud-detection", name: "Fraud Detection & Mitigation", category: "security", products: ["verify", "lookup"], description: "Fraud losses are increasing. Reduce fraud incidents, false positives, and improve deliverability." },
+  { id: "secure-login", name: "Secure Login", category: "security", products: ["verify", "lookup"], description: "Logins create friction or risk around account takeovers. Reduce account takeovers, improve OTP success." },
 ];
 
 const PRODUCTS = [
