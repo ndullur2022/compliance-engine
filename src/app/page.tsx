@@ -432,11 +432,7 @@ export default function Home() {
             <nav className="hidden lg:block w-48 shrink-0">
               <div className="sticky top-6 bg-slate-900 rounded-xl p-3 space-y-0.5">
                 <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-2">Sections</p>
-                {NAV_SECTIONS.map(({ id, label }) => {
-                  const el = typeof document !== "undefined" ? document.getElementById(id) : null;
-                  const exists = !!el;
-                  if (!exists && id !== "products") return null;
-                  return (
+                {NAV_SECTIONS.map(({ id, label }) => (
                     <a
                       key={id}
                       href={`#${id}`}
@@ -446,8 +442,7 @@ export default function Home() {
                       <span className={`w-1.5 h-1.5 rounded-full ${activeSection === id ? "bg-red-500" : "bg-slate-600"}`} />
                       {label}
                     </a>
-                  );
-                })}
+                ))}
               </div>
             </nav>
 
