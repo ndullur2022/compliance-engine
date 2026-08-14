@@ -615,28 +615,6 @@ export default function Home() {
                 </div>
               )}
 
-              {/* Blog Articles */}
-              {firstResult.blogArticles && firstResult.blogArticles.length > 0 && (
-                <div className="bg-white rounded-xl border border-gray-200 p-4">
-                  <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-[#F22F46]" />Related articles
-                  </h3>
-                  <div className="space-y-2 max-h-[350px] overflow-y-auto">
-                    {firstResult.blogArticles.map((article, i) => (
-                      <a key={i} href={article.url} target="_blank" rel="noopener noreferrer" className="block p-2 border border-gray-100 rounded-lg hover:border-[#F22F46]/30 transition-colors">
-                        <div className="flex items-center gap-2 mb-0.5">
-                          <span className="text-[10px] text-gray-400">{new Date(article.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
-                          {article.tags.slice(0, 2).map((tag, j) => (
-                            <span key={j} className="px-1 py-0.5 rounded text-[9px] bg-[#121c2d]/5 text-[#121c2d]/60">{tag}</span>
-                          ))}
-                        </div>
-                        <p className="text-xs font-medium text-gray-800 line-clamp-1">{article.title}</p>
-                        <p className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{article.summary}</p>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Row 4: Data Deletion & Redaction Solutions */}
