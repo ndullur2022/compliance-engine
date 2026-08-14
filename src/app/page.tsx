@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, MessageSquare, HelpCircle, Database, BookOpen, Zap, Trash2, ToggleLeft, ToggleRight } from "lucide-react";
+import { useState, useRef } from "react";
+import { Shield, Globe, AlertTriangle, CheckCircle, Clock, ChevronRight, ChevronDown, Loader2, Building2, Languages, ExternalLink, Users, TrendingUp, MessageSquare, HelpCircle, Database, BookOpen, Zap, Trash2, ToggleLeft, ToggleRight, Send } from "lucide-react";
 
 const USE_CASE_CATEGORIES = [
   { id: "marketing", label: "Marketing", icon: "TrendingUp" },
@@ -170,6 +170,10 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<Record<string, AnalysisResult>>({});
   const [error, setError] = useState("");
+  const [askQuestion, setAskQuestion] = useState("");
+  const [askLoading, setAskLoading] = useState(false);
+  const [askAnswer, setAskAnswer] = useState<{ answer: string; sources: string[]; confidence: string; caveat: string | null } | null>(null);
+  const [askError, setAskError] = useState("");
 
   const filteredUseCases = useCaseCategory ? USE_CASES.filter(uc => uc.category === useCaseCategory) : USE_CASES;
   const activeUseCase = USE_CASES.find(uc => uc.id === selectedUseCase);
@@ -222,6 +226,27 @@ export default function Home() {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function submitQuestion() {
+    if (!askQuestion.trim() || askLoading) return;
+    setAskLoading(true);
+    setAskError("");
+    setAskAnswer(null);
+    try {
+      const res = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: askQuestion.trim() }),
+      });
+      if (!res.ok) { setAskError("Failed to get answer"); return; }
+      const data = await res.json();
+      setAskAnswer(data);
+    } catch (err: unknown) {
+      setAskError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setAskLoading(false);
     }
   }
 
@@ -513,13 +538,56 @@ export default function Home() {
                 </div>
               )}
 
-              {/* FAQ */}
+              {/* FAQ + Ask */}
               {firstResult.emea_faq && firstResult.emea_faq.length > 0 && (
                 <div className="bg-white rounded-xl border border-gray-200 p-4">
                   <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
                     <HelpCircle className="w-4 h-4 text-[#F22F46]" />EMEA compliance FAQ
                   </h3>
-                  <div className="space-y-2 max-h-[350px] overflow-y-auto">
+
+                  {/* Ask your own question */}
+                  <div className="mb-3 p-2 bg-[#f4f4f6] rounded-lg border border-gray-100">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={askQuestion}
+                        onChange={(e) => setAskQuestion(e.target.value)}
+                        onKeyDown={(e) => e.key === "Enter" && submitQuestion()}
+                        placeholder="Ask a compliance question..."
+                        className="flex-1 text-xs bg-white border border-gray-200 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46] outline-none"
+                      />
+                      <button onClick={submitQuestion} disabled={askLoading || !askQuestion.trim()} className="bg-[#121c2d] hover:bg-[#1a2a42] disabled:bg-gray-300 text-white px-2.5 py-1.5 rounded-lg transition-colors">
+                        {askLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+                    {askError && <p className="text-[10px] text-red-500 mt-1">{askError}</p>}
+                    {askAnswer && (
+                      <div className="mt-2 p-2 bg-white rounded-lg border border-amber-200">
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className={`px-1.5 py-0.5 rounded text-[9px] font-medium ${askAnswer.confidence === "high" ? "bg-emerald-50 text-emerald-700" : askAnswer.confidence === "medium" ? "bg-amber-50 text-amber-700" : "bg-red-50 text-red-700"}`}>
+                            {askAnswer.confidence} confidence
+                          </span>
+                          <span className="text-[9px] text-amber-600 font-medium">AI-generated — verify before sharing externally</span>
+                        </div>
+                        <p className="text-[11px] text-gray-700 whitespace-pre-wrap">{askAnswer.answer}</p>
+                        {askAnswer.caveat && <p className="text-[10px] text-amber-600 mt-1 italic">{askAnswer.caveat}</p>}
+                        {askAnswer.sources.length > 0 && (
+                          <div className="mt-1.5 pt-1.5 border-t border-gray-100">
+                            <span className="text-[9px] font-semibold text-gray-400 uppercase">Sources: </span>
+                            {askAnswer.sources.map((src, si) => (
+                              <a key={si} href={src} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-[#F22F46] hover:underline mr-2">
+                                <ExternalLink className="w-2.5 h-2.5" />{(() => { try { return new URL(src).pathname.split('/').pop() || 'source'; } catch { return 'source'; } })()}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Static FAQ */}
+                  <p className="text-[10px] font-semibold text-gray-400 uppercase mb-1.5">Common questions</p>
+                  <div className="space-y-2 max-h-[280px] overflow-y-auto">
                     {firstResult.emea_faq.slice(0, 4).map((cat) => (
                       <div key={cat.id}>
                         <p className="text-[10px] font-semibold text-gray-400 uppercase mb-1">{cat.title}</p>
@@ -533,7 +601,7 @@ export default function Home() {
                                   <span className="text-[9px] font-semibold text-gray-400 uppercase">Sources: </span>
                                   {q.sources.map((src: string, si: number) => (
                                     <a key={si} href={src} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-[#F22F46] hover:underline mr-2">
-                                      <ExternalLink className="w-2.5 h-2.5" />{new URL(src).pathname.split('/').pop() || 'source'}
+                                      <ExternalLink className="w-2.5 h-2.5" />{(() => { try { return new URL(src).pathname.split('/').pop() || 'source'; } catch { return 'source'; } })()}
                                     </a>
                                   ))}
                                 </div>
