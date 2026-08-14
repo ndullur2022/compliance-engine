@@ -106,8 +106,8 @@ export const EMEA_FAQ_CATEGORIES: FAQCategory[] = [
     questions: [
       {
         question: "Does Twilio use customer data to train AI models?",
-        answer: "No. Twilio does not use customer data to train AI/ML models. Customer data processed through AI features (ConversationRelay, Conversation Intelligence, Agent Copilot) is used only to deliver the service and is not retained for model training. This is documented in the DPA and product-specific data sheets.",
-        sources: ["https://www.twilio.com/en-us/legal/data-protection-addendum"],
+        answer: "Twilio does not use identifiable customer data to train customer-facing AI/ML models. Customer data processed through AI features (ConversationRelay, Conversation Intelligence, Agent Copilot) is used only to deliver the service. However, per the product datasheets (July 2026), Twilio may use anonymized, de-identified, or aggregated data (such as messaging patterns and call metadata) as an independent controller to train models for platform security purposes — specifically spam detection, fraud prevention, and deliverability optimization. This is a controller activity for platform integrity, not a customer-facing AI feature.",
+        sources: ["https://www.twilio.com/en-us/legal/data-protection-addendum", "https://security.twilio.com/?itemName=product_features&source=click"],
         relatedProducts: ["conversation-relay", "conversation-intelligence"],
       },
       {

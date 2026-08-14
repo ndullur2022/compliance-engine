@@ -16,10 +16,25 @@
 
 ## Processor/controller roles
 
+Per the July 2026 product datasheets, Twilio's role is determined by data category and processing purpose:
+
 | Role | Context | Source |
 |------|---------|--------|
-| Data processor | Customer communications data — processes on behalf of and under instructions of customers | [DPA](https://www.twilio.com/en-us/legal/data-protection-addendum) |
-| Data controller (limited) | Fraud prevention, abuse detection — documented in DPA | [DPA](https://www.twilio.com/en-us/legal/data-protection-addendum) |
+| Independent controller | Customer Account Data (billing, provisioning, subscriber records) | [Product datasheets](https://security.twilio.com/?itemName=product_features&source=click) |
+| Independent controller & processor | Customer Content (message bodies, recordings, media) | [Product datasheets](https://security.twilio.com/?itemName=product_features&source=click) |
+| Independent controller & processor | Communications Usage Data (metadata, device data) | [Product datasheets](https://security.twilio.com/?itemName=product_features&source=click) |
+
+**Why independent controller?** Quoted from datasheets:
+> "Twilio's dual role as both a software provider and an electronic communications service provider"
+
+Controller activities include:
+- Account Management & Business Operations (billing, carrier interconnection)
+- Platform Security & Fraud Prevention (AI/ML-based detection)
+- Legal Compliance (KYC, regulatory mandates, law enforcement cooperation)
+- Product Support & Improvement (network optimization)
+- Research & Innovation (anonymized/de-identified/aggregated data for model training)
+
+**Important for sales:** Do not oversimplify to "Twilio is a processor." The relationship is more nuanced. Customers should review the product-specific datasheet for their use case.
 
 ## Transfer mechanisms (use exact names)
 

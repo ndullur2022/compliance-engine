@@ -2,11 +2,24 @@
 
 ## Customer data and model training
 
-> Twilio does not use customer data to train AI/ML models.
+**Nuanced claim — do not oversimplify:**
 
-Customer data processed through AI features (ConversationRelay, Conversation Intelligence, Agent Copilot) is used only to deliver the service and is not retained for model training.
+> Twilio does not use identifiable customer data to train customer-facing AI/ML models. Customer data processed through AI features (ConversationRelay, Conversation Intelligence, Agent Copilot) is used only to deliver the service.
 
-Source: [DPA](https://www.twilio.com/en-us/legal/data-protection-addendum)
+However, per the product datasheets (July 2026):
+
+> Twilio acts as a controller when using anonymized, de-identified or aggregated data to train models for improved spam detection, fraud prevention, and deliverability optimization.
+
+This is a **platform security activity** (controller), not a customer-facing AI feature. It applies to all products (Messaging, Voice, SendGrid, Video).
+
+Sources:
+- [DPA](https://www.twilio.com/en-us/legal/data-protection-addendum)
+- [Product datasheets](https://security.twilio.com/?itemName=product_features&source=click)
+
+## Do not claim
+
+- ~~"Twilio never uses customer data for AI"~~ (anonymized/aggregated data IS used for platform security models)
+- ~~"Twilio is purely a processor"~~ (controller for fraud/security/billing activities)
 
 ## EU AI Act positioning
 

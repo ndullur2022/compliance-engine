@@ -17,7 +17,19 @@
 
 ## Products NOT in IE1
 
-Flex, Video, Conversation Intelligence, Conversation Relay, Conversation Orchestrator, Conversation Memory — these operate from US infrastructure.
+Flex, Video, Conversation Intelligence, Conversation Relay, Conversation Orchestrator, Conversation Memory, WhatsApp — these operate from US infrastructure.
+
+### Video region selection caveat
+
+Video offers region selection (Australia, Brazil, Germany, Ireland, India, Japan, Singapore, US East, US West) but the datasheet explicitly states:
+
+> "Manual region selection is provided solely to optimize network performance and reduce latency; it is not intended to satisfy data residency or sovereignty requirements and should not be relied upon for regulatory compliance purposes."
+
+**Do not position Video region selection as data residency.**
+
+### WhatsApp
+
+Per the July 2026 datasheet: "All processing for outbound messaging is conducted in the US." No EU residency option exists for WhatsApp. This differs from SMS.
 
 ## Billing data
 

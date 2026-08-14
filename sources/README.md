@@ -25,6 +25,14 @@ This directory contains the static source material that powers the EMEA Readines
 | [certifications.md](certifications.md) | Security certifications and attestations claimed | 2026-08-14 |
 | [regulations.md](regulations.md) | Regulatory frameworks referenced (GDPR, DORA, NIS2, ePrivacy, etc.) | 2026-08-14 |
 | [ai-and-llm.md](ai-and-llm.md) | AI/LLM data handling claims, EU AI Act positioning | 2026-08-14 |
+| [product-datasheets.md](product-datasheets.md) | Key claims from official Privacy, Security & AI Governance Datasheets (July 2026) | 2026-08-14 |
+
+## External source URLs
+
+| URL | Content | Used for |
+|-----|---------|----------|
+| [Trust Center — Product Features](https://security.twilio.com/?itemName=product_features&source=click) | Product datasheets, pen test reports, SOC 2 | Data roles, residency, AI claims |
+| [Trust Center — ESG](https://security.twilio.com/?itemName=environment_social_governance&source=click) | Certifications, compliance docs | Certification claims |
 
 ## Important notes
 
