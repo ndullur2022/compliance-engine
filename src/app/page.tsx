@@ -254,13 +254,13 @@ export default function Home() {
   const firstResult = hasResults ? Object.values(results)[0] : null;
 
   return (
-    <div className="min-h-screen bg-[#f4f4f6]">
-      <header className="bg-[#121c2d]">
+    <div className="min-h-screen bg-slate-50">
+      <header className="bg-slate-900">
         <div className="max-w-[1400px] mx-auto px-6 py-4 flex items-center gap-3">
-          <Shield className="w-8 h-8 text-[#F22F46]" />
+          <Shield className="w-8 h-8 text-red-500" />
           <div>
             <h1 className="text-lg font-bold text-white tracking-tight">EMEA Readiness Engine</h1>
-            <p className="text-xs text-blue-200/70">Internal reference tool for sales — not a compliance authority</p>
+            <p className="text-xs text-slate-400">Internal reference tool for sales — not a compliance authority</p>
           </div>
         </div>
       </header>
@@ -278,10 +278,10 @@ export default function Home() {
           {/* Mode toggle */}
           <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-100">
             <span className="text-xs font-medium text-gray-500">Select by:</span>
-            <button onClick={() => switchMode("useCase")} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${selectionMode === "useCase" ? "bg-[#121c2d] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
+            <button onClick={() => switchMode("useCase")} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${selectionMode === "useCase" ? "bg-slate-900 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
               Use case
             </button>
-            <button onClick={() => switchMode("products")} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${selectionMode === "products" ? "bg-[#121c2d] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
+            <button onClick={() => switchMode("products")} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${selectionMode === "products" ? "bg-slate-900 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
               Products
             </button>
           </div>
@@ -292,14 +292,14 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-medium text-gray-500 mb-1">Buying center</label>
-                  <select value={useCaseCategory} onChange={(e) => { setUseCaseCategory(e.target.value); setSelectedUseCase(""); }} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                  <select value={useCaseCategory} onChange={(e) => { setUseCaseCategory(e.target.value); setSelectedUseCase(""); }} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
                     <option value="">All buying centers</option>
                     {USE_CASE_CATEGORIES.map(c => (<option key={c.id} value={c.id}>{c.label}</option>))}
                   </select>
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-500 mb-1">Use case</label>
-                  <select value={selectedUseCase} onChange={(e) => setSelectedUseCase(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                  <select value={selectedUseCase} onChange={(e) => setSelectedUseCase(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
                     <option value="">Select use case...</option>
                     {filteredUseCases.map(uc => (<option key={uc.id} value={uc.id}>{uc.name}</option>))}
                   </select>
@@ -308,7 +308,7 @@ export default function Home() {
             ) : (
               <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">Select product</label>
-                <select value={selectedProducts[0] || ""} onChange={(e) => setSelectedProducts(e.target.value ? [e.target.value] : [])} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                <select value={selectedProducts[0] || ""} onChange={(e) => setSelectedProducts(e.target.value ? [e.target.value] : [])} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
                   <option value="">Select product...</option>
                   {PRODUCTS.map(p => (
                     <option key={p.id} value={p.id}>{p.name}</option>
@@ -321,28 +321,28 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-3">
               <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">Country</label>
-                <select value={country} onChange={(e) => setCountry(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                <select value={country} onChange={(e) => setCountry(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
                   <option value="">Select...</option>
                   {COUNTRIES.map(c => (<option key={c.code} value={c.code}>{c.label}</option>))}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">Industry</label>
-                <select value={segment} onChange={(e) => setSegment(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                <select value={segment} onChange={(e) => setSegment(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
                   <option value="">Any</option>
                   {INDUSTRY_SEGMENTS.map(s => (<option key={s.segment} value={s.segment}>{s.segment}</option>))}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-500 mb-1">Persona</label>
-                <select value={persona} onChange={(e) => setPersona(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46]">
+                <select value={persona} onChange={(e) => setPersona(e.target.value)} className="w-full rounded-lg border-gray-200 border px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
                   {BUYER_PERSONAS.map(p => (<option key={p.id} value={p.id}>{p.label}</option>))}
                 </select>
               </div>
             </div>
 
             {/* Right: Action */}
-            <button onClick={runAnalysis} disabled={!country || activeProducts.length === 0 || (selectionMode === "useCase" && !selectedUseCase) || loading} className="bg-[#F22F46] hover:bg-[#d91e3a] disabled:bg-gray-300 text-white font-medium py-2 px-5 rounded-lg transition-colors flex items-center gap-2 whitespace-nowrap">
+            <button onClick={runAnalysis} disabled={!country || activeProducts.length === 0 || (selectionMode === "useCase" && !selectedUseCase) || loading} className="bg-red-500 hover:bg-red-600 disabled:bg-gray-300 text-white font-medium py-2 px-5 rounded-lg transition-colors flex items-center gap-2 whitespace-nowrap">
               {loading ? <><Loader2 className="w-4 h-4 animate-spin" />Analyzing...</> : <><Shield className="w-4 h-4" />Analyze</>}
             </button>
           </div>
@@ -353,7 +353,7 @@ export default function Home() {
               <span className="text-xs text-gray-400">Products needed:</span>
               {activeProducts.map(pid => {
                 const p = PRODUCTS.find(x => x.id === pid);
-                return p ? <span key={pid} className="px-2 py-0.5 rounded text-xs bg-[#121c2d]/5 text-[#121c2d] font-medium">{p.name}</span> : null;
+                return p ? <span key={pid} className="px-2 py-0.5 rounded text-xs bg-slate-900/5 text-slate-900 font-medium">{p.name}</span> : null;
               })}
               <span className="ml-auto text-xs text-gray-400 italic">{activeUseCase.description}</span>
             </div>
@@ -383,7 +383,7 @@ export default function Home() {
               {Object.entries(results).map(([pid, r]) => (
                 <div key={pid} className="bg-white rounded-xl border border-gray-200 p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-[#121c2d] truncate">{r.product.name}</span>
+                    <span className="text-sm font-semibold text-slate-900 truncate">{r.product.name}</span>
                     <StatusBadge status={r.analysis.overallStatus} />
                   </div>
                   <div className="text-xs text-gray-500 mb-2">
@@ -405,17 +405,17 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* Col 1: Sales positioning */}
               <div className="bg-white rounded-xl border border-gray-200 p-4">
-                <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-[#F22F46]" />Talk track for {country}
+                <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-red-500" />Talk track for {country}
                 </h3>
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-[#121c2d]">{firstResult.analysis.localizedPositioning.headline}</p>
+                  <p className="text-sm font-medium text-slate-900">{firstResult.analysis.localizedPositioning.headline}</p>
                   <p className="text-xs text-gray-600">{firstResult.analysis.localizedPositioning.valueProposition}</p>
                   <div className="pt-2 border-t border-gray-100">
                     <p className="text-[10px] font-semibold text-gray-400 uppercase mb-1">What to say on a call</p>
                     <ul className="text-xs text-gray-700 space-y-1">
                       {firstResult.analysis.localizedPositioning.talkTrackBullets.map((b, i) => (
-                        <li key={i} className="flex items-start gap-1.5"><ChevronRight className="w-3 h-3 text-[#F22F46] mt-0.5 shrink-0" />{b}</li>
+                        <li key={i} className="flex items-start gap-1.5"><ChevronRight className="w-3 h-3 text-red-500 mt-0.5 shrink-0" />{b}</li>
                       ))}
                     </ul>
                   </div>
@@ -432,8 +432,8 @@ export default function Home() {
 
               {/* Col 2: Regulatory breakdown */}
               <div className="bg-white rounded-xl border border-gray-200 p-4">
-                <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-[#F22F46]" />Regulations
+                <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-red-500" />Regulations
                 </h3>
                 <div className="space-y-2 max-h-[400px] overflow-y-auto">
                   {firstResult.analysis.regulatoryFit.map((reg) => (
@@ -454,8 +454,8 @@ export default function Home() {
 
               {/* Col 3: Data residency */}
               <div className="bg-white rounded-xl border border-gray-200 p-4">
-                <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                  <Database className="w-4 h-4 text-[#F22F46]" />Data residency (IE1)
+                <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <Database className="w-4 h-4 text-red-500" />Data residency (IE1)
                 </h3>
                 <div className="space-y-3 max-h-[400px] overflow-y-auto">
                   {Object.entries(results).map(([pid, r]) => (
@@ -499,7 +499,7 @@ export default function Home() {
               {/* Objections */}
               {firstResult.objections && firstResult.objections.length > 0 && (
                 <div className="bg-white rounded-xl border border-amber-200 p-4">
-                  <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
+                  <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4 text-amber-500" />Objection handling
                   </h3>
                   <div className="space-y-2 max-h-[350px] overflow-y-auto">
@@ -515,7 +515,7 @@ export default function Home() {
                             <div className="pt-1.5 border-t border-amber-100">
                               <span className="text-[9px] font-semibold text-gray-400 uppercase">Sources: </span>
                               {obj.supportingLinks.map((link, li) => (
-                                <a key={li} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-[#F22F46] hover:underline mr-2">
+                                <a key={li} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-red-500 hover:underline mr-2">
                                   <ExternalLink className="w-2.5 h-2.5" />{link.label}
                                 </a>
                               ))}
@@ -541,12 +541,12 @@ export default function Home() {
               {/* FAQ + Ask */}
               {firstResult.emea_faq && firstResult.emea_faq.length > 0 && (
                 <div className="bg-white rounded-xl border border-gray-200 p-4">
-                  <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                    <HelpCircle className="w-4 h-4 text-[#F22F46]" />EMEA compliance FAQ
+                  <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                    <HelpCircle className="w-4 h-4 text-red-500" />EMEA compliance FAQ
                   </h3>
 
                   {/* Ask your own question */}
-                  <div className="mb-3 p-2 bg-[#f4f4f6] rounded-lg border border-gray-100">
+                  <div className="mb-3 p-2 bg-slate-50 rounded-lg border border-gray-100">
                     <div className="flex items-center gap-2">
                       <input
                         type="text"
@@ -554,9 +554,9 @@ export default function Home() {
                         onChange={(e) => setAskQuestion(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && submitQuestion()}
                         placeholder="Ask a compliance question..."
-                        className="flex-1 text-xs bg-white border border-gray-200 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-[#F22F46] focus:border-[#F22F46] outline-none"
+                        className="flex-1 text-xs bg-white border border-gray-200 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none"
                       />
-                      <button onClick={submitQuestion} disabled={askLoading || !askQuestion.trim()} className="bg-[#121c2d] hover:bg-[#1a2a42] disabled:bg-gray-300 text-white px-2.5 py-1.5 rounded-lg transition-colors">
+                      <button onClick={submitQuestion} disabled={askLoading || !askQuestion.trim()} className="bg-slate-900 hover:bg-slate-800 disabled:bg-gray-300 text-white px-2.5 py-1.5 rounded-lg transition-colors">
                         {askLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
                       </button>
                     </div>
@@ -575,7 +575,7 @@ export default function Home() {
                           <div className="mt-1.5 pt-1.5 border-t border-gray-100">
                             <span className="text-[9px] font-semibold text-gray-400 uppercase">Sources: </span>
                             {askAnswer.sources.map((src, si) => (
-                              <a key={si} href={src} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-[#F22F46] hover:underline mr-2">
+                              <a key={si} href={src} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-red-500 hover:underline mr-2">
                                 <ExternalLink className="w-2.5 h-2.5" />{(() => { try { return new URL(src).pathname.split('/').pop() || 'source'; } catch { return 'source'; } })()}
                               </a>
                             ))}
@@ -600,7 +600,7 @@ export default function Home() {
                                 <div className="mt-1.5 pt-1.5 border-t border-gray-100">
                                   <span className="text-[9px] font-semibold text-gray-400 uppercase">Sources: </span>
                                   {q.sources.map((src: string, si: number) => (
-                                    <a key={si} href={src} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-[#F22F46] hover:underline mr-2">
+                                    <a key={si} href={src} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-red-500 hover:underline mr-2">
                                       <ExternalLink className="w-2.5 h-2.5" />{(() => { try { return new URL(src).pathname.split('/').pop() || 'source'; } catch { return 'source'; } })()}
                                     </a>
                                   ))}
@@ -620,14 +620,14 @@ export default function Home() {
             {/* Row 4: Data Deletion & Redaction Solutions */}
             {Object.values(results).some(r => r.deletionSolution) && (
               <div className="bg-white rounded-xl border border-gray-200 p-4">
-                <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                  <Trash2 className="w-4 h-4 text-[#F22F46]" />Data removal, redaction, and deletion
+                <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <Trash2 className="w-4 h-4 text-red-500" />Data removal, redaction, and deletion
                 </h3>
                 <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
                   {Object.entries(results).filter(([, r]) => r.deletionSolution).map(([pid, r]) => (
                     <div key={pid} className="border border-gray-100 rounded-lg p-3">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-semibold text-[#121c2d]">{r.deletionSolution!.productName}</span>
+                        <span className="text-xs font-semibold text-slate-900">{r.deletionSolution!.productName}</span>
                         <span className={`px-1.5 py-0.5 rounded text-[9px] font-medium ${r.deletionSolution!.automatedDeletion ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"}`}>
                           {r.deletionSolution!.automatedDeletion ? "Auto-purge" : "Manual"}
                         </span>
@@ -664,7 +664,7 @@ export default function Home() {
                           </div>
                         )}
                         {r.deletionSolution!.documentationUrl && (
-                          <a href={r.deletionSolution!.documentationUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[10px] text-[#F22F46] hover:underline mt-1">
+                          <a href={r.deletionSolution!.documentationUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[10px] text-red-500 hover:underline mt-1">
                             <ExternalLink className="w-2.5 h-2.5" />API docs
                           </a>
                         )}
@@ -680,15 +680,15 @@ export default function Home() {
               <div className="space-y-4">
                 {firstResult.gtmContext?.persona && (
                   <div className="bg-white rounded-xl border border-gray-200 p-4">
-                    <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                      <Users className="w-4 h-4 text-[#F22F46]" />Selling to: {firstResult.gtmContext.persona.title}
+                    <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                      <Users className="w-4 h-4 text-red-500" />Selling to: {firstResult.gtmContext.persona.title}
                     </h3>
                     <div className="grid grid-cols-3 gap-3">
                       <div>
                         <p className="text-[10px] font-semibold text-gray-400 uppercase mb-1">Care-abouts</p>
                         <ul className="text-[11px] text-gray-700 space-y-0.5">
                           {firstResult.gtmContext.persona.careabouts.slice(0, 4).map((c, i) => (
-                            <li key={i} className="flex items-start gap-1"><ChevronRight className="w-2.5 h-2.5 text-[#F22F46] mt-0.5 shrink-0" />{c}</li>
+                            <li key={i} className="flex items-start gap-1"><ChevronRight className="w-2.5 h-2.5 text-red-500 mt-0.5 shrink-0" />{c}</li>
                           ))}
                         </ul>
                       </div>
@@ -714,8 +714,8 @@ export default function Home() {
 
                 {/* Market entry */}
                 <div className="bg-white rounded-xl border border-gray-200 p-4">
-                  <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-[#F22F46]" />Market entry
+                  <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-red-500" />Market entry
                   </h3>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
@@ -742,11 +742,11 @@ export default function Home() {
             {/* Row 5: Localized content (if non-English) */}
             {firstResult.localization && (
               <div className="bg-white rounded-xl border border-gray-200 p-4">
-                <h3 className="text-sm font-semibold text-[#121c2d] mb-3 flex items-center gap-2">
-                  <Languages className="w-4 h-4 text-[#F22F46]" />Localized content ({selectedCountry?.language?.toUpperCase()})
+                <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <Languages className="w-4 h-4 text-red-500" />Localized content ({selectedCountry?.language?.toUpperCase()})
                 </h3>
                 <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4">
-                  <div className="bg-[#f4f4f6] rounded-lg p-3 text-sm text-gray-800 whitespace-pre-wrap">
+                  <div className="bg-slate-50 rounded-lg p-3 text-sm text-gray-800 whitespace-pre-wrap">
                     {typeof firstResult.localization.localizedContent === "string" ? firstResult.localization.localizedContent : Object.entries(firstResult.localization.localizedContent).map(([key, value]) => (
                       <div key={key} className="mb-2">
                         <p className="text-[10px] font-semibold text-gray-500 uppercase mb-0.5">{key.replace(/([A-Z])/g, " $1").trim()}</p>
@@ -772,14 +772,14 @@ export default function Home() {
         {!hasResults && !loading && !error && (
           <div className="text-center py-16">
             <Shield className="w-14 h-14 text-gray-300 mx-auto mb-3" />
-            <h3 className="text-base font-medium text-[#121c2d] mb-1">Choose a use case or products, then select a country</h3>
+            <h3 className="text-base font-medium text-slate-900 mb-1">Choose a use case or products, then select a country</h3>
             <p className="text-sm text-gray-400 max-w-lg mx-auto">Start with a use case (auto-selects products) or pick individual products. This tool checks EMEA regulatory compliance for each and generates localized sales content.</p>
           </div>
         )}
       </main>
 
-      <footer className="border-t border-gray-200 bg-[#121c2d] mt-8">
-        <div className="max-w-[1400px] mx-auto px-6 py-3 text-center text-[11px] text-blue-200/60">
+      <footer className="border-t border-gray-200 bg-slate-900 mt-8">
+        <div className="max-w-[1400px] mx-auto px-6 py-3 text-center text-[11px] text-slate-400">
           EMEA Readiness Engine — Internal sales reference tool — Content is AI-generated from approved source documents — Not legal advice — Always verify with legal before sharing externally
         </div>
       </footer>
