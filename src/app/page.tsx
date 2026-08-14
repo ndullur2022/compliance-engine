@@ -209,6 +209,22 @@ export default function Home() {
   const [askAnswer, setAskAnswer] = useState<{ answer: string; sources: string[]; confidence: string; caveat: string | null } | null>(null);
   const [askError, setAskError] = useState("");
   const [activeSection, setActiveSection] = useState("products");
+  const [flashSection, setFlashSection] = useState<string | null>(null);
+
+  function navigateToSection(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const alreadyInView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (alreadyInView) {
+      // Card is already fully visible (e.g. same row) — scrollIntoView won't
+      // move the page, so flash the card to give the user feedback instead.
+      setFlashSection(id);
+      window.setTimeout(() => setFlashSection((current) => (current === id ? null : current)), 2000);
+    }
+  }
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -437,7 +453,7 @@ export default function Home() {
                     <a
                       key={id}
                       href={`#${id}`}
-                      onClick={(e) => { e.preventDefault(); document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                      onClick={(e) => { e.preventDefault(); navigateToSection(id); }}
                       className={`flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs transition-all ${activeSection === id ? "bg-red-500/10 text-red-400 font-medium" : "text-slate-400 hover:text-white hover:bg-slate-800"}`}
                     >
                       <span className={`w-1.5 h-1.5 rounded-full ${activeSection === id ? "bg-red-500" : "bg-slate-600"}`} />
@@ -450,7 +466,7 @@ export default function Home() {
             {/* Main content */}
             <div className="flex-1 space-y-5 min-w-0">
             {/* Row 1: Product cards (no score) */}
-            <div id="products" className="grid grid-cols-2 lg:grid-cols-3 gap-3 scroll-mt-6">
+            <div id="products" className={`grid grid-cols-2 lg:grid-cols-3 gap-3 scroll-mt-6 rounded-xl ${flashSection === "products" ? "animate-card-nav-flash" : ""}`}>
               {Object.entries(results).map(([pid, r]) => (
                 <div key={pid} className="bg-white rounded-xl border border-gray-200 p-4">
                   <div className="flex items-center justify-between mb-2">
@@ -475,7 +491,7 @@ export default function Home() {
             {/* Row 2: Three columns - Positioning | Regulations | Data Residency */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* Col 1: Sales positioning */}
-              <div id="talk-track" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+              <div id="talk-track" className={`bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6 ${flashSection === "talk-track" ? "animate-card-nav-flash" : ""}`}>
                 <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                   <Globe className="w-4 h-4 text-red-500" />Talk track for {country}
                 </h3>
@@ -502,7 +518,7 @@ export default function Home() {
               </div>
 
               {/* Col 2: Regulatory breakdown */}
-              <div id="regulations" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+              <div id="regulations" className={`bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6 ${flashSection === "regulations" ? "animate-card-nav-flash" : ""}`}>
                 <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                   <Shield className="w-4 h-4 text-red-500" />Regulations
                 </h3>
@@ -520,7 +536,7 @@ export default function Home() {
               </div>
 
               {/* Col 3: Data residency */}
-              <div id="residency" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+              <div id="residency" className={`bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6 ${flashSection === "residency" ? "animate-card-nav-flash" : ""}`}>
                 <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                   <Database className="w-4 h-4 text-red-500" />Data residency (IE1)
                 </h3>
@@ -565,7 +581,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* Objections */}
               {firstResult.objections && firstResult.objections.length > 0 && (
-                <div id="objections" className="bg-white rounded-xl border border-amber-200 p-4 scroll-mt-6">
+                <div id="objections" className={`bg-white rounded-xl border border-amber-200 p-4 scroll-mt-6 ${flashSection === "objections" ? "animate-card-nav-flash" : ""}`}>
                   <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4 text-amber-500" />Objection handling
                   </h3>
@@ -604,7 +620,7 @@ export default function Home() {
 
               {/* FAQ + Ask */}
               {firstResult.emea_faq && firstResult.emea_faq.length > 0 && (
-                <div id="faq" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+                <div id="faq" className={`bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6 ${flashSection === "faq" ? "animate-card-nav-flash" : ""}`}>
                   <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                     <HelpCircle className="w-4 h-4 text-red-500" />EMEA compliance FAQ
                   </h3>
@@ -682,7 +698,7 @@ export default function Home() {
 
             {/* Row 3.5: Competitive positioning — data residency / regulatory gap objections */}
             {firstResult.competitors && firstResult.competitors.length > 0 && (
-              <div id="competitors" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+              <div id="competitors" className={`bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6 ${flashSection === "competitors" ? "animate-card-nav-flash" : ""}`}>
                 <h3 className="text-sm font-semibold text-slate-900 mb-2 flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-red-500" />Competitive gap objections
                 </h3>
@@ -723,7 +739,7 @@ export default function Home() {
 
             {/* Row 4: Data Deletion & Redaction Solutions */}
             {Object.values(results).some(r => r.deletionSolution) && (
-              <div id="deletion" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+              <div id="deletion" className={`bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6 ${flashSection === "deletion" ? "animate-card-nav-flash" : ""}`}>
                 <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                   <Trash2 className="w-4 h-4 text-red-500" />Data removal, redaction, and deletion
                 </h3>
@@ -783,7 +799,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="space-y-4">
                 {firstResult.gtmContext?.persona && (
-                  <div id="persona" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+                  <div id="persona" className={`bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6 ${flashSection === "persona" ? "animate-card-nav-flash" : ""}`}>
                     <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                       <Users className="w-4 h-4 text-red-500" />Selling to: {firstResult.gtmContext.persona.title}
                     </h3>
@@ -817,7 +833,7 @@ export default function Home() {
                 )}
 
                 {/* Market entry */}
-                <div id="market-entry" className="bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6">
+                <div id="market-entry" className={`bg-white rounded-xl border border-gray-200 p-4 scroll-mt-6 ${flashSection === "market-entry" ? "animate-card-nav-flash" : ""}`}>
                   <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                     <Clock className="w-4 h-4 text-red-500" />Market entry
                   </h3>

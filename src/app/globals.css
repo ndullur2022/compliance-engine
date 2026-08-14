@@ -32,3 +32,21 @@ select optgroup {
   color: #64748b;
   font-weight: 600;
 }
+
+@keyframes card-nav-flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.animate-card-nav-flash {
+  animation: card-nav-flash 1s ease-out 2;
+  border-color: rgb(239, 68, 68) !important;
+}
+
