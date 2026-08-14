@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { analyzeCompliance, generateLocalizedContent } from "@/lib/claude";
+import { analyzeCompliance, generateLocalizedContent } from "@/lib/openai";
 import { getProductById } from "@/lib/products";
 import { getRegulationsForProduct, getRegulationsForCountry } from "@/lib/regulations";
 import { getObjectionsForProduct, EU_RESIDENCY_PRODUCTS } from "@/lib/objections";
