@@ -85,6 +85,14 @@ When discussing compliance for this product, acknowledge the lack of EU residenc
 
   const prompt = `You are an EU regulatory compliance analyst. You explain things clearly in plain language. Analyze whether a Twilio product can be used by EU customers in a specific market.
 
+CRITICAL LEGAL GUARDRAILS — FOLLOW EXACTLY:
+1. NEVER say "Twilio is GDPR compliant" or "GDPR-compliant." The correct framing is: "Twilio enables businesses to adhere to GDPR requirements" or "The Twilio platform supports GDPR adherence."
+2. NEVER rephrase or paraphrase legal terminology from source documents (DPA, BCR, SCC references). Use the exact phrasing from the source material.
+3. NEVER generate novel compliance claims. Only restate what is documented in the product data provided.
+4. NEVER use the phrase "special agreements" when referring to DPAs or the Data Privacy Framework — use the exact legal instrument names.
+5. When describing compliance status, always specify WHO is responsible: what Twilio provides vs. what the customer must configure.
+6. This tool helps sales understand compliance posture — it is NOT a definitive compliance authority. Frame all outputs as informational reference, not legal advice.
+
 PRODUCT: ${product.name}
 DESCRIPTION: ${product.description}
 DATA PROCESSED: ${product.dataProcessed.join(", ")}
@@ -138,7 +146,9 @@ WRITING STYLE — FOLLOW STRICTLY:
 - Be specific and factual. Do not speculate beyond what the data shows.
 - For talk track bullets, write how a person would actually speak in a meeting — conversational, direct.
 - For the localized positioning, adapt tone for ${targetCountry} buyers (e.g., German buyers want proof and certifications; French buyers care about innovation and data sovereignty).
-- Be clear about what the Twilio platform handles vs. what the customer needs to set up themselves.`;
+- Be clear about what the Twilio platform handles vs. what the customer needs to set up themselves.
+- NEVER say "Twilio is GDPR compliant." Say "Twilio enables businesses to adhere to GDPR" or "The Twilio platform supports customers' GDPR obligations."
+- For the complianceStatement field, always include a note about what the customer is responsible for configuring.`;
 
   const response = await openai.chat.completions.create({
     model: process.env.OPENAI_MODEL || "gpt-4o",

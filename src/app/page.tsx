@@ -149,7 +149,7 @@ interface AnalysisResult {
 
 function StatusBadge({ status }: { status: string }) {
   const styles: Record<string, string> = { compliant: "bg-emerald-50 text-emerald-700 border-emerald-200", partial: "bg-amber-50 text-amber-700 border-amber-200", "requires-config": "bg-blue-50 text-blue-700 border-blue-200", "not-applicable": "bg-gray-50 text-gray-500 border-gray-200" };
-  const labels: Record<string, string> = { compliant: "Ready", partial: "Partly ready", "requires-config": "Needs setup", "not-applicable": "N/A" };
+  const labels: Record<string, string> = { compliant: "Twilio supports", partial: "Partial enablement", "requires-config": "Customer config required", "not-applicable": "N/A" };
   return <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium border ${styles[status] || styles["partial"]}`}>{labels[status] || status}</span>;
 }
 
@@ -235,12 +235,19 @@ export default function Home() {
           <Shield className="w-8 h-8 text-[#F22F46]" />
           <div>
             <h1 className="text-lg font-bold text-white tracking-tight">EMEA Readiness Engine</h1>
-            <p className="text-xs text-blue-200/70">EMEA regulatory compliance and sales enablement for Twilio products</p>
+            <p className="text-xs text-blue-200/70">Internal reference tool for sales — not a compliance authority</p>
           </div>
         </div>
       </header>
 
       <main className="max-w-[1400px] mx-auto px-6 py-6">
+        {/* Legal disclaimer banner */}
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-5 flex items-start gap-2 text-amber-800 text-xs">
+          <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+          <div>
+            <span className="font-semibold">FYI reference only.</span> This tool provides informational guidance for sales conversations. It is not legal advice and does not constitute a compliance certification. Always verify claims with legal before sharing with customers. Twilio enables businesses to adhere to GDPR — Twilio does not certify GDPR compliance on behalf of customers.
+          </div>
+        </div>
         {/* Step 1: Selection Mode + Context */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 mb-5">
           {/* Mode toggle */}
@@ -479,6 +486,16 @@ export default function Home() {
                         <div className="px-2 pb-2 text-xs space-y-1">
                           <p className="text-gray-600">{obj.reality}</p>
                           <p className="bg-amber-50 p-2 rounded text-gray-800">{obj.whatToSay}</p>
+                          {obj.supportingLinks && obj.supportingLinks.length > 0 && (
+                            <div className="pt-1.5 border-t border-amber-100">
+                              <span className="text-[9px] font-semibold text-gray-400 uppercase">Sources: </span>
+                              {obj.supportingLinks.map((link, li) => (
+                                <a key={li} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-[#F22F46] hover:underline mr-2">
+                                  <ExternalLink className="w-2.5 h-2.5" />{link.label}
+                                </a>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       </details>
                     ))}
@@ -509,7 +526,19 @@ export default function Home() {
                         {cat.questions.slice(0, 2).map((q, i) => (
                           <details key={i} className="border border-gray-100 rounded-lg mb-1">
                             <summary className="p-2 cursor-pointer hover:bg-gray-50 text-xs font-medium text-gray-700">{q.question}</summary>
-                            <div className="px-2 pb-2 text-[11px] text-gray-600">{q.answer}</div>
+                            <div className="px-2 pb-2 text-[11px] text-gray-600">
+                              {q.answer}
+                              {q.sources && q.sources.length > 0 && (
+                                <div className="mt-1.5 pt-1.5 border-t border-gray-100">
+                                  <span className="text-[9px] font-semibold text-gray-400 uppercase">Sources: </span>
+                                  {q.sources.map((src: string, si: number) => (
+                                    <a key={si} href={src} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 text-[10px] text-[#F22F46] hover:underline mr-2">
+                                      <ExternalLink className="w-2.5 h-2.5" />{new URL(src).pathname.split('/').pop() || 'source'}
+                                    </a>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
                           </details>
                         ))}
                       </div>
@@ -705,7 +734,7 @@ export default function Home() {
 
       <footer className="border-t border-gray-200 bg-[#121c2d] mt-8">
         <div className="max-w-[1400px] mx-auto px-6 py-3 text-center text-[11px] text-blue-200/60">
-          EMEA Readiness Engine — Powered by OpenAI GPT-4o — This tool gives guidance only. Always verify with legal.
+          EMEA Readiness Engine — Internal sales reference tool — Content is AI-generated from approved source documents — Not legal advice — Always verify with legal before sharing externally
         </div>
       </footer>
     </div>
