@@ -52,6 +52,31 @@ function ResidencyBadge({ status }: { status: string }) {
   );
 }
 
+const CERT_INFO: Record<string, { description: string; variant: "success" | "info" | "warning" | "neutral" }> = {
+  "SOC 2 Type II": { description: "Annual audit of security, availability, and confidentiality controls", variant: "success" },
+  "ISO 27001": { description: "Information security management system certification", variant: "success" },
+  "ISO 27017": { description: "Cloud-specific information security controls", variant: "success" },
+  "ISO 27018": { description: "Protection of personally identifiable information in public clouds", variant: "success" },
+  "ISO 27701": { description: "Privacy information management — extends ISO 27001 for GDPR alignment", variant: "success" },
+  "PCI DSS Level 1": { description: "Highest level of payment card data security compliance", variant: "success" },
+  "HIPAA": { description: "Healthcare data protection — BAA available on request", variant: "info" },
+  "CSA STAR": { description: "Cloud Security Alliance — security assurance for cloud services", variant: "info" },
+  "GDPR DPA": { description: "Data Processing Addendum covering EU processor obligations", variant: "success" },
+  "BCR": { description: "Binding Corporate Rules approved for international data transfers", variant: "success" },
+  "FedRAMP": { description: "US federal government cloud security authorization", variant: "info" },
+};
+
+function CertPill({ cert }: { cert: string }) {
+  const info = CERT_INFO[cert] || { description: `${cert} certification held by Twilio`, variant: "neutral" as const };
+  return (
+    <Tooltip text={info.description}>
+      <button style={{ background: "none", border: "none", padding: 0, cursor: "help" }}>
+        <Badge as="span" variant={info.variant}>{cert}</Badge>
+      </button>
+    </Tooltip>
+  );
+}
+
 export function ProductCards({ results, flashSection }: { results: Record<string, AnalysisResult>; flashSection: string | null }) {
   return (
     <div id="products" className={`grid grid-cols-2 lg:grid-cols-3 gap-4 scroll-mt-6 ${flashSection === "products" ? "animate-card-nav-flash" : ""}`}>
@@ -59,15 +84,14 @@ export function ProductCards({ results, flashSection }: { results: Record<string
         <Card key={pid} padding="space50">
           <Box display="flex" alignItems="center" justifyContent="space-between" marginBottom="space30">
             <Text as="span" fontWeight="fontWeightSemibold" fontSize="fontSize30">{r.product.name}</Text>
-            <StatusBadge status={r.analysis.overallStatus} />
           </Box>
           <Text as="p" fontSize="fontSize20" color="colorTextWeak" marginBottom="space30">
             Time to market: {r.analysis.marketEntryReadiness.timeToMarket}
           </Text>
-          <Box display="flex" alignItems="center" columnGap="space20" flexWrap="wrap">
+          <Box display="flex" alignItems="center" columnGap="space20" flexWrap="wrap" rowGap="space20">
             {r.residencyNuances && <ResidencyBadge status={r.residencyNuances.ie1Status} />}
-            {r.product.certifications?.slice(0, 3).map((c: string) => (
-              <Badge key={c} as="span" variant="neutral">{c}</Badge>
+            {r.product.certifications?.map((c: string) => (
+              <CertPill key={c} cert={c} />
             ))}
           </Box>
         </Card>
@@ -314,6 +338,16 @@ export function FAQCard({ result, flashSection, askQuestion, setAskQuestion, sub
               </Box>
               <Text as="p" fontSize="fontSize20" whiteSpace="pre-wrap">{askAnswer.answer}</Text>
               {askAnswer.caveat && <Text as="p" fontSize="fontSize20" color="colorTextWarning" marginTop="space20" fontStyle="italic">{askAnswer.caveat}</Text>}
+              {askAnswer.sources && askAnswer.sources.length > 0 && (
+                <Box marginTop="space30" paddingTop="space20" borderTopStyle="solid" borderTopWidth="borderWidth10" borderTopColor="colorBorderWeaker">
+                  <Text as="p" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextWeak" textTransform="uppercase" marginBottom="space10">Sources</Text>
+                  <Stack orientation="vertical" spacing="space10">
+                    {askAnswer.sources.map((src: string, si: number) => (
+                      <Anchor key={si} href={src} target="_blank">{(() => { try { const u = new URL(src); return u.hostname + u.pathname.replace(/\/$/, ''); } catch { return src; } })()}</Anchor>
+                    ))}
+                  </Stack>
+                </Box>
+              )}
             </Box>
           )}
         </Box>

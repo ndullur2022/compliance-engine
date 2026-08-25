@@ -104,7 +104,7 @@ export const EU_REGULATIONS: Regulation[] = [
     description: "Requires financial entities to ensure ICT resilience, including third-party risk management for critical service providers.",
     enforcementBody: "EBA, ESMA, EIOPA + national financial regulators",
     maxPenalty: "Up to 1% of average daily worldwide turnover (for critical ICT providers)",
-    sourceUrl: "https://www.twilio.com/en-us/security",
+    sourceUrl: "https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b",
     keyRequirements: [
       "ICT risk management framework",
       "Incident reporting for major ICT incidents",
@@ -124,7 +124,7 @@ export const EU_REGULATIONS: Regulation[] = [
     description: "Cybersecurity obligations for essential and important entities across critical sectors.",
     enforcementBody: "National cybersecurity authorities (BSI in Germany, ANSSI in France)",
     maxPenalty: "€10M or 2% of global annual turnover",
-    sourceUrl: "https://www.twilio.com/en-us/security",
+    sourceUrl: "https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b",
     keyRequirements: [
       "Cybersecurity risk management measures",
       "Incident reporting within 24 hours (early warning)",

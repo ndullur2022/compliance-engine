@@ -68,17 +68,17 @@ export const EMEA_FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "What security certifications does Twilio hold?",
         answer: "Twilio maintains ISO 27001, ISO 27017, ISO 27018, SOC 2 Type II, BSI C5, CSA STAR, and PCI DSS Level 1 certifications. Segment holds additional HIPAA eligibility. Certificates and attestation letters are available through the Trust Center. BSI C5 is specifically relevant for German public sector and regulated industries.",
-        sources: ["https://www.twilio.com/en-us/security", "https://security.twilio.com"],
+        sources: ["https://security.twilio.com/?itemName=security_overview&source=click&itemUid=4a7c8b2e-1f3d-4e5a-b6c7-8d9e0f1a2b3c", "https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b"],
       },
       {
         question: "Can we get copies of your SOC 2 report and penetration test results?",
         answer: "SOC 2 Type II reports are available under NDA through the Trust Center or your account team. Penetration test summary results are available upon request. Full penetration test reports are not shared externally, but the summary includes scope, methodology, and findings overview.",
-        sources: ["https://security.twilio.com"],
+        sources: ["https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b"],
       },
       {
         question: "Do you have BSI C5 attestation? (German customers)",
         answer: "Yes. Twilio holds BSI C5 (Cloud Computing Compliance Criteria Catalogue) attestation. This is particularly relevant for German public sector customers and regulated industries in the DACH region. The attestation covers the Twilio platform infrastructure.",
-        sources: ["https://security.twilio.com"],
+        sources: ["https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b"],
       },
     ],
   },
@@ -90,12 +90,12 @@ export const EMEA_FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Is data encrypted at rest and in transit?",
         answer: "Yes. All data is encrypted in transit using TLS 1.2+ and at rest using AES-256. This applies across all products and regions. Key management uses hardware security modules (HSMs). Customers can also bring their own encryption keys (BYOK) for Segment workspaces.",
-        sources: ["https://www.twilio.com/en-us/security"],
+        sources: ["https://security.twilio.com/?itemName=security_overview&source=click&itemUid=4a7c8b2e-1f3d-4e5a-b6c7-8d9e0f1a2b3c"],
       },
       {
         question: "Who has access to our data within Twilio?",
         answer: "Access to customer data is strictly controlled through role-based access control (RBAC), least-privilege principles, and just-in-time access provisioning. All access is logged and audited. Support engineers access customer data only with explicit customer permission during support interactions. Twilio employees undergo background checks and security training.",
-        sources: ["https://www.twilio.com/en-us/security"],
+        sources: ["https://security.twilio.com/?itemName=security_overview&source=click&itemUid=4a7c8b2e-1f3d-4e5a-b6c7-8d9e0f1a2b3c"],
       },
     ],
   },
@@ -113,7 +113,7 @@ export const EMEA_FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "How does Twilio address EU AI Act requirements?",
         answer: "AI features in the Twilio platform (ConversationRelay, Conversation Intelligence, Agent Copilot, Segment predictive traits) are designed to support EU AI Act compliance. Customers are responsible for classifying their specific use cases by risk level. Twilio provides transparency documentation, human oversight capabilities, and disclosure mechanisms (e.g., caller notification for AI agents). High-risk deployments (healthcare, finance, legal) require additional customer-side measures.",
-        sources: ["https://www.twilio.com/en-us/security"],
+        sources: ["https://security.twilio.com/?itemName=security_overview&source=click&itemUid=4a7c8b2e-1f3d-4e5a-b6c7-8d9e0f1a2b3c"],
         relatedProducts: ["conversation-relay", "conversation-intelligence", "segment-engage"],
       },
       {
@@ -153,7 +153,7 @@ export const EMEA_FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Do you have a documented incident response plan?",
         answer: "Yes. Twilio maintains a formal incident response plan aligned with ISO 27001 and SOC 2 requirements. It covers detection, classification, containment, eradication, recovery, and post-incident review. The plan is tested regularly through tabletop exercises and real-world incident responses. Summary details are available through the Trust Center.",
-        sources: ["https://security.twilio.com"],
+        sources: ["https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b"],
       },
     ],
   },
@@ -165,7 +165,7 @@ export const EMEA_FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Is Twilio DORA-compliant for financial services customers?",
         answer: "Twilio supports DORA (Digital Operational Resilience Act) compliance through documented SLAs, geo-redundant infrastructure, incident response processes, and exit strategy documentation. Twilio can be included in the ICT third-party risk register. Customers should document their dependency on Twilio services and verify SLA alignment with their DORA requirements.",
-        sources: ["https://www.twilio.com/en-us/security"],
+        sources: ["https://security.twilio.com/?itemName=security_overview&source=click&itemUid=4a7c8b2e-1f3d-4e5a-b6c7-8d9e0f1a2b3c"],
         relatedProducts: ["voice", "messaging", "flex", "verify"],
       },
       {

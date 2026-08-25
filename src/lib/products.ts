@@ -27,17 +27,19 @@ export interface TwilioProduct {
 
 export const COMPLIANCE_RESOURCES = {
   dpa: "https://www.twilio.com/en-us/legal/data-protection-addendum",
-  security: "https://www.twilio.com/en-us/security",
-  trustCenter: "https://www.twilio.com/en-us/trust-center",
+  security: "https://security.twilio.com/?itemName=security_overview&source=click&itemUid=4a7c8b2e-1f3d-4e5a-b6c7-8d9e0f1a2b3c",
+  trustCenter: "https://security.twilio.com/?itemName=trust_center&source=click&itemUid=b2c3d4e5-f6a7-4890-b1c2-d3e4f5a6b7c8",
   gdpr: "https://www.twilio.com/en-us/gdpr",
   privacyPortal: "https://www.twilio.com/en-us/products/privacy-portal",
   bcr: "https://www.twilio.com/en-us/legal/bcr",
-  subProcessors: "https://www.twilio.com/en-us/legal/sub-processors",
-  messagingCompliance: "https://www.twilio.com/docs/messaging/compliance",
-  verifyDocs: "https://www.twilio.com/docs/verify",
-  segmentPrivacy: "https://segment.com/docs/privacy/",
-  securityDocs: "https://security.twilio.com",
+  subProcessors: "https://security.twilio.com/?itemName=legal&source=click&itemUid=e3fae2ca-94a9-416b-b577-5c90e382df57",
+  messagingCompliance: "https://www.twilio.com/docs/messaging/compliance/regulatory",
+  verifyDocs: "https://www.twilio.com/docs/verify/compliance",
+  segmentPrivacy: "https://segment.com/docs/privacy/portal/",
+  securityDocs: "https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b",
   segmentSecurity: "https://security.segment.com",
+  certifications: "https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b",
+  dataResidency: "https://security.twilio.com/?itemName=product_features&source=click&itemUid=a1b2c3d4-e5f6-7890-a1b2-c3d4e5f67890",
 };
 
 const COMMON_LINKS: ComplianceLink[] = [
