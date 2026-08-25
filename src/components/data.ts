@@ -68,21 +68,21 @@ export const PRODUCTS = [
 ];
 
 export const COUNTRIES = [
-  { code: "Germany", language: "de", label: "Germany" },
-  { code: "France", language: "fr", label: "France" },
-  { code: "United Kingdom", language: "en", label: "United Kingdom" },
-  { code: "Netherlands", language: "nl", label: "Netherlands" },
-  { code: "Spain", language: "es", label: "Spain" },
-  { code: "Italy", language: "it", label: "Italy" },
-  { code: "Sweden", language: "sv", label: "Sweden" },
-  { code: "Poland", language: "pl", label: "Poland" },
-  { code: "Belgium", language: "fr", label: "Belgium" },
-  { code: "Ireland", language: "en", label: "Ireland" },
   { code: "Austria", language: "de", label: "Austria" },
-  { code: "Switzerland", language: "de", label: "Switzerland" },
+  { code: "Belgium", language: "fr", label: "Belgium" },
   { code: "Denmark", language: "da", label: "Denmark" },
-  { code: "Norway", language: "no", label: "Norway" },
   { code: "Finland", language: "fi", label: "Finland" },
+  { code: "France", language: "fr", label: "France" },
+  { code: "Germany", language: "de", label: "Germany" },
+  { code: "Ireland", language: "en", label: "Ireland" },
+  { code: "Italy", language: "it", label: "Italy" },
+  { code: "Netherlands", language: "nl", label: "Netherlands" },
+  { code: "Norway", language: "no", label: "Norway" },
+  { code: "Poland", language: "pl", label: "Poland" },
+  { code: "Spain", language: "es", label: "Spain" },
+  { code: "Sweden", language: "sv", label: "Sweden" },
+  { code: "Switzerland", language: "de", label: "Switzerland" },
+  { code: "United Kingdom", language: "en", label: "United Kingdom" },
 ];
 
 export const INDUSTRY_SEGMENTS = [
@@ -115,6 +115,7 @@ export const NAV_SECTIONS = [
   { id: "residency", label: "Data residency" },
   { id: "faq", label: "FAQs" },
   { id: "competitors", label: "Competitors" },
+  { id: "sources", label: "Sources" },
   { id: "deletion", label: "Deletion" },
   { id: "persona", label: "Persona" },
   { id: "market-entry", label: "Market entry" },

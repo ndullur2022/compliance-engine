@@ -9,7 +9,17 @@ function StatusBadge({ status }: { status: string }) {
   const labels: Record<string, string> = {
     compliant: "Twilio supports", partial: "Partial enablement", "requires-config": "Config required", "not-applicable": "N/A"
   };
-  return <Badge as="span" variant={variants[status] || "warning"}>{labels[status] || status}</Badge>;
+  const tooltips: Record<string, string> = {
+    compliant: "Twilio platform features fully support this regulatory requirement",
+    partial: "Only some features or channels under this product support this requirement — expand for details",
+    "requires-config": "Supported, but the customer must enable or configure specific settings",
+    "not-applicable": "This regulation does not apply to this product",
+  };
+  return (
+    <span title={tooltips[status] || ""}>
+      <Badge as="span" variant={variants[status] || "warning"}>{labels[status] || status}</Badge>
+    </span>
+  );
 }
 
 function ResidencyBadge({ status }: { status: string }) {
@@ -17,7 +27,17 @@ function ResidencyBadge({ status }: { status: string }) {
     ga: "success", "private-beta": "new", partial: "warning", "not-available": "error"
   };
   const labels: Record<string, string> = { ga: "IE1 GA", "private-beta": "Beta", partial: "Partial", "not-available": "No IE1" };
-  return <Badge as="span" variant={variants[status] || "warning"}>{labels[status] || status}</Badge>;
+  const tooltips: Record<string, string> = {
+    ga: "EU data residency (Ireland region) is generally available for this product",
+    "private-beta": "EU data residency is in private beta — contact your account team",
+    partial: "Only some features or channels support EU data residency — see details below",
+    "not-available": "EU data residency is not currently available for this product",
+  };
+  return (
+    <span title={tooltips[status] || ""}>
+      <Badge as="span" variant={variants[status] || "warning"}>{labels[status] || status}</Badge>
+    </span>
+  );
 }
 
 export function ProductCards({ results, flashSection }: { results: Record<string, AnalysisResult>; flashSection: string | null }) {
@@ -375,6 +395,34 @@ export function ObjectionsCard({ result, flashSection }: { result: AnalysisResul
             </Box>
           </Box>
         )}
+      </Card>
+    </Box>
+  );
+}
+
+export function SourcesCard({ result, flashSection }: { result: AnalysisResult; flashSection: string | null }) {
+  if (!result.blogArticles || result.blogArticles.length === 0) return null;
+  return (
+    <Box id="sources" className={`scroll-mt-6 ${flashSection === "sources" ? "animate-card-nav-flash" : ""}`}>
+      <Card padding="space50">
+        <Heading as="h3" variant="heading40" marginBottom="space0">Documentation and sources</Heading>
+        <Text as="p" fontSize="fontSize20" color="colorTextWeak" marginTop="space20">Reference links supporting the statements above.</Text>
+        <Box marginTop="space40">
+          <Stack orientation="vertical" spacing="space30">
+            {result.blogArticles.map((article, i) => (
+              <Box key={i} display="flex" alignItems="flex-start" columnGap="space30" paddingBottom="space30" borderBottomStyle="solid" borderBottomWidth="borderWidth10" borderBottomColor="colorBorderWeaker">
+                <Box flex="1">
+                  <Anchor href={article.url} target="_blank">{article.title}</Anchor>
+                  <Text as="p" fontSize="fontSize20" color="colorTextWeak" marginTop="space10">{article.summary}</Text>
+                  <Box display="flex" columnGap="space30" marginTop="space10">
+                    {article.author && <Text as="span" fontSize="fontSize10" color="colorTextWeak">{article.author}</Text>}
+                    {article.date && <Text as="span" fontSize="fontSize10" color="colorTextWeak">{article.date}</Text>}
+                  </Box>
+                </Box>
+              </Box>
+            ))}
+          </Stack>
+        </Box>
       </Card>
     </Box>
   );
