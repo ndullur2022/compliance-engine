@@ -1,6 +1,6 @@
 export interface AnalysisResult {
-  product: any;
-  applicableRegulations: any[];
+  product: { id: string; name: string; category: string; certifications: string[]; euDataResidency: boolean; euDataResidencyDetails: string; complianceLinks: { label: string; url: string; description: string }[] };
+  applicableRegulations: { id: string; name: string; fullName: string; category: string; enforcementBody: string; maxPenalty: string; sourceUrl: string }[];
   analysis: {
     overallStatus: string;
     summary: string;

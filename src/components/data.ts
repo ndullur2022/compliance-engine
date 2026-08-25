@@ -115,7 +115,6 @@ export const NAV_SECTIONS = [
   { id: "residency", label: "Data residency" },
   { id: "faq", label: "FAQs" },
   { id: "competitors", label: "Competitors" },
-  { id: "sources", label: "Sources" },
   { id: "deletion", label: "Deletion" },
   { id: "persona", label: "Persona" },
   { id: "market-entry", label: "Market entry" },

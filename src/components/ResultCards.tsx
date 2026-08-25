@@ -1,5 +1,7 @@
 "use client";
-import { Box, Card, Heading, Text, Badge, Separator, Disclosure, DisclosureHeading, DisclosureContent, Anchor, Stack } from "@twilio-paste/core";
+import { useState } from "react";
+import { Box, Card, Heading, Text, Badge, Separator, Disclosure, DisclosureHeading, DisclosureContent, Anchor, Stack, Tooltip } from "@twilio-paste/core";
+import { InformationIcon } from "@twilio-paste/icons/esm/InformationIcon";
 import { AnalysisResult } from "./types";
 
 function StatusBadge({ status }: { status: string }) {
@@ -16,9 +18,14 @@ function StatusBadge({ status }: { status: string }) {
     "not-applicable": "This regulation does not apply to this product",
   };
   return (
-    <span title={tooltips[status] || ""}>
+    <Box display="inline-flex" alignItems="center" columnGap="space10">
       <Badge as="span" variant={variants[status] || "warning"}>{labels[status] || status}</Badge>
-    </span>
+      <Tooltip text={tooltips[status] || ""}>
+        <button style={{ background: "none", border: "none", padding: 0, cursor: "help", display: "flex" }}>
+          <InformationIcon decorative={false} title="More info" size="sizeIcon10" color="colorTextWeak" />
+        </button>
+      </Tooltip>
+    </Box>
   );
 }
 
@@ -34,9 +41,14 @@ function ResidencyBadge({ status }: { status: string }) {
     "not-available": "EU data residency is not currently available for this product",
   };
   return (
-    <span title={tooltips[status] || ""}>
+    <Box display="inline-flex" alignItems="center" columnGap="space10">
       <Badge as="span" variant={variants[status] || "warning"}>{labels[status] || status}</Badge>
-    </span>
+      <Tooltip text={tooltips[status] || ""}>
+        <button style={{ background: "none", border: "none", padding: 0, cursor: "help", display: "flex" }}>
+          <InformationIcon decorative={false} title="More info" size="sizeIcon10" color="colorTextWeak" />
+        </button>
+      </Tooltip>
+    </Box>
   );
 }
 
@@ -91,6 +103,23 @@ export function TalkTrackCard({ result, country, flashSection }: { result: Analy
               ))}
             </Stack>
           </Box>
+          {/* Inline documentation links supporting these statements */}
+          {result.product.complianceLinks && result.product.complianceLinks.length > 0 && (
+            <>
+              <Separator orientation="horizontal" />
+              <Box marginTop="space30">
+                <Text as="p" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextWeak" textTransform="uppercase" marginBottom="space20">Supporting documentation</Text>
+                <Stack orientation="vertical" spacing="space10">
+                  {result.product.complianceLinks.slice(0, 4).map((link, i) => (
+                    <Box key={i} display="flex" alignItems="center" columnGap="space20">
+                      <Anchor href={link.url} target="_blank">{link.label}</Anchor>
+                      <Text as="span" fontSize="fontSize10" color="colorTextWeak">{link.description}</Text>
+                    </Box>
+                  ))}
+                </Stack>
+              </Box>
+            </>
+          )}
         </Box>
       </Card>
     </Box>
@@ -98,6 +127,7 @@ export function TalkTrackCard({ result, country, flashSection }: { result: Analy
 }
 
 export function RegulationsCard({ result, flashSection }: { result: AnalysisResult; flashSection: string | null }) {
+  const regSourceMap = Object.fromEntries(result.applicableRegulations.map(r => [r.id, r.sourceUrl]));
   return (
     <Box id="regulations" className={`scroll-mt-6 ${flashSection === "regulations" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
@@ -117,6 +147,11 @@ export function RegulationsCard({ result, flashSection }: { result: AnalysisResu
                     <Text as="p" fontSize="fontSize20" color="colorTextWeak">{reg.explanation}</Text>
                     {reg.risks.length > 0 && <Text as="p" fontSize="fontSize20" color="colorTextError" marginTop="space20">{reg.risks.join("; ")}</Text>}
                     {reg.mitigations.length > 0 && <Text as="p" fontSize="fontSize20" color="colorTextSuccess" marginTop="space20">{reg.mitigations.join("; ")}</Text>}
+                    {regSourceMap[reg.regulationId] && (
+                      <Box marginTop="space20">
+                        <Anchor href={regSourceMap[reg.regulationId]} target="_blank">View documentation →</Anchor>
+                      </Box>
+                    )}
                   </Box>
                 </DisclosureContent>
               </Disclosure>

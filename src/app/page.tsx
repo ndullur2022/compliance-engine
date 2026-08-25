@@ -6,7 +6,7 @@ import { Box, Card, Heading, Text, Button, Badge, Separator, Stack, Anchor } fro
 import { PasteProvider } from "../components/PasteProvider";
 import { USE_CASE_CATEGORIES, USE_CASES, PRODUCTS, COUNTRIES, INDUSTRY_SEGMENTS, BUYER_PERSONAS, NAV_SECTIONS } from "../components/data";
 import { AnalysisResult } from "../components/types";
-import { ProductCards, TalkTrackCard, RegulationsCard, ResidencyCard, CompetitorsCard, DeletionCard, FAQCard, PersonaCard, MarketEntryCard, ObjectionsCard, LocalizationCard, SourcesCard } from "../components/ResultCards";
+import { ProductCards, TalkTrackCard, RegulationsCard, ResidencyCard, CompetitorsCard, DeletionCard, FAQCard, PersonaCard, MarketEntryCard, ObjectionsCard, LocalizationCard } from "../components/ResultCards";
 
 export default function Home() {
   const [selectionMode, setSelectionMode] = useState<"useCase" | "products">("useCase");
@@ -251,7 +251,6 @@ export default function Home() {
                   </Box>
 
                   <CompetitorsCard result={firstResult} flashSection={flashSection} />
-                  <SourcesCard result={firstResult} flashSection={flashSection} />
                   <DeletionCard results={results} flashSection={flashSection} />
 
                   <Box className="grid grid-cols-1 lg:grid-cols-2 gap-5">
