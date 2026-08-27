@@ -110,12 +110,11 @@ export const BUYER_PERSONAS = [
 
 export const NAV_SECTIONS = [
   { id: "products", label: "Products" },
-  { id: "talk-track", label: "Talk track" },
   { id: "regulations", label: "Regulations" },
   { id: "residency", label: "Data residency" },
+  { id: "objections", label: "Objections" },
   { id: "faq", label: "FAQs" },
   { id: "competitors", label: "Competitors" },
   { id: "deletion", label: "Deletion" },
   { id: "persona", label: "Persona" },
-  { id: "market-entry", label: "Market entry" },
 ];

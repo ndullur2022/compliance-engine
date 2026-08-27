@@ -54,7 +54,7 @@ CRITICAL RULES:
 3. NEVER generate novel compliance claims beyond what the source material states.
 4. If the source material does not contain enough information to answer, say so clearly.
 5. Always specify what Twilio provides vs. what the customer must configure.
-6. Quote directly from sources when possible. Indicate which source you are drawing from.
+6. Quote directly from sources when possible. Indicate which source you are drawing from by naming the source type and document (e.g., "According to Trust Center > ISO 27001 Certificate of Compliance..." or "Per Legal > Data Processing Addendum...").
 
 SOURCE MATERIAL:
 ${sourceContext}
