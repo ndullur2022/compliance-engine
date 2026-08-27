@@ -6,7 +6,7 @@ import { Box, Card, Heading, Text, Button, Badge, Separator, Stack, Anchor } fro
 import { PasteProvider } from "../components/PasteProvider";
 import { USE_CASE_CATEGORIES, USE_CASES, PRODUCTS, COUNTRIES, INDUSTRY_SEGMENTS, BUYER_PERSONAS, NAV_SECTIONS } from "../components/data";
 import { AnalysisResult } from "../components/types";
-import { ProductCards, TalkTrackCard, RegulationsCard, ResidencyCard, CompetitorsCard, DeletionCard, FAQCard, PersonaCard, MarketEntryCard, ObjectionsCard, LocalizationCard } from "../components/ResultCards";
+import { ProductCards, RegulationsCard, ResidencyCard, CompetitorsCard, DeletionCard, FAQCard, PersonaCard, ObjectionsCard } from "../components/ResultCards";
 
 export default function Home() {
   const [selectionMode, setSelectionMode] = useState<"useCase" | "products">("useCase");
@@ -214,53 +214,40 @@ export default function Home() {
 
           {/* Results */}
           {hasResults && firstResult && (
-            <Box display="flex" columnGap="space60">
-              {/* Sidebar nav */}
-              <Box as="nav" display={["none", "none", "block"]} width="180px" flexShrink={0}>
-                <Box position="sticky" top="space60" backgroundColor="colorBackgroundBodyInverse" borderRadius="borderRadius30" padding="space40">
-                  <Text as="p" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextInverseWeak" textTransform="uppercase" letterSpacing="wide" marginBottom="space30">Sections</Text>
-                  <Stack orientation="vertical" spacing="space10">
-                    {NAV_SECTIONS.map(({ id, label }) => (
-                      <Box key={id} as="a" href={`#${id}`} onClick={(e: any) => { e.preventDefault(); navigateToSection(id); }}
-                        display="flex" alignItems="center" columnGap="space20" paddingX="space30" paddingY="space20" borderRadius="borderRadius20" cursor="pointer"
-                        backgroundColor={activeSection === id ? "colorBackgroundPrimaryWeakest" : undefined}
-                        className="transition-all hover:bg-[rgba(255,255,255,0.08)]"
-                      >
-                        <Box width="6px" height="6px" borderRadius="borderRadiusCircle" backgroundColor={activeSection === id ? "colorBackgroundPrimaryStronger" : "colorBackgroundInverseStrong"} />
-                        <Text as="span" fontSize="fontSize20" color={activeSection === id ? "colorTextBrandHighlight" : "colorTextInverseWeak"} fontWeight={activeSection === id ? "fontWeightSemibold" : "fontWeightNormal"}>{label}</Text>
-                      </Box>
-                    ))}
-                  </Stack>
+            <Box>
+              {/* Sticky horizontal nav */}
+              <Box position="sticky" top="0px" zIndex="zIndex10" backgroundColor="colorBackgroundBody" paddingY="space30" marginBottom="space50" borderBottomStyle="solid" borderBottomWidth="borderWidth10" borderBottomColor="colorBorderWeaker">
+                <Box display="flex" alignItems="center" columnGap="space20" flexWrap="wrap">
+                  {NAV_SECTIONS.map(({ id, label }) => (
+                    <Box key={id} as="a" href={`#${id}`} onClick={(e: any) => { e.preventDefault(); navigateToSection(id); }}
+                      paddingX="space30" paddingY="space20" borderRadius="borderRadius20" cursor="pointer"
+                      backgroundColor={activeSection === id ? "colorBackgroundPrimaryWeakest" : undefined}
+                      className="transition-all hover:bg-gray-100"
+                    >
+                      <Text as="span" fontSize="fontSize20" color={activeSection === id ? "colorTextLink" : "colorTextWeak"} fontWeight={activeSection === id ? "fontWeightSemibold" : "fontWeightNormal"}>{label}</Text>
+                    </Box>
+                  ))}
                 </Box>
               </Box>
 
-              {/* Main content area */}
-              <Box flex="1" minWidth="0">
-                <Stack orientation="vertical" spacing="space60">
-                  <ProductCards results={results} flashSection={flashSection} />
+              {/* Full-width vertical sections */}
+              <Stack orientation="vertical" spacing="space70">
+                <ProductCards results={results} flashSection={flashSection} />
 
-                  <Box className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    <TalkTrackCard result={firstResult} country={country} flashSection={flashSection} />
-                    <RegulationsCard result={firstResult} flashSection={flashSection} />
-                    <ResidencyCard results={results} flashSection={flashSection} />
-                  </Box>
+                <Box className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                  <RegulationsCard result={firstResult} flashSection={flashSection} />
+                  <ResidencyCard results={results} flashSection={flashSection} />
+                </Box>
 
-                  <Box className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    <ObjectionsCard result={firstResult} flashSection={flashSection} />
-                    <FAQCard result={firstResult} flashSection={flashSection} askQuestion={askQuestion} setAskQuestion={setAskQuestion} submitQuestion={submitQuestion} askLoading={askLoading} askAnswer={askAnswer} askError={askError} />
-                  </Box>
+                <Box className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                  <ObjectionsCard result={firstResult} flashSection={flashSection} />
+                  <FAQCard result={firstResult} flashSection={flashSection} askQuestion={askQuestion} setAskQuestion={setAskQuestion} submitQuestion={submitQuestion} askLoading={askLoading} askAnswer={askAnswer} askError={askError} />
+                </Box>
 
-                  <CompetitorsCard result={firstResult} flashSection={flashSection} />
-                  <DeletionCard results={results} flashSection={flashSection} />
-
-                  <Box className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                    <PersonaCard result={firstResult} flashSection={flashSection} />
-                    <MarketEntryCard result={firstResult} flashSection={flashSection} />
-                  </Box>
-
-                  <LocalizationCard result={firstResult} language={selectedCountry?.language} />
-                </Stack>
-              </Box>
+                <CompetitorsCard result={firstResult} flashSection={flashSection} />
+                <DeletionCard results={results} flashSection={flashSection} />
+                <PersonaCard result={firstResult} flashSection={flashSection} />
+              </Stack>
             </Box>
           )}
 

@@ -79,31 +79,52 @@ function CertPill({ cert }: { cert: string }) {
 
 export function ProductCards({ results, flashSection }: { results: Record<string, AnalysisResult>; flashSection: string | null }) {
   return (
-    <div id="products" className={`grid grid-cols-2 lg:grid-cols-3 gap-4 scroll-mt-6 ${flashSection === "products" ? "animate-card-nav-flash" : ""}`}>
-      {Object.entries(results).map(([pid, r]) => (
-        <Card key={pid} padding="space50">
-          <Box display="flex" alignItems="center" justifyContent="space-between" marginBottom="space30">
-            <Text as="span" fontWeight="fontWeightSemibold" fontSize="fontSize30">{r.product.name}</Text>
-          </Box>
-          <Text as="p" fontSize="fontSize20" color="colorTextWeak" marginBottom="space30">
-            Time to market: {r.analysis.marketEntryReadiness.timeToMarket}
-          </Text>
-          <Box display="flex" alignItems="center" columnGap="space20" flexWrap="wrap" rowGap="space20">
-            {r.residencyNuances && <ResidencyBadge status={r.residencyNuances.ie1Status} />}
-            {r.product.certifications?.map((c: string) => (
-              <CertPill key={c} cert={c} />
-            ))}
-          </Box>
-        </Card>
-      ))}
-    </div>
+    <Box id="products" className={`scroll-mt-16 ${flashSection === "products" ? "animate-card-nav-flash" : ""}`}>
+      <Box display="flex" alignItems="center" columnGap="space40" marginBottom="space40" flexWrap="wrap">
+        <Text as="span" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextWeak" textTransform="uppercase">Badge key:</Text>
+        <Box display="flex" alignItems="center" columnGap="space10">
+          <Badge as="span" variant="success">Green</Badge>
+          <Text as="span" fontSize="fontSize20" color="colorTextWeak">= fully available / compliant</Text>
+        </Box>
+        <Box display="flex" alignItems="center" columnGap="space10">
+          <Badge as="span" variant="info">Blue</Badge>
+          <Text as="span" fontSize="fontSize20" color="colorTextWeak">= available with configuration or BAA</Text>
+        </Box>
+        <Box display="flex" alignItems="center" columnGap="space10">
+          <Badge as="span" variant="new">Purple</Badge>
+          <Text as="span" fontSize="fontSize20" color="colorTextWeak">= beta / coming soon</Text>
+        </Box>
+        <Box display="flex" alignItems="center" columnGap="space10">
+          <Badge as="span" variant="warning">Yellow</Badge>
+          <Text as="span" fontSize="fontSize20" color="colorTextWeak">= partial support</Text>
+        </Box>
+      </Box>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {Object.entries(results).map(([pid, r]) => (
+          <Card key={pid} padding="space50">
+            <Box display="flex" alignItems="center" justifyContent="space-between" marginBottom="space30">
+              <Text as="span" fontWeight="fontWeightSemibold" fontSize="fontSize30">{r.product.name}</Text>
+            </Box>
+            <Text as="p" fontSize="fontSize20" color="colorTextWeak" marginBottom="space30">
+              Time to market: {r.analysis.marketEntryReadiness.timeToMarket}
+            </Text>
+            <Box display="flex" alignItems="center" columnGap="space20" flexWrap="wrap" rowGap="space20">
+              {r.residencyNuances && <ResidencyBadge status={r.residencyNuances.ie1Status} />}
+              {r.product.certifications?.map((c: string) => (
+                <CertPill key={c} cert={c} />
+              ))}
+            </Box>
+          </Card>
+        ))}
+      </div>
+    </Box>
   );
 }
 
 export function TalkTrackCard({ result, country, flashSection }: { result: AnalysisResult; country: string; flashSection: string | null }) {
   const pos = result.analysis.localizedPositioning;
   return (
-    <Box id="talk-track" className={`scroll-mt-6 ${flashSection === "talk-track" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="talk-track" className={`scroll-mt-16 ${flashSection === "talk-track" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Talk track for {country}</Heading>
         <Box marginTop="space40">
@@ -153,7 +174,7 @@ export function TalkTrackCard({ result, country, flashSection }: { result: Analy
 export function RegulationsCard({ result, flashSection }: { result: AnalysisResult; flashSection: string | null }) {
   const regSourceMap = Object.fromEntries(result.applicableRegulations.map(r => [r.id, r.sourceUrl]));
   return (
-    <Box id="regulations" className={`scroll-mt-6 ${flashSection === "regulations" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="regulations" className={`scroll-mt-16 ${flashSection === "regulations" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Regulations</Heading>
         <Box marginTop="space40" maxHeight="400px" overflowY="auto">
@@ -189,7 +210,7 @@ export function RegulationsCard({ result, flashSection }: { result: AnalysisResu
 
 export function ResidencyCard({ results, flashSection }: { results: Record<string, AnalysisResult>; flashSection: string | null }) {
   return (
-    <Box id="residency" className={`scroll-mt-6 ${flashSection === "residency" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="residency" className={`scroll-mt-16 ${flashSection === "residency" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Data residency (IE1)</Heading>
         <Box marginTop="space40" maxHeight="400px" overflowY="auto">
@@ -232,7 +253,7 @@ export function ResidencyCard({ results, flashSection }: { results: Record<strin
 export function CompetitorsCard({ result, flashSection }: { result: AnalysisResult; flashSection: string | null }) {
   if (!result.competitors || result.competitors.length === 0) return null;
   return (
-    <Box id="competitors" className={`scroll-mt-6 ${flashSection === "competitors" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="competitors" className={`scroll-mt-16 ${flashSection === "competitors" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Competitive gap objections</Heading>
         <Box marginTop="space30" padding="space30" backgroundColor="colorBackgroundDestructiveWeakest" borderRadius="borderRadius30">
@@ -273,7 +294,7 @@ export function DeletionCard({ results, flashSection }: { results: Record<string
   const hasDeletion = Object.values(results).some(r => r.deletionSolution);
   if (!hasDeletion) return null;
   return (
-    <Box id="deletion" className={`scroll-mt-6 ${flashSection === "deletion" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="deletion" className={`scroll-mt-16 ${flashSection === "deletion" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Data removal, redaction, and deletion</Heading>
         <Box marginTop="space40" className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -312,7 +333,7 @@ export function FAQCard({ result, flashSection, askQuestion, setAskQuestion, sub
 }) {
   if (!result.emea_faq || result.emea_faq.length === 0) return null;
   return (
-    <Box id="faq" className={`scroll-mt-6 ${flashSection === "faq" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="faq" className={`scroll-mt-16 ${flashSection === "faq" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">EMEA compliance FAQ</Heading>
         <Box marginTop="space40" padding="space30" backgroundColor="colorBackgroundWeak" borderRadius="borderRadius30">
@@ -343,7 +364,10 @@ export function FAQCard({ result, flashSection, askQuestion, setAskQuestion, sub
                   <Text as="p" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextWeak" textTransform="uppercase" marginBottom="space10">Sources</Text>
                   <Stack orientation="vertical" spacing="space10">
                     {askAnswer.sources.map((src: string, si: number) => (
-                      <Anchor key={si} href={src} target="_blank">{(() => { try { const u = new URL(src); return u.hostname + u.pathname.replace(/\/$/, ''); } catch { return src; } })()}</Anchor>
+                      <Box key={si} display="flex" alignItems="center" columnGap="space20">
+                        <Badge as="span" variant="neutral">{(() => { try { const u = new URL(src); const path = u.pathname.replace(/\/$/, '').split('/').filter(Boolean); if (u.hostname.includes('twilio.com') && path.includes('trust-center')) return 'Trust Center'; if (u.hostname.includes('twilio.com') && path.includes('legal')) return 'Legal'; if (u.hostname.includes('twilio.com') && path.includes('docs')) return 'Docs'; if (u.hostname.includes('twilio.com') && path.includes('blog')) return 'Blog'; if (u.hostname.includes('gdpr-info') || path.some(p => p.includes('gdpr'))) return 'GDPR'; if (u.hostname.includes('ico.org')) return 'ICO'; return 'Reference'; } catch { return 'Reference'; } })()}</Badge>
+                        <Anchor href={src} target="_blank">{(() => { try { const u = new URL(src); const segs = u.pathname.replace(/\/$/, '').split('/').filter(Boolean); return segs.slice(-2).join(' > ').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) || u.hostname; } catch { return src; } })()}</Anchor>
+                      </Box>
                     ))}
                   </Stack>
                 </Box>
@@ -384,7 +408,7 @@ export function PersonaCard({ result, flashSection }: { result: AnalysisResult; 
   if (!result.gtmContext?.persona) return null;
   const p = result.gtmContext.persona;
   return (
-    <Box id="persona" className={`scroll-mt-6 ${flashSection === "persona" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="persona" className={`scroll-mt-16 ${flashSection === "persona" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Selling to: {p.title}</Heading>
         <Box marginTop="space40" className="grid grid-cols-3 gap-4">
@@ -408,7 +432,7 @@ export function PersonaCard({ result, flashSection }: { result: AnalysisResult; 
 
 export function MarketEntryCard({ result, flashSection }: { result: AnalysisResult; flashSection: string | null }) {
   return (
-    <Box id="market-entry" className={`scroll-mt-6 ${flashSection === "market-entry" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="market-entry" className={`scroll-mt-16 ${flashSection === "market-entry" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Market entry</Heading>
         <Box marginTop="space40" className="grid grid-cols-2 gap-4">
@@ -429,7 +453,7 @@ export function MarketEntryCard({ result, flashSection }: { result: AnalysisResu
 export function ObjectionsCard({ result, flashSection }: { result: AnalysisResult; flashSection: string | null }) {
   if (!result.objections || result.objections.length === 0) return null;
   return (
-    <Box id="objections" className={`scroll-mt-6 ${flashSection === "objections" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="objections" className={`scroll-mt-16 ${flashSection === "objections" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Objection handling</Heading>
         <Box marginTop="space40" maxHeight="350px" overflowY="auto">
@@ -472,7 +496,7 @@ export function ObjectionsCard({ result, flashSection }: { result: AnalysisResul
 export function SourcesCard({ result, flashSection }: { result: AnalysisResult; flashSection: string | null }) {
   if (!result.blogArticles || result.blogArticles.length === 0) return null;
   return (
-    <Box id="sources" className={`scroll-mt-6 ${flashSection === "sources" ? "animate-card-nav-flash" : ""}`}>
+    <Box id="sources" className={`scroll-mt-16 ${flashSection === "sources" ? "animate-card-nav-flash" : ""}`}>
       <Card padding="space50">
         <Heading as="h3" variant="heading40" marginBottom="space0">Documentation and sources</Heading>
         <Text as="p" fontSize="fontSize20" color="colorTextWeak" marginTop="space20">Reference links supporting the statements above.</Text>
