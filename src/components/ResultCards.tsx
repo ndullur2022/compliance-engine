@@ -363,12 +363,16 @@ export function FAQCard({ result, flashSection, askQuestion, setAskQuestion, sub
                 <Box marginTop="space30" paddingTop="space20" borderTopStyle="solid" borderTopWidth="borderWidth10" borderTopColor="colorBorderWeaker">
                   <Text as="p" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextWeak" textTransform="uppercase" marginBottom="space10">Sources</Text>
                   <Stack orientation="vertical" spacing="space10">
-                    {askAnswer.sources.map((src: string, si: number) => (
-                      <Box key={si} display="flex" alignItems="center" columnGap="space20">
-                        <Badge as="span" variant="neutral">{(() => { try { const u = new URL(src); const path = u.pathname.replace(/\/$/, '').split('/').filter(Boolean); if (u.hostname.includes('twilio.com') && path.includes('trust-center')) return 'Trust Center'; if (u.hostname.includes('twilio.com') && path.includes('legal')) return 'Legal'; if (u.hostname.includes('twilio.com') && path.includes('docs')) return 'Docs'; if (u.hostname.includes('twilio.com') && path.includes('blog')) return 'Blog'; if (u.hostname.includes('gdpr-info') || path.some(p => p.includes('gdpr'))) return 'GDPR'; if (u.hostname.includes('ico.org')) return 'ICO'; return 'Reference'; } catch { return 'Reference'; } })()}</Badge>
-                        <Anchor href={src} target="_blank">{(() => { try { const u = new URL(src); const segs = u.pathname.replace(/\/$/, '').split('/').filter(Boolean); return segs.slice(-2).join(' > ').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) || u.hostname; } catch { return src; } })()}</Anchor>
-                      </Box>
-                    ))}
+                    {askAnswer.sources.map((src: any, si: number) => {
+                      const url = typeof src === "string" ? src : src.url;
+                      const label = typeof src === "string" ? null : src.label;
+                      return (
+                        <Box key={si} display="flex" alignItems="center" columnGap="space20">
+                          <Text as="span" fontSize="fontSize20" color="colorTextWeak">{label || "Reference"}</Text>
+                          <Anchor href={url} target="_blank">{(() => { try { const u = new URL(url); return u.hostname.replace('www.', ''); } catch { return url; } })()}</Anchor>
+                        </Box>
+                      );
+                    })}
                   </Stack>
                 </Box>
               )}

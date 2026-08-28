@@ -3,7 +3,7 @@ import OpenAI from "openai";
 import { EMEA_FAQ_CATEGORIES } from "@/lib/emea-faq";
 import { DATA_RESIDENCY_OBJECTIONS } from "@/lib/objections";
 import { EU_REGULATIONS } from "@/lib/regulations";
-import { getAuthoritativeContext } from "@/lib/authoritative-sources";
+import { getAuthoritativeContext, getSourceLabel } from "@/lib/authoritative-sources";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -70,10 +70,16 @@ QUESTION: ${question}
 Respond in this JSON format:
 {
   "answer": "Your answer in plain language. Quote source material where possible. Be specific about what Twilio provides vs. customer responsibility.",
-  "sources": ["url1", "url2"],
+  "sources": [{"url": "the full deep-link URL", "label": "Source Category > Document Name > Section Name"}],
   "confidence": "high" | "medium" | "low",
   "caveat": "Any important qualification or limitation, or null if none"
 }
+
+IMPORTANT for sources: Always use the specific section-level URL (not the top-level page). The label must follow the hierarchy pattern shown in the source material brackets, e.g.:
+- "Trust Center > Data Security > Data Retention" (with the itemUid URL)
+- "Trust Center > Product Security > Audit Logging"
+- "Legal > Data Protection Addendum"
+- "Legal > Sub-processors"
 
 If the question cannot be answered from the source material, return:
 {
@@ -99,6 +105,22 @@ If the question cannot be answered from the source material, return:
     }
 
     const result = JSON.parse(jsonMatch[0]);
+
+    // Normalize sources to {url, label} format and enrich labels from authoritative data
+    if (result.sources && Array.isArray(result.sources)) {
+      result.sources = result.sources.map((src: any) => {
+        if (typeof src === "string") {
+          const label = getSourceLabel(src);
+          return { url: src, label: label || src };
+        }
+        if (src && typeof src === "object" && src.url) {
+          if (!src.label) src.label = getSourceLabel(src.url) || src.url;
+          return src;
+        }
+        return { url: String(src), label: String(src) };
+      });
+    }
+
     return NextResponse.json(result);
   } catch (error: any) {
     console.error("Ask error:", error);
