@@ -14,7 +14,8 @@
  * - SendGrid: GA (requires EU subusers and dedicated IPs)
  * - Segment: GA (full platform with EU workspace)
  * - Conversations: Partial (Chat only, no SMS/WhatsApp channels)
- * - Lookup v2: GA (includes Verify Silent Network Auth)
+ * - Lookup v2: GA (Line Type Intelligence, SIM Swap, Identity Match)
+ * - Verify Silent Network Auth: GA (separate from Lookup)
  * - Studio: Private Beta
  * - TaskRouter: Private Beta
  * - Functions/Assets: GA (not for IE1 messaging inbound)
@@ -353,7 +354,7 @@ export const DATA_RESIDENCY_NUANCES: DataResidencyNuance[] = [
       "Push verification not available in IE1"
     ],
     notes: [
-      "Verify Silent Network Auth is available via Lookup v2 in IE1 (confirmed GA)",
+      "Verify Silent Network Auth is available in IE1 (confirmed GA) — this is a Verify feature, not a Lookup feature",
       "Full Verify service (SMS/Voice OTP, TOTP, Push) not listed as available in IE1",
       "For OTP delivery, SMS and Voice APIs can be used directly in IE1, but Verify orchestration layer is not regionalized",
       "Official Twilio documentation lists only 'Verify Silent Network Auth' as IE1-available, not the full Verify product"
@@ -368,8 +369,7 @@ export const DATA_RESIDENCY_NUANCES: DataResidencyNuance[] = [
     excludedFeatures: [],
     notes: [
       "Lookup v2 confirmed GA in IE1 (Dublin) Region per official Twilio documentation",
-      "Includes Verify Silent Network Auth (SIM Swap detection)",
-      "Supports Line Type Intelligence and Identity Match endpoints",
+      "Supports Line Type Intelligence, SIM Swap detection, and Identity Match endpoints",
       "Queries processed in EU when using IE1 API endpoint (lookups.dublin.ie1.twilio.com)",
       "Requires IE1-specific API keys for authentication"
     ],

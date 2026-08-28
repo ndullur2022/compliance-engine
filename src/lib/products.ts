@@ -354,7 +354,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     dataProcessed: ["Phone numbers", "Email addresses", "Verification codes (ephemeral)", "Authentication attempt metadata", "Device identifiers (push/SNA)"],
     complianceCertifications: [...COMMON_CERTS, "CSA STAR", "BSI C5"],
     euDataResidency: false,
-    euDataResidencyDetails: "Full Verify product not explicitly listed for IE1 (EU) Region. Verify Silent Network Auth is available under Lookup v2 in IE1. SMS/voice verification may work via regional Messaging/Voice but product-level residency is not confirmed.",
+    euDataResidencyDetails: "Full Verify product not explicitly listed for IE1 (EU) Region. Verify Silent Network Auth is available in IE1 as a Verify feature. SMS/voice verification may work via regional Messaging/Voice but product-level residency is not confirmed.",
     complianceLinks: [...COMMON_LINKS, { label: "Verify Documentation", url: COMPLIANCE_RESOURCES.verifyDocs, description: "Implementation guides and compliance features" }, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Authentication data handling" }],
     relevantRegulations: ["gdpr", "psd2", "eidas2", "dora", "nis2", "uk-gdpr"],
     complianceStatus: {
@@ -372,7 +372,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     dataProcessed: ["Phone numbers queried", "Carrier and line type data", "Identity match signals", "SIM swap detection signals", "Reassigned number indicators"],
     complianceCertifications: [...COMMON_CERTS],
     euDataResidency: false,
-    euDataResidencyDetails: "Lookup v2 available in IE1 (Dublin) Region. Includes Verify Silent Network Auth. Queries processed in EU.",
+    euDataResidencyDetails: "Lookup v2 available in IE1 (Dublin) Region. Supports Line Type Intelligence, SIM Swap detection, and Identity Match. Queries processed in EU.",
     complianceLinks: [...COMMON_LINKS, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Phone intelligence data handling" }],
     relevantRegulations: ["gdpr", "eidas2", "uk-gdpr"],
     complianceStatus: {
