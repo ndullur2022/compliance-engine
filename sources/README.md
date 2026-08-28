@@ -27,6 +27,9 @@ This directory contains the static source material that powers the EMEA Readines
 | [ai-and-llm.md](ai-and-llm.md) | AI/LLM data handling claims, EU AI Act positioning | 2026-08-14 |
 | [product-datasheets.md](product-datasheets.md) | Key claims from official Privacy, Security & AI Governance Datasheets (July 2026) | 2026-08-14 |
 | [competitive-positioning.md](competitive-positioning.md) | Competitor data residency/regulatory gap objections, sourced from internal Crayon battlecards — **internal sales enablement only, not for customer-facing use** | 2026-08-14 |
+| [data-security.md](data-security.md) | Trust Center data security: retention, encryption at rest/in transit, physical security | 2026-08-28 |
+| [product-security.md](product-security.md) | Trust Center product security: audit logging, TLS/media encryption, SLA, password policy | 2026-08-28 |
+| [legal-and-policies.md](legal-and-policies.md) | Legal policies: DPA, privacy policy, TOS, AUP, subprocessors list, customer audit rights | 2026-08-28 |
 
 ## External source URLs
 
