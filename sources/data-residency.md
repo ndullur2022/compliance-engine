@@ -14,6 +14,7 @@
 | Functions & Assets | GA | [Functions regions](https://www.twilio.com/docs/global-infrastructure/regional-support-functions-assets) |
 | Studio | Private Beta | [Studio docs](https://www.twilio.com/docs/studio) |
 | TaskRouter | Private Beta | [TaskRouter docs](https://www.twilio.com/docs/taskrouter) |
+| Verify Silent Network | GA | [Verify SNA docs](https://www.twilio.com/docs/verify/using-verify-silent-network-auth-with-twilio-regions) |
 
 ## Products NOT in IE1
 
