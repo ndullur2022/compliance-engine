@@ -159,20 +159,9 @@ export const EMEA_FAQ_CATEGORIES: FAQCategory[] = [
   },
   {
     id: "financial-services",
-    title: "Financial services and DORA",
-    description: "DORA compliance, operational resilience, and financial sector requirements",
+    title: "Financial services and PSD2",
+    description: "PSD2 compliance, strong customer authentication, and financial sector requirements",
     questions: [
-      {
-        question: "Is Twilio DORA-compliant for financial services customers?",
-        answer: "Twilio supports DORA (Digital Operational Resilience Act) compliance through documented SLAs, geo-redundant infrastructure, incident response processes, and exit strategy documentation. Twilio can be included in the ICT third-party risk register. Customers should document their dependency on Twilio services and verify SLA alignment with their DORA requirements.",
-        sources: ["https://security.twilio.com/?itemName=security_overview&source=click&itemUid=4a7c8b2e-1f3d-4e5a-b6c7-8d9e0f1a2b3c"],
-        relatedProducts: ["voice", "messaging", "flex", "verify"],
-      },
-      {
-        question: "Can you provide exit strategy documentation for DORA Article 28?",
-        answer: "Yes. Twilio provides exit strategy guidance covering data portability, transition timelines, and service continuity during migration. This supports DORA Article 28 requirements for ICT third-party contracts. Contact your account team for the formal exit strategy document.",
-        relatedProducts: ["voice", "messaging", "flex"],
-      },
       {
         question: "Do you support PSD2 Strong Customer Authentication?",
         answer: "Yes. Twilio Verify supports PSD2 SCA requirements with multi-factor authentication, dynamic linking for payment transactions, and channel failover. SMS OTP, Push, TOTP, and Silent Network Auth provide multiple factor options. The Verify Fraud Guard feature helps optimize conversion while maintaining security.",

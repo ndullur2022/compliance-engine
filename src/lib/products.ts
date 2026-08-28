@@ -65,7 +65,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Not available in the IE1 (EU) Region. Product operates from US infrastructure. Data may be processed outside the EU.",
     complianceLinks: [...COMMON_LINKS, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "GDPR data handling and retention controls" }],
-    relevantRegulations: ["gdpr", "eprivacy", "uk-gdpr", "dora"],
+    relevantRegulations: ["gdpr", "eprivacy", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Twilio acts as data processor. Configurable retention and deletion. DPA available.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Define retention policies for conversation history", "Implement data subject deletion workflows", "Document lawful basis for storing interaction memory"] },
       eprivacy: { status: "requires-config", details: "Customer must obtain consent before storing persistent interaction data for marketing purposes.", documentation: COMPLIANCE_RESOURCES.gdpr, customerActions: ["Obtain consent for persistent profiling", "Provide opt-out for interaction tracking"] },
@@ -81,10 +81,9 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Not available in the IE1 (EU) Region. Orchestration operates from US infrastructure.",
     complianceLinks: [...COMMON_LINKS],
-    relevantRegulations: ["gdpr", "uk-gdpr", "dora", "nis2"],
+    relevantRegulations: ["gdpr", "uk-gdpr", "nis2"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Processes routing and state data as processor. Minimal personal data retained beyond session.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Include orchestration in data processing records", "Configure session data retention"] },
-      dora: { status: "compliant", details: "Resilient architecture with failover. SLA-backed availability for financial services use cases.", documentation: COMPLIANCE_RESOURCES.security },
     }
   },
   {
@@ -97,7 +96,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Not available in the IE1 (EU) Region. Explicitly unsupported in IE1 per regional availability documentation.",
     complianceLinks: [...COMMON_LINKS, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "AI data processing and GDPR alignment" }],
-    relevantRegulations: ["gdpr", "eu-ai-act", "uk-gdpr", "dora"],
+    relevantRegulations: ["gdpr", "eu-ai-act", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "AI processing performed as data processor. Transcripts and outputs subject to configurable retention.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Conduct DPIA for AI-based conversation analysis", "Inform customers of AI processing in privacy notice", "Set retention limits on transcripts and AI outputs"] },
       "eu-ai-act": { status: "requires-config", details: "Sentiment analysis and intent classification may constitute AI systems under the EU AI Act. Risk classification depends on deployment context.", documentation: COMPLIANCE_RESOURCES.security, customerActions: ["Classify AI use case by risk level (likely limited risk)", "Implement transparency notices for AI-analyzed conversations", "Document AI system capabilities and limitations", "Maintain human oversight for consequential decisions"] },
@@ -113,7 +112,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Not available in the IE1 (EU) Region. VirtualAgent and related voice AI features are unsupported in IE1.",
     complianceLinks: [...COMMON_LINKS, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Voice AI data handling" }],
-    relevantRegulations: ["gdpr", "eu-ai-act", "uk-gdpr", "eprivacy", "dora"],
+    relevantRegulations: ["gdpr", "eu-ai-act", "uk-gdpr", "eprivacy"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Voice data processed ephemerally. Recordings (if enabled) subject to customer-configured retention. DPA covers AI processing.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Inform callers of AI agent interaction", "Obtain recording consent where required", "Configure audio retention policies"] },
       "eu-ai-act": { status: "requires-config", details: "Voice AI agents likely constitute AI systems under the EU AI Act. Must disclose AI interaction to users. Risk depends on use case.", documentation: COMPLIANCE_RESOURCES.security, customerActions: ["Disclose AI nature of the agent to callers (mandatory under Art. 50)", "Classify risk level based on domain (high-risk if health/finance/legal)", "Document AI system for transparency register", "Ensure human escalation path available"] },
@@ -130,7 +129,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: true,
     euDataResidencyDetails: "Available in IE1 (Dublin) Region. Programmable Messaging (SMS) confirmed for EU data residency per regional availability documentation.",
     complianceLinks: [...COMMON_LINKS, { label: "Messaging Compliance Guide", url: COMPLIANCE_RESOURCES.messagingCompliance, description: "Opt-in, consent, and regulatory guidance per channel" }, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Data handling for messaging" }],
-    relevantRegulations: ["gdpr", "eprivacy", "pecr", "ttdsg", "arcep-telecom", "nis2", "dora", "uk-gdpr"],
+    relevantRegulations: ["gdpr", "eprivacy", "pecr", "ttdsg", "arcep-telecom", "nis2", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Twilio acts as data processor. DPA available. Sub-processor list published. DSR support via API.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Execute DPA", "Configure message retention", "Implement opt-in/opt-out per local law", "Conduct DPIA for marketing messaging"] },
       eprivacy: { status: "requires-config", details: "Customer responsible for obtaining consent for electronic direct marketing. Soft opt-in rules vary by member state.", documentation: COMPLIANCE_RESOURCES.messagingCompliance, customerActions: ["Obtain prior consent for marketing messages", "Implement sender identification", "Provide opt-out in every marketing message"] },
@@ -164,7 +163,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: true,
     euDataResidencyDetails: "Available in IE1 (Dublin) Region. Programmable Voice confirmed for EU data residency. Note: some features unsupported in IE1 (Connect Room, VirtualAgent, SIPREC, WhatsApp calling, BYOC with static IPs).",
     complianceLinks: [...COMMON_LINKS, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Voice data and recording compliance" }],
-    relevantRegulations: ["gdpr", "eprivacy", "bnetza-cli", "arcep-telecom", "nis2", "dora", "uk-gdpr"],
+    relevantRegulations: ["gdpr", "eprivacy", "bnetza-cli", "arcep-telecom", "nis2", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Twilio acts as data processor. Call recordings require customer-side consent management. EU storage available.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Inform callers of recording and obtain consent", "Configure EU storage for recordings", "Implement retention policies", "Handle DSARs for recordings"] },
       "bnetza-cli": { status: "compliant", details: "Valid CLI transmitted for outbound calls from German numbers. Anti-spoofing in place. BNetzA numbering plan compliant.", documentation: COMPLIANCE_RESOURCES.trustCenter, customerActions: ["Use verified German numbers", "Do not suppress or manipulate CLI"] },
@@ -197,7 +196,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: true,
     euDataResidencyDetails: "Available in IE1 (Dublin) Region. Elastic SIP Trunking confirmed for EU data residency. Some features unsupported (Phone Number API subresource, BYOC with static IPs).",
     complianceLinks: [...COMMON_LINKS],
-    relevantRegulations: ["gdpr", "nis2", "dora", "uk-gdpr"],
+    relevantRegulations: ["gdpr", "nis2", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "SIP trunking infrastructure processes minimal personal data. Call metadata subject to standard DPA.", documentation: COMPLIANCE_RESOURCES.dpa },
       nis2: { status: "compliant", details: "Infrastructure meets NIS2 cybersecurity requirements. Encrypted signaling and media. Geo-redundant architecture.", documentation: COMPLIANCE_RESOURCES.security },
@@ -213,12 +212,11 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Not available in the IE1 (EU) Region. Contact center operations run from US infrastructure. EU deployment not yet supported.",
     complianceLinks: [...COMMON_LINKS, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Contact center data handling" }, { label: "Privacy Portal", url: COMPLIANCE_RESOURCES.privacyPortal, description: "Data governance for customer interactions" }],
-    relevantRegulations: ["gdpr", "eu-ai-act", "dora", "nis2", "fca-consumer-duty", "uk-gdpr"],
+    relevantRegulations: ["gdpr", "eu-ai-act", "nis2", "fca-consumer-duty", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Flex supports GDPR through data residency controls, configurable retention, agent access controls, and consent framework integration.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Configure EU data residency", "Implement agent-level access controls", "Set recording retention policies", "Enable customer data deletion workflows"] },
       "eu-ai-act": { status: "requires-config", details: "Flex AI features (Agent Copilot, automated routing, sentiment analysis) may constitute AI systems. Risk classification depends on deployment context.", documentation: COMPLIANCE_RESOURCES.security, customerActions: ["Classify each AI feature by risk level", "Disclose AI interaction to customers", "Maintain human oversight and escalation paths", "Document AI system purpose and limitations"] },
       "fca-consumer-duty": { status: "requires-config", details: "For UK financial services, Flex supports Consumer Duty through quality management, outcome monitoring, and accessible communication channels.", documentation: COMPLIANCE_RESOURCES.security, customerActions: ["Configure quality management for outcome monitoring", "Ensure accessible channel options", "Implement fair treatment workflows"] },
-      dora: { status: "compliant", details: "Flex provides operational resilience for financial services contact centers. Redundant architecture, defined SLAs, incident response documented.", documentation: COMPLIANCE_RESOURCES.security },
     }
   },
   {
@@ -231,7 +229,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Not available in the IE1 (EU) Region. Video Rooms (Connect Room) explicitly unsupported in IE1.",
     complianceLinks: [...COMMON_LINKS, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Video data and recording compliance" }],
-    relevantRegulations: ["gdpr", "eprivacy", "uk-gdpr", "dora"],
+    relevantRegulations: ["gdpr", "eprivacy", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Video streams processed ephemerally. Recordings subject to customer retention policies. EU media regions available.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Obtain participant consent for recording", "Configure EU media region", "Set recording retention and deletion policies"] },
     }
@@ -277,10 +275,9 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Not available in the IE1 (EU) Region. Event streaming operates from US infrastructure.",
     complianceLinks: [...COMMON_LINKS],
-    relevantRegulations: ["gdpr", "dora", "nis2", "uk-gdpr"],
+    relevantRegulations: ["gdpr", "nis2", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Event Streams enables compliance monitoring and audit trails. Data minimization through event filtering. EU sink routing available.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Configure event filtering to minimize personal data in streams", "Route events to EU-based destinations", "Set retention policies on event sinks"] },
-      dora: { status: "compliant", details: "Supports DORA incident monitoring and audit requirements. Real-time event feeds enable operational resilience reporting.", documentation: COMPLIANCE_RESOURCES.security },
     }
   },
   {
@@ -293,7 +290,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Not listed as available in the IE1 (EU) Region. Private connectivity endpoints currently US-based.",
     complianceLinks: [...COMMON_LINKS],
-    relevantRegulations: ["gdpr", "nis2", "dora", "uk-gdpr"],
+    relevantRegulations: ["gdpr", "nis2", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Enhances GDPR compliance by keeping data in private network paths. Reduces exposure of personal data in transit.", documentation: COMPLIANCE_RESOURCES.security },
       nis2: { status: "compliant", details: "Private connectivity meets NIS2 network security requirements. Eliminates public internet exposure for sensitive communications.", documentation: COMPLIANCE_RESOURCES.security },
@@ -309,7 +306,7 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: true,
     euDataResidencyDetails: "Available in IE1 (Dublin) Region in Private Beta. TaskRouter confirmed for EU data residency (limited availability).",
     complianceLinks: [...COMMON_LINKS],
-    relevantRegulations: ["gdpr", "uk-gdpr", "dora"],
+    relevantRegulations: ["gdpr", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "TaskRouter processes minimal personal data. Task attributes configurable to minimize PII in routing decisions.", documentation: COMPLIANCE_RESOURCES.dpa },
     }
@@ -356,12 +353,10 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Full Verify product not explicitly listed for IE1 (EU) Region. Verify Silent Network Auth is available in IE1 as a Verify feature. SMS/voice verification may work via regional Messaging/Voice but product-level residency is not confirmed.",
     complianceLinks: [...COMMON_LINKS, { label: "Verify Documentation", url: COMPLIANCE_RESOURCES.verifyDocs, description: "Implementation guides and compliance features" }, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Authentication data handling" }],
-    relevantRegulations: ["gdpr", "psd2", "eidas2", "dora", "nis2", "uk-gdpr"],
+    relevantRegulations: ["gdpr", "psd2", "nis2", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Verify processes minimal personal data (phone/email) for authentication. Data minimization by design — codes are ephemeral.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Include Verify in privacy notice", "Define retention for verification logs", "Establish lawful basis (legitimate interest or contract)"] },
       psd2: { status: "compliant", details: "Twilio Verify supports PSD2 Strong Customer Authentication (SCA) with multi-factor options. Dynamic linking supported for payment authentication.", documentation: COMPLIANCE_RESOURCES.verifyDocs, customerActions: ["Implement two independent authentication factors", "Use dynamic linking for payment transactions", "Monitor SCA exemption eligibility", "Configure fallback authentication methods"] },
-      eidas2: { status: "partial", details: "Verify provides authentication building blocks but is not itself a qualified trust service provider. Can be integrated into eIDAS-compliant identity flows.", documentation: COMPLIANCE_RESOURCES.verifyDocs, customerActions: ["Assess whether use case requires qualified trust services", "Integrate with qualified identity providers where needed"] },
-      dora: { status: "compliant", details: "Multi-channel failover ensures availability for financial services authentication. SLA-backed uptime.", documentation: COMPLIANCE_RESOURCES.security, customerActions: ["Configure channel failover (SMS → Voice → Push)", "Document authentication service dependency"] },
     }
   },
   {
@@ -374,10 +369,9 @@ export const TWILIO_PRODUCTS: TwilioProduct[] = [
     euDataResidency: false,
     euDataResidencyDetails: "Lookup v2 available in IE1 (Dublin) Region. Supports Line Type Intelligence, SIM Swap detection, and Identity Match. Queries processed in EU.",
     complianceLinks: [...COMMON_LINKS, { label: "GDPR Compliance", url: COMPLIANCE_RESOURCES.gdpr, description: "Phone intelligence data handling" }],
-    relevantRegulations: ["gdpr", "eidas2", "uk-gdpr"],
+    relevantRegulations: ["gdpr", "uk-gdpr"],
     complianceStatus: {
       gdpr: { status: "compliant", details: "Lookup processes phone numbers as personal data. Results ephemeral (not stored beyond API response). Lawful basis required for queries.", documentation: COMPLIANCE_RESOURCES.dpa, customerActions: ["Establish lawful basis for lookups (legitimate interest for fraud, consent for marketing)", "Document Lookup usage in processing records", "Limit usage to stated lawful purpose"] },
-      eidas2: { status: "partial", details: "Lookup provides identity signals (SIM swap, reassignment) supporting identity assurance, but is not a qualified trust service.", documentation: COMPLIANCE_RESOURCES.verifyDocs, customerActions: ["Use as one signal in broader identity verification", "Do not rely solely on Lookup for eIDAS-level assurance"] },
     }
   },
   // ─── CUSTOMER DATA ────────────────────────────────────────

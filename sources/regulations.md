@@ -8,7 +8,6 @@ Each regulation listed here is used by the tool to assess product readiness. Ver
 | ePrivacy Directive | Directive 2002/58/EC | Varies by member state | National telecom regulators + DPAs | [Twilio Messaging docs](https://www.twilio.com/docs/messaging) |
 | EU AI Act | Regulation (EU) 2024/1689 | €35M or 7% global turnover | National authorities + EU AI Office | [Trust Center](https://www.twilio.com/en-us/trust-center) |
 | PSD2 | Payment Services Directive 2 | Varies by member state | National financial regulators | [Twilio Verify](https://www.twilio.com/docs/verify/verifying-transactions-psd2) |
-| DORA | Digital Operational Resilience Act | Up to 1% daily worldwide turnover (critical ICT providers) | EBA, ESMA, EIOPA | [Security page](https://www.twilio.com/en-us/security) |
 | NIS2 | Network and Information Security Directive 2 | €10M or 2% global turnover | National cybersecurity authorities | [Security page](https://www.twilio.com/en-us/security) |
 | Data Act | Regulation (EU) 2023/2854 | Varies by member state | National competent authorities | [Segment Privacy](https://segment.com/privacy/) |
 | UK GDPR | UK General Data Protection Regulation | £17.5M or 4% global turnover | ICO | [Twilio GDPR page](https://www.twilio.com/en-us/gdpr) |

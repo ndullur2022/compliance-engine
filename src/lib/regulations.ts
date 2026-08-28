@@ -96,26 +96,6 @@ export const EU_REGULATIONS: Regulation[] = [
     relevantProducts: ["verify", "messaging", "voice", "lookup"]
   },
   {
-    id: "dora",
-    name: "DORA",
-    fullName: "Digital Operational Resilience Act (Regulation 2022/2554)",
-    region: "EU",
-    category: "financial",
-    description: "Requires financial entities to ensure ICT resilience, including third-party risk management for critical service providers.",
-    enforcementBody: "EBA, ESMA, EIOPA + national financial regulators",
-    maxPenalty: "Up to 1% of average daily worldwide turnover (for critical ICT providers)",
-    sourceUrl: "https://security.twilio.com/?itemName=certifications&source=click&itemUid=7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b",
-    keyRequirements: [
-      "ICT risk management framework",
-      "Incident reporting for major ICT incidents",
-      "Digital operational resilience testing",
-      "Third-party ICT risk management",
-      "Information sharing on cyber threats",
-      "Contractual requirements for ICT service providers"
-    ],
-    relevantProducts: ["flex", "messaging", "voice", "verify", "sendgrid", "elastic-sip-trunking", "conversation-orchestrator", "conversation-relay", "event-streams", "interconnect"]
-  },
-  {
     id: "nis2",
     name: "NIS2",
     fullName: "Network and Information Security Directive 2 (Directive 2022/2555)",
@@ -134,25 +114,6 @@ export const EU_REGULATIONS: Regulation[] = [
       "Management body accountability for cybersecurity"
     ],
     relevantProducts: ["flex", "messaging", "voice", "verify", "sendgrid", "elastic-sip-trunking", "interconnect", "segment-connections", "event-streams", "conversation-orchestrator"]
-  },
-  {
-    id: "eidas2",
-    name: "eIDAS 2.0",
-    fullName: "Electronic Identification and Trust Services Regulation (revised)",
-    region: "EU",
-    category: "identity",
-    description: "Framework for electronic identification, authentication, and trust services, including the EU Digital Identity Wallet.",
-    enforcementBody: "National supervisory bodies for trust services",
-    maxPenalty: "Varies by member state",
-    sourceUrl: "https://www.twilio.com/docs/verify",
-    keyRequirements: [
-      "EU Digital Identity Wallet interoperability",
-      "Qualified electronic signatures and seals",
-      "Electronic identification scheme notification",
-      "Trust service provider obligations",
-      "Cross-border recognition of electronic identification"
-    ],
-    relevantProducts: ["verify", "lookup"]
   },
   {
     id: "data-act",
