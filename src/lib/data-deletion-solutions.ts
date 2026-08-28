@@ -176,7 +176,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Deletion is asynchronous and may take 24-72 hours to propagate fully",
       "Audit logs of the deletion request itself are retained for compliance",
     ],
-    documentationUrl: "https://www.twilio.com/docs/segment",
+    documentationUrl: "https://www.twilio.com/docs/segment/privacy/user-deletion-and-suppression",
   },
   {
     productId: "segment-unify",
@@ -201,7 +201,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Merged profiles: deleting one identity deletes the entire merged profile",
       "Audiences referencing the deleted profile update asynchronously",
     ],
-    documentationUrl: "https://www.twilio.com/docs/segment",
+    documentationUrl: "https://www.twilio.com/docs/segment/privacy/user-deletion-and-suppression",
   },
   {
     productId: "segment-engage",
@@ -225,7 +225,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Active campaigns may still send to user until deletion propagates (design for suppression-first)",
       "Aggregate analytics (audience size counters) not affected by individual deletion",
     ],
-    documentationUrl: "https://www.twilio.com/docs/segment",
+    documentationUrl: "https://www.twilio.com/docs/segment/privacy/user-deletion-and-suppression",
   },
   {
     productId: "flex",
