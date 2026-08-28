@@ -3,6 +3,7 @@ import OpenAI from "openai";
 import { EMEA_FAQ_CATEGORIES } from "@/lib/emea-faq";
 import { DATA_RESIDENCY_OBJECTIONS } from "@/lib/objections";
 import { EU_REGULATIONS } from "@/lib/regulations";
+import { getAuthoritativeContext } from "@/lib/authoritative-sources";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -44,6 +45,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const authoritativeContext = getAuthoritativeContext(question);
     const sourceContext = buildSourceContext();
 
     const prompt = `You are an internal compliance reference assistant for Twilio sales teams in EMEA. Answer the question below using ONLY the source material provided. Do not invent facts or make claims not supported by the sources.
@@ -54,9 +56,13 @@ CRITICAL RULES:
 3. NEVER generate novel compliance claims beyond what the source material states.
 4. If the source material does not contain enough information to answer, say so clearly.
 5. Always specify what Twilio provides vs. what the customer must configure.
-6. Quote directly from sources when possible. Indicate which source you are drawing from by naming the source type and document (e.g., "According to Trust Center > ISO 27001 Certificate of Compliance..." or "Per Legal > Data Processing Addendum...").
+6. Quote directly from sources when possible. Indicate which source you are drawing from by naming the source type and document (e.g., "According to Trust Center > Data Security > Data Retention..." or "Per Legal > Data Protection Addendum...").
+7. PRIORITY: When the AUTHORITATIVE SOURCES section contains information relevant to the question, ALWAYS prefer it over other source material. These are the primary source of truth.
 
-SOURCE MATERIAL:
+--- AUTHORITATIVE SOURCES (PRIMARY — prefer these over duplicates below) ---
+${authoritativeContext}
+
+--- SUPPLEMENTARY SOURCES ---
 ${sourceContext}
 
 QUESTION: ${question}

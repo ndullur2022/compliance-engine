@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { TwilioProduct, ComplianceEntry } from "./products";
 import { Regulation } from "./regulations";
+import { getAuthoritativeContext } from "./authoritative-sources";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -107,6 +108,9 @@ ${regulationContext}
 
 CURRENT COMPLIANCE STATUS:
 ${productComplianceContext}
+
+AUTHORITATIVE REFERENCE (prefer these over other sources when overlapping):
+${getAuthoritativeContext()}
 
 Based on this information, provide a compliance analysis. Return your response as valid JSON matching this structure exactly:
 {
