@@ -176,7 +176,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Deletion is asynchronous and may take 24-72 hours to propagate fully",
       "Audit logs of the deletion request itself are retained for compliance",
     ],
-    documentationUrl: "https://www.twilio.com/docs/segment/api/user-deletion-and-suppression",
+    documentationUrl: "https://www.twilio.com/docs/segment",
   },
   {
     productId: "segment-unify",
@@ -201,7 +201,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Merged profiles: deleting one identity deletes the entire merged profile",
       "Audiences referencing the deleted profile update asynchronously",
     ],
-    documentationUrl: "https://www.twilio.com/docs/segment/api/user-deletion-and-suppression",
+    documentationUrl: "https://www.twilio.com/docs/segment",
   },
   {
     productId: "segment-engage",
@@ -225,7 +225,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Active campaigns may still send to user until deletion propagates (design for suppression-first)",
       "Aggregate analytics (audience size counters) not affected by individual deletion",
     ],
-    documentationUrl: "https://www.twilio.com/docs/segment/api/user-deletion-and-suppression",
+    documentationUrl: "https://www.twilio.com/docs/segment",
   },
   {
     productId: "flex",
@@ -239,12 +239,12 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Flex Insights data can be excluded or anonymized",
     ],
     automatedDeletion: false,
-    dsarSupport: "Multi-step: delete channel messages (Conversations), redact task attributes (TaskRouter), and configure Flex Insights retention",
+    dsarSupport: "Multi-step: delete channel messages via Conversations Message API, redact task attributes via TaskRouter Task API, and configure Flex Insights retention in Console",
     steps: [
-      "Delete conversation messages via Conversations API for chat interactions",
-      "Use TaskRouter API to update/redact task attributes containing PII",
-      "Configure Flex Insights data retention period in Console",
-      "For recordings: follow Voice API deletion steps",
+      "Delete conversation messages via Conversations API (DELETE /v1/Conversations/{ConversationSid}/Messages/{MessageSid})",
+      "Use TaskRouter API to update/redact task attributes containing PII (POST /v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid})",
+      "Configure Flex Insights data retention period in Console (Flex > Insights > Settings)",
+      "For recordings: DELETE via Voice API (/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid})",
       "For DSAR: aggregate data from all underlying channels (chat, voice, SMS) and delete each",
     ],
     caveats: [
@@ -252,7 +252,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Flex Insights analytics may retain anonymized aggregate data",
       "Worker (agent) data is separate from customer data",
     ],
-    documentationUrl: "https://www.twilio.com/docs/flex",
+    documentationUrl: "https://www.twilio.com/docs/conversations/api/conversation-message-resource#delete-a-conversationmessage-resource",
   },
   {
     productId: "studio",
@@ -329,24 +329,26 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
   {
     productId: "conversation-intelligence",
     productName: "Conversation Intelligence",
-    deletionMethod: "Recording and transcript deletion via API",
-    retentionDefault: "Configurable",
+    deletionMethod: "Delete underlying voice recordings via Voice API — no separate CI deletion endpoint exists",
+    retentionDefault: "Configurable (tied to Voice recording retention)",
     configurableRetention: true,
     redactionCapabilities: [
-      "Delete transcripts and analytics data",
       "PII redaction available in transcript processing pipeline",
+      "Delete source recordings to remove transcripts",
     ],
     automatedDeletion: false,
-    dsarSupport: "Delete recordings and transcripts by participant identifier",
+    dsarSupport: "Delete voice recordings by participant identifier via Voice Recording API — transcripts derived from deleted recordings are removed",
     steps: [
-      "Delete transcripts associated with specific call recordings",
+      "DELETE underlying voice recordings via Voice API (DELETE /2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid})",
       "Enable PII redaction in the processing pipeline for new transcripts",
-      "DELETE underlying voice recordings via Voice API",
+      "No dedicated Conversation Intelligence deletion API exists — deletion flows through Voice",
     ],
     caveats: [
+      "No standalone CI deletion endpoint — all deletion is via the Voice Recording API",
       "Analytics derived from transcripts may persist in aggregate form",
       "PII redaction is applied at processing time — retroactive redaction requires reprocessing",
     ],
+    documentationUrl: "https://www.twilio.com/docs/voice/api/recording#delete-a-recording-resource",
   },
   {
     productId: "privacy-portal",
@@ -371,7 +373,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Not all Twilio products fully integrated yet — check coverage",
       "Deletion confirmation depends on downstream product processing",
     ],
-    documentationUrl: "https://www.twilio.com/docs/privacy",
+    documentationUrl: "https://www.twilio.com/en-us/privacy",
   },
 ];
 
