@@ -32,7 +32,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Set account-level data retention to minimum needed (Console > Messaging > Settings)",
       "Use the Redact API (POST with Body='') for immediate content removal without losing delivery logs",
       "DELETE individual messages via API for full removal including metadata",
-      "For bulk DSAR: query by phone number, iterate and delete/redact each resource",
+      "For bulk data deletion requests (DSARs): query by phone number, iterate and delete/redact each resource",
       "Configure automatic deletion rules via retention policies in Console",
     ],
     caveats: [
@@ -55,11 +55,11 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Call metadata (CDRs) cannot be selectively redacted but auto-expire",
     ],
     automatedDeletion: false,
-    dsarSupport: "Query Recordings by call SID or date range; delete recordings. Call logs queryable by To/From for DSAR scoping",
+    dsarSupport: "Query Recordings by call SID or date range; delete recordings. Call logs queryable by To/From for deletion request scoping",
     steps: [
       "DELETE recordings immediately after processing if not needed for retention",
       "Set up automated recording deletion via serverless functions on recording-completed webhook",
-      "For DSARs: query recordings by participant phone number, delete each",
+      "For data deletion requests: query recordings by participant phone number, delete each",
       "Disable recording storage if real-time streaming (Media Streams) is used instead",
       "Use encryption at rest (enabled by default) for recordings that must be retained",
     ],
@@ -89,7 +89,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Remove from global suppression list if unsubscribe is not sufficient (requires reason)",
       "Use Contact Export API for data portability (GDPR Article 20)",
       "Configure activity retention to minimum needed in Email Activity settings",
-      "For bulk DSAR: search by email domain or segment, export then delete",
+      "For bulk data deletion requests (DSARs): search by email domain or segment, export then delete",
     ],
     caveats: [
       "Deletion is asynchronous — may take up to 48 hours to fully propagate",
@@ -117,7 +117,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "DELETE Entities to remove Push/TOTP registrations for a specific user",
       "DELETE individual Factors if granular control needed",
       "Verification logs auto-purge per retention settings",
-      "For DSARs: identify user by phone number, delete associated Entity",
+      "For data deletion requests: identify user by phone number, delete associated Entity",
     ],
     caveats: [
       "Verification attempt logs (success/fail) may persist in CDRs",
@@ -245,7 +245,7 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
       "Use TaskRouter API to update/redact task attributes containing PII (POST /v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid})",
       "Configure Flex Insights data retention period in Console (Flex > Insights > Settings)",
       "For recordings: DELETE via Voice API (/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid})",
-      "For DSAR: aggregate data from all underlying channels (chat, voice, SMS) and delete each",
+      "For data deletion requests (DSARs): aggregate data from all underlying channels (chat, voice, SMS) and delete each",
     ],
     caveats: [
       "Flex is a composite product — deletion must be performed across all underlying services",
@@ -358,16 +358,16 @@ export const DATA_DELETION_SOLUTIONS: DataDeletionSolution[] = [
     configurableRetention: true,
     redactionCapabilities: [
       "Orchestrates deletion requests across Twilio products",
-      "Handles DSAR workflows end-to-end",
+      "Handles data deletion request (DSAR) workflows end-to-end",
       "Configures retention policies centrally",
     ],
     automatedDeletion: true,
-    dsarSupport: "Privacy Portal is purpose-built for DSAR management — submit requests, track progress, generate compliance reports",
+    dsarSupport: "Privacy Portal is purpose-built for data deletion request (DSAR) management — submit requests, track progress, generate compliance reports",
     steps: [
       "Use Privacy Portal to submit deletion requests for data subjects",
       "Configure automated retention policies per product",
-      "Track DSAR request status and generate audit reports",
-      "Set up automated workflows for recurring DSAR patterns",
+      "Track data deletion request status and generate audit reports",
+      "Set up automated workflows for recurring deletion request patterns",
     ],
     caveats: [
       "Not all Twilio products fully integrated yet — check coverage",

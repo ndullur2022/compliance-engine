@@ -314,7 +314,7 @@ export function DeletionCard({ results, flashSection }: { results: Record<string
                 )}
                 <Text as="p" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextWeak" textTransform="uppercase">Retention</Text>
                 <Text as="p" fontSize="fontSize20" marginBottom="space20">{d.retentionDefault}</Text>
-                <Text as="p" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextWeak" textTransform="uppercase">DSAR</Text>
+                <Text as="p" fontSize="fontSize10" fontWeight="fontWeightBold" color="colorTextWeak" textTransform="uppercase">Data deletion request (DSAR)</Text>
                 <Text as="p" fontSize="fontSize20" marginBottom="space20">{d.dsarSupport}</Text>
                 {d.documentationUrl && <Anchor href={d.documentationUrl} target="_blank">API docs</Anchor>}
               </Box>
